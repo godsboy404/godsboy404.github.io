@@ -1,0 +1,93 @@
+<!DOCTYPE html><html><head><meta http-equiv="content-type" content="text/html; charset=utf-8"><meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport"><meta content="yes" name="apple-mobile-web-app-capable"><meta content="black-translucent" name="apple-mobile-web-app-status-bar-style"><meta content="telephone=no" name="format-detection"><meta name="description" content=""><title>Vim 备忘 | 沁 · 拾遗轩</title><link rel="stylesheet" type="text/css" href="/css/normalize.css"><link rel="stylesheet" type="text/css" href="/css/highlight.css"><link rel="stylesheet" type="text/css" href="/css/very-simple.css"><link rel="stylesheet" type="text/css" href="//cdn.bootcss.com/font-awesome/4.5.0/css/font-awesome.min.css"><link rel="Shortcut Icon" type="image/x-icon" href="/favicon.ico"><meta name="generator" content="Hexo 7.1.1"></head><body><!-- include the sidebar--><!-- include ./includes/sidebar.jade--><!-- Blog title and subtitle--><header><div class="container header"><a id="logo" href="/." class="title">沁 · 拾遗轩</a><span class="subtitle">心之所向，素履以往</span><label id="toggle-menu" for="menu" onclick><i class="fa fa-bars"></i></label></div></header><!-- use checkbox hack for toggle nav-bar on small screens--><input id="menu" type="checkbox"><!-- Navigation Links--><nav id="nav"><div class="container"><a href="/" class="sidebar-nav-item active">Home</a><a href="/archives" class="sidebar-nav-item">Archives</a><a href="/about" class="sidebar-nav-item">About</a></div></nav><div id="header-margin-bar"></div><!-- gallery that comes before the header--><div class="wrapper"><div class="container post-header"><h1>Vim 备忘</h1></div></div><div class="wrapper"><div class="container meta"><div class="post-time">2024-02-22</div><div class="post-tags"><a class="post-tag-none-link" href="/tags/%E5%A4%87%E4%BB%BD/" rel="tag">备份</a></div></div></div><article><div class="container post"><h2 id="基础部分"><a href="#基础部分" class="headerlink" title="基础部分"></a>基础部分</h2><p><code>h</code> 左 <code>j</code> 下 <code>k</code> 上 <code>l</code> 右</p>
+<p><code>yy</code> 复制当前行</p>
+<p><code>p</code> 粘贴</p>
+<p><code>f;</code> 跳转到字符 <code>;</code> 处，这里其实就是相当于行位。</p>
+<p><code>h</code> 向左移动一个光标</p>
+<p><code>ciw</code> 删除当前处的词，并进入 <code>插入模式</code></p>
+<p><code>V</code> 进入内容选择模式</p>
+<p><code>d</code> 删除选中部分</p>
+<p><code>di&quot;</code> 删除<code>&quot;</code> 内的内容，个人感觉这个还是非常常用了。也是初步在效率上优于传统的 intellj idea 的操作方式。如果想要删除之后马上进入插入模式 可以使用 <code>ci&quot;</code>  </p>
+<ul>
+<li><code>di(</code> <code>di&#123;</code> 同理。</li>
+</ul>
+<p><code>i</code> 在光标之前，进入插入模式</p>
+<p><code>I</code> 在本行开头，进入插入模式</p>
+<p><code>a</code> 在光标之后，进入插入模式</p>
+<p><code>A</code> 在本行结尾，进入插入模式</p>
+<p><code>o</code> 在本行之后新增一行，并进入插入模式</p>
+<p><code>O</code> 在本行之前新增一行，并进入插入模式</p>
+<p><code>s</code> 删除当前字符，并进入插入模式</p>
+<p><code>S</code> 删除当前行中的所有文本，并进入插入模式</p>
+<h2 id="高阶指导"><a href="#高阶指导" class="headerlink" title="高阶指导"></a>高阶指导</h2><p><code>[n]f&#123;word&#125;</code></p>
+<ul>
+<li><p><code>f</code> 用来查找在当前行 当前光标后是否存在某个字符 <code>&#123;word&#125;</code> 如果存在则将光标移动过去。</p>
+</li>
+<li><p>如果将这里的 <code>f</code> 改为 <code>F</code> 则是反向查找</p>
+</li>
+</ul>
+<p><code>$ and ^</code> </p>
+<ul>
+<li><code>$</code> 跳转到行尾 <code>^</code> 跳转到行首</li>
+</ul>
+<p><code>%</code> 括号匹配跳转 <code>() [] &#123;&#125;</code></p>
+<p><code>*</code> 跳转到上一个字符的定位处</p>
+<p><code>[n]h/j/k/l</code> 数字加上方向键 代表重复运行多少次:  </p>
+<ul>
+<li><p><code>2jj</code> 向下移动两行</p>
+</li>
+<li><p><code>10l</code> 向右移动 10 个字符</p>
+</li>
+<li><p><code>3kk</code> 向下移动 3 行</p>
+</li>
+<li><p><code>20h</code> 向左移动 20 字符</p>
+</li>
+</ul>
+<p><code>G and gg</code></p>
+<ul>
+<li><p><code>G</code> 移动到最后一行</p>
+</li>
+<li><p><code>gg</code> 移动到第一行</p>
+</li>
+</ul>
+<p><code>H and M and L</code></p>
+<ul>
+<li><p>H 移动到当前页的第一行</p>
+</li>
+<li><p>M 移动到编辑器中部</p>
+</li>
+<li><p>L 移动到当前页的最后一行</p>
+</li>
+<li><p>[n]w 移动到后面 word 的开始位置，前面加上数字 代表重复多少次</p>
+</li>
+<li><p>e 移动到下一个词语的末尾</p>
+</li>
+<li><p>b 移动到上一个单词的开头</p>
+</li>
+<li><p>zz 改变窗口的整体位置，将当前光标所在处 移动到窗口中部</p>
+</li>
+</ul>
+<h3 id="其他的比较好用的命令"><a href="#其他的比较好用的命令" class="headerlink" title="其他的比较好用的命令"></a>其他的比较好用的命令</h3><p><code>zo | zc</code></p>
+<p><code>dt&#123;char&#125;</code></p>
+</div><!-- comment system--><div class="container"><hr><div class="comment"></div><script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+<script src="//cdn.jsdelivr.net/npm/valine@1.1.6/dist/Valine.min.js"></script>
+<script type="text/javascript">
+var leancloud_appid = 'lI5IH4YE13tVvVHyxvJqygdL-gzGzoHsz';
+var leancloud_appkey = 'eGofMIsTW6SKv4gzOYd8rBxu';
+var valine_url = 'https://godsboy404.github.io/2024/02/22/Vim-%E5%A4%87%E5%BF%98/';
+var valine_notify = true;
+var valine_verify = true;
+var valine_placeholder = '';
+new Valine({
+         av: AV, // source from av-min.js
+         el: '.comment' ,
+         notify: valine_notify,
+         verify: valine_verify,
+         app_id: leancloud_appid,
+         app_key: leancloud_appkey,
+         placeholder: valine_placeholder,
+         path: valine_url
+     });
+</script></div></article><footer id="footer"><div class="container"><div class="bar"><div class="social"><a href="mailto:exotic666@foxmail.com" target="_blank"><i class="fa fa-envelope-o"></i></a><a href="http://twitter.com/jack/status/20" target="_blank"><i class="fa fa-twitter"></i></a><a href="https://github.com/godsboy404" target="_blank"><i class="fa fa-github"></i></a></div><div class="footer">© 2024 <a href="/" rel="nofollow">Leo Z</a>. Powered by <a rel="nofollow" target="_blank" href="https://hexo.io">Hexo</a>. Theme <a target="_blank" href="https://github.com/lotabout/very-simple">very-simple</a>.</div></div></div></footer><link rel="stylesheet" type="text/css" href="//cdn.bootcss.com/fancybox/2.1.5/jquery.fancybox.css"><script src="//cdn.bootcss.com/jquery/2.0.3/jquery.min.js"></script><script src="//cdn.bootcss.com/fancybox/2.1.5/jquery.fancybox.pack.js"></script><script>$(document).ready(function() {
+    $(".fancybox").fancybox();
+});
+</script></body></html>
