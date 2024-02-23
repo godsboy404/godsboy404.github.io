@@ -20,51 +20,37 @@
 <p><code>S</code> 删除当前行中的所有文本，并进入插入模式</p>
 <h2 id="高阶指导"><a href="#高阶指导" class="headerlink" title="高阶指导"></a>高阶指导</h2><p><code>[n]f&#123;word&#125;</code></p>
 <ul>
-<li><p><code>f</code> 用来查找在当前行 当前光标后是否存在某个字符 <code>&#123;word&#125;</code> 如果存在则将光标移动过去。</p>
-</li>
-<li><p>如果将这里的 <code>f</code> 改为 <code>F</code> 则是反向查找</p>
-</li>
+<li><code>f</code> 用来查找在当前行 当前光标后是否存在某个字符 <code>&#123;word&#125;</code> 如果存在则将光标移动过去。</li>
+<li>如果将这里的 <code>f</code> 改为 <code>F</code> 则是反向查找</li>
 </ul>
 <p><code>$ and ^</code> </p>
 <ul>
-<li><code>$</code> 跳转到行尾 <code>^</code> 跳转到行首</li>
+<li><code>$</code> 跳转到行尾</li>
+<li><code>^</code> 跳转到行首</li>
 </ul>
 <p><code>%</code> 括号匹配跳转 <code>() [] &#123;&#125;</code></p>
 <p><code>*</code> 跳转到上一个字符的定位处</p>
 <p><code>[n]h/j/k/l</code> 数字加上方向键 代表重复运行多少次:  </p>
 <ul>
-<li><p><code>2jj</code> 向下移动两行</p>
-</li>
-<li><p><code>10l</code> 向右移动 10 个字符</p>
-</li>
-<li><p><code>3kk</code> 向下移动 3 行</p>
-</li>
-<li><p><code>20h</code> 向左移动 20 字符</p>
-</li>
+<li><code>2jj</code> 向下移动两行</li>
+<li><code>10l</code> 向右移动 10 个字符</li>
+<li><code>3kk</code> 向上移动 3 行</li>
+<li><code>20h</code> 向左移动 20 字符</li>
 </ul>
 <p><code>G and gg</code></p>
 <ul>
-<li><p><code>G</code> 移动到最后一行</p>
-</li>
-<li><p><code>gg</code> 移动到第一行</p>
-</li>
+<li><code>G</code> 移动到最后一行</li>
+<li><code>gg</code> 移动到第一行</li>
 </ul>
 <p><code>H and M and L</code></p>
 <ul>
-<li><p><code>H</code> 移动到当前页的第一行</p>
-</li>
-<li><p><code>M</code> 移动到编辑器中部</p>
-</li>
-<li><p><code>L</code> 移动到当前页的最后一行</p>
-</li>
-<li><p><code>[n]w</code> 移动到后面 <code>word</code> 的开始位置，前面加上数字 代表重复多少次</p>
-</li>
-<li><p><code>e</code> 移动到下一个词语的末尾</p>
-</li>
-<li><p><code>b</code> 移动到上一个单词的开头</p>
-</li>
-<li><p><code>zz</code> 改变窗口的整体位置，将当前光标所在处 移动到窗口中部</p>
-</li>
+<li><code>H</code> 移动到当前页的第一行</li>
+<li><code>M</code> 移动到编辑器中部</li>
+<li><code>L</code> 移动到当前页的最后一行</li>
+<li><code>[n]w</code> 移动到后面 <code>word</code> 的开始位置，前面加上数字 代表重复多少次</li>
+<li><code>e</code> 移动到下一个词语的末尾</li>
+<li><code>b</code> 移动到上一个单词的开头</li>
+<li><code>zz</code> 改变窗口的整体位置，将当前光标所在处 移动到窗口中部</li>
 </ul>
 <h3 id="其他的比较好用的命令"><a href="#其他的比较好用的命令" class="headerlink" title="其他的比较好用的命令"></a>其他的比较好用的命令</h3><p><code>zo | zc</code></p>
 <p><code>dt&#123;char&#125;</code></p>
