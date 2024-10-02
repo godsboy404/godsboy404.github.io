@@ -32,11 +32,12 @@
 <h3 id="堆-栈"><a href="#堆-栈" class="headerlink" title="堆&#x2F;栈"></a>堆&#x2F;栈</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">                    RAM Space</span><br><span class="line">               ·-----------------·</span><br><span class="line">Stacks      |  |  func() call;   |</span><br><span class="line">(Downwards) |  |  local val……    |</span><br><span class="line">            |  |                 |</span><br><span class="line">            ↓  |                 |</span><br><span class="line">               |                 |</span><br><span class="line">               |`````````````````|</span><br><span class="line">Heaps       ↑  |  global val……   |</span><br><span class="line">(Upwards)   |  |                 |</span><br><span class="line">            |  |                 |</span><br><span class="line">            |  |                 |</span><br><span class="line">               ·-----------------·</span><br></pre></td></tr></table></figure>
 
 <ul>
-<li>栈：先进后出</li>
+<li>栈：先进后出（发牌）</li>
 <li>队列：先进先出（羽毛球筒）</li>
 </ul>
 <h2 id="技巧"><a href="#技巧" class="headerlink" title="技巧"></a>技巧</h2><ul>
 <li>定义空(<code>NULL</code>)时，使用<code>nullptr</code>更好！</li>
+<li>使用下列代码来减少带<code>cin</code>&#x2F;<code>cout</code>代码的运行时间消耗：<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">ios::<span class="built_in">sync_with_stdio</span>(<span class="literal">false</span>);</span><br><span class="line">cin.<span class="built_in">tie</span>(<span class="number">0</span>);</span><br></pre></td></tr></table></figure></li>
 </ul>
 <h2 id="好题共赏"><a href="#好题共赏" class="headerlink" title="好题共赏"></a>好题共赏</h2><h3 id="动物"><a href="#动物" class="headerlink" title="动物"></a>动物</h3><p>给定你三个葡萄牙语单词，这些词将根据下表从左到右定义一个动物。<br><a target="_blank" rel="noopener" href="https://www.imagehub.cc/image/19-c2433a725d-UOJ-1049-b.boICCh"><img src="https://s1.imagehub.cc/images/2024/09/17/ecc61b6eba406c66cc9130c26efa6fe4.md.png" alt="OI"></a><br>请你确定并输出这个动物的名称。  </p>
 <p>输入格式<br>根据上表，输入包含三个单词，每行一个，用以识别动物，单词由小写字母构成。</p>
