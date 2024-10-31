@@ -50,6 +50,7 @@
 </ul>
 <p>迭代器就像STL容器的“指针”，可以用星号*操作符解除引用。<br>一个保存<code>int</code>的<code>vector</code>的迭代器声明方法为：</p>
 <figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">vector&lt;<span class="type">int</span>&gt;::iterator it;</span><br></pre></td></tr></table></figure>
+<p><strong>若想直接访问迭代器的值，需要在变量前<em>加<code>*</code></em> 例如<code>*i</code>。</strong></p>
 <p><code>vector</code>的迭代器是“随机访问迭代器”，可以把<code>vector</code>的迭代器与一个整数相加减，其行为和指针的移动类似。可以把<code>vector</code>的两个迭代器相减，其结果也和指针相减类似，得到两个迭代器对应下标之间的距离。</p>
 <ul>
 <li><code>begin/end</code></li>
