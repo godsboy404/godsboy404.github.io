@@ -35,6 +35,38 @@
 <li>栈：先进后出（发牌）</li>
 <li>队列：先进先出（羽毛球筒）</li>
 </ul>
+<h2 id="STL"><a href="#STL" class="headerlink" title="STL"></a>STL</h2><h3 id="include"><a href="#include" class="headerlink" title="#include &lt;vector&gt;"></a><code>#include &lt;vector&gt;</code></h3><p><code>vector</code>是变长数组，支持随机访问，不支持在任意位置 O(1) 插入。为了保证效率，元素的增删一般应该在末尾进行。  </p>
+<ul>
+<li>Declare：<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;vector&gt;</span>   <span class="comment">// 头文件</span></span></span><br><span class="line">vector&lt;<span class="type">int</span>&gt; a;      <span class="comment">// 相当于一个长度动态变化的int数组</span></span><br><span class="line">vector&lt;<span class="type">int</span>&gt; b[<span class="number">233</span>]; <span class="comment">// 相当于第一维长233，第二位长度动态变化的int数组</span></span><br><span class="line"><span class="keyword">struct</span> <span class="title class_">rec</span>&#123;…&#125;;</span><br><span class="line">vector&lt;rec&gt; c;      <span class="comment">// 自定义的结构体类型也可以保存在vector中</span></span><br></pre></td></tr></table></figure></li>
+<li><code>size/empty</code></li>
+</ul>
+<p><code>size</code>函数返回<code>vector</code>的实际长度（包含的元素个数），empty函数返回一个<code>bool</code>类型，表明<code>vector</code>是否为空。二者的时间复杂度都是***O(1)***。<br>所有的STL容器都支持这两个方法，含义也相同，之后我们就不再重复给出。</p>
+<ul>
+<li><code>clear</code></li>
+</ul>
+<p><code>clear</code>函数会清空<code>vector</code>容器。</p>
+<ul>
+<li>迭代器</li>
+</ul>
+<p>迭代器就像STL容器的“指针”，可以用星号*操作符解除引用。<br>一个保存<code>int</code>的<code>vector</code>的迭代器声明方法为：</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">vector&lt;<span class="type">int</span>&gt;::iterator it;</span><br></pre></td></tr></table></figure>
+<p><code>vector</code>的迭代器是“随机访问迭代器”，可以把<code>vector</code>的迭代器与一个整数相加减，其行为和指针的移动类似。可以把<code>vector</code>的两个迭代器相减，其结果也和指针相减类似，得到两个迭代器对应下标之间的距离。</p>
+<ul>
+<li><code>begin/end</code></li>
+</ul>
+<p><code>begin</code>函数返回指向<code>vector</code>中第一个元素的迭代器。例如a是一个非空的<code>vector</code>，则<code>*a.begin()</code>与<code>a[0]</code>的作用相同。</p>
+<p>所有的容器都可以视作一个“前闭后开”的结构，<code>end</code>函数返回<code>vector</code>的尾部，即第<code>n</code>个元素再往后的“边界”。<code>*a.end()</code>与<code>a[n]</code>都是越界访问，其中n &#x3D; <code>a.size()</code>。</p>
+<p>下面两份代码都遍历了<code>vector&lt;int&gt; a</code>，并输出它的所有元素。</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">0</span>; i &lt; a.<span class="built_in">size</span>(); i ++)</span><br><span class="line">    cout &lt;&lt; a[i] &lt;&lt; endl;</span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span> (vector&lt;<span class="type">int</span>&gt;::iterator it = a.<span class="built_in">begin</span>(); it != a.<span class="built_in">end</span>(); it ++)</span><br><span class="line">    cout &lt;&lt; *it &lt;&lt; endl;</span><br></pre></td></tr></table></figure>
+<ul>
+<li><code>front/back</code></li>
+</ul>
+<p><code>front</code>函数返回<code>vector</code>的第一个元素，等价于<code>*a.begin()</code>和<code>a[0]</code>。<br><code>back</code>函数返回<code>vector</code>的最后一个元素，等价于<code>*--a.end()</code>和<code>a[a.size() – 1]</code>。</p>
+<ul>
+<li><code>push_back()</code>和<code>pop_back()</code></li>
+</ul>
+<p><code>a.push_back(x)</code>把元素<code>x</code>插入到<code>vector a</code>的尾部。<br><code>b.pop_back()</code>删除<code>vector a</code>的最后一个元素。</p>
+<p><strong>来源<a target="_blank" rel="noopener" href="https://www.acwing.com/file_system/file/content/whole/index/content/3598249/">https://www.acwing.com/file_system/file/content/whole/index/content/3598249/</a></strong></p>
 <h2 id="技巧"><a href="#技巧" class="headerlink" title="技巧"></a>技巧</h2><ul>
 <li>定义空(<code>NULL</code>)时，使用<code>nullptr</code>更好！</li>
 <li>使用下列代码来减少带<code>cin</code>&#x2F;<code>cout</code>代码的运行时间消耗：<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">ios::<span class="built_in">sync_with_stdio</span>(<span class="literal">false</span>);</span><br><span class="line">cin.<span class="built_in">tie</span>(<span class="number">0</span>);</span><br></pre></td></tr></table></figure></li>
