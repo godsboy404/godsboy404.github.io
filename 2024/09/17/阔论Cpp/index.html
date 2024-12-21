@@ -32,8 +32,8 @@
 <h3 id="堆-栈"><a href="#堆-栈" class="headerlink" title="堆&#x2F;栈"></a>堆&#x2F;栈</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">                    RAM Space</span><br><span class="line">               ·-----------------·</span><br><span class="line">Stacks      |  |  func() call;   |</span><br><span class="line">(Downwards) |  |  local val……    |</span><br><span class="line">            |  |                 |</span><br><span class="line">            ↓  |                 |</span><br><span class="line">               |                 |</span><br><span class="line">               |`````````````````|</span><br><span class="line">Heaps       ↑  |  global val……   |</span><br><span class="line">(Upwards)   |  |                 |</span><br><span class="line">            |  |                 |</span><br><span class="line">            |  |                 |</span><br><span class="line">               ·-----------------·</span><br></pre></td></tr></table></figure>
 
 <ul>
-<li>栈：先进后出（发牌）</li>
-<li>队列：先进先出（羽毛球筒）</li>
+<li>栈：后进先出（文件柜）多用于深度优先搜寻</li>
+<li>队列：先进先出（羽毛球筒）多用于广度优先搜寻</li>
 </ul>
 <h2 id="STL"><a href="#STL" class="headerlink" title="STL"></a>STL</h2><h3 id="include"><a href="#include" class="headerlink" title="#include &lt;vector&gt;"></a><code>#include &lt;vector&gt;</code></h3><p><code>vector</code>是变长数组，支持随机访问，不支持在任意位置 O(1) 插入。为了保证效率，元素的增删一般应该在末尾进行。  </p>
 <ul>
