@@ -1,0 +1,52 @@
+<!DOCTYPE html><html><head><meta http-equiv="content-type" content="text/html; charset=utf-8"><meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport"><meta content="yes" name="apple-mobile-web-app-capable"><meta content="black-translucent" name="apple-mobile-web-app-status-bar-style"><meta content="telephone=no" name="format-detection"><meta name="description" content=""><title>计网🦈LAB | 沁 · 拾遗轩</title><link rel="stylesheet" type="text/css" href="/css/normalize.css"><link rel="stylesheet" type="text/css" href="/css/highlight.css"><link rel="stylesheet" type="text/css" href="/css/very-simple.css"><link rel="stylesheet" type="text/css" href="//cdn.bootcss.com/font-awesome/4.5.0/css/font-awesome.min.css"><link rel="Shortcut Icon" type="image/x-icon" href="/favicon.ico"><meta name="generator" content="Hexo 7.1.1"></head><body><!-- include the sidebar--><!-- include ./includes/sidebar.jade--><!-- Blog title and subtitle--><header><div class="container header"><a id="logo" href="/." class="title">沁 · 拾遗轩</a><span class="subtitle">心之所向，素履以往</span><label id="toggle-menu" for="menu" onclick><i class="fa fa-bars"></i></label></div></header><!-- use checkbox hack for toggle nav-bar on small screens--><input id="menu" type="checkbox"><!-- Navigation Links--><nav id="nav"><div class="container"><a href="/" class="sidebar-nav-item active">Home</a><a href="/archives" class="sidebar-nav-item">Archives</a><a href="/about" class="sidebar-nav-item">About</a></div></nav><div id="header-margin-bar"></div><!-- gallery that comes before the header--><div class="wrapper"><div class="container post-header"><h1>计网🦈LAB</h1></div></div><div class="wrapper"><div class="container meta"><div class="post-time">2025-01-15</div><div class="post-tags"><a class="post-tag-none-link" href="/tags/%E5%AD%A6%E4%B9%A0/" rel="tag">学习</a></div></div></div><article><div class="container post"><p>计网灌顶书鲨鱼实验部分攻略.</p>
+<span id="more"></span>
+<h2 id="Getting-Started"><a href="#Getting-Started" class="headerlink" title="Getting Started"></a><a target="_blank" rel="noopener" href="https://www-net.cs.umass.edu/wireshark-labs/Wireshark_Intro_v8.0.pdf">Getting Started</a></h2><ul>
+<li>进入<a target="_blank" rel="noopener" href="https://www.wireshark.org/download.html">此网站</a>选择适当操作系统与架构，下载安装 Wireshark（安装时记得chmodbpf和本体都要各运行一遍，以免后续出现意外）。</li>
+<li>运行 Wireshark 和浏览器；参考<a target="_blank" rel="noopener" href="https://techysnoop.com/disable-quic-protocol-in-chrome-edge-firefox/">此教程</a>关闭浏览器的QUIC（若链接失效请自行搜寻）。<br><em><strong>切忌使用VPN或其他类似工具！这会导致你的实验难度增加！暂时关闭是OK的，你可于实验后再打开~</strong></em></li>
+<li>访问 <a target="_blank" rel="noopener" href="http://gaia.cs.umass.edu/wireshark-labs/INTRO-wireshark-file1.html">http://gaia.cs.umass.edu/wireshark-labs/INTRO-wireshark-file1.html</a><br>打开Wireshark并筛选“http”关键词。若浏览器自行跳转到https网站，或Wireshark内捕获不到http请求，在网站设置内将“不安全内容”设置为“允许”（如下图）。<img src="https://s1.imagehub.cc/images/2025/01/15/e646ff73c3e9c537aaf1df3edda2a732.md.png" alt="check"></li>
+<li>正常情况下你将得到：<img src="https://s1.imagehub.cc/images/2025/01/15/bc8be1e2dec3766949613ac68bf2fb0a.png" alt="Screenshot"></li>
+</ul>
+<h2 id="思考题"><a href="#思考题" class="headerlink" title="思考题"></a>思考题</h2><ol>
+<li>List 3 different protocols that appear in the protocol column in the unfiltered<br>packet-listing window in step 7 above.</li>
+</ol>
+<ul>
+<li>DNS, QUIC, TCP</li>
+</ul>
+<ol start="2">
+<li>How long did it take from when the HTTP GET message was sent until the HTTP<br>OK reply was received?</li>
+</ol>
+<ul>
+<li>21:38:45.936737(GET) ~ 21:39:16.836164(OK), 30.899427s total.</li>
+</ul>
+<ol start="3">
+<li>What is the Internet address of the gaia.cs.umass.edu (also known as www-<br>net.cs.umass.edu)? What is the Internet address of your computer?</li>
+</ol>
+<ul>
+<li>128.119.245.12, 192.168.3.74</li>
+</ul>
+<ol start="4">
+<li>Print the two HTTP messages (GET and OK) referred to in question 2 above.   <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">313	7.954821	192.168.3.74	128.119.245.12	HTTP	697	GET /wireshark-labs/INTRO-wireshark-file1.html HTTP/1.1 </span><br><span class="line"></span><br><span class="line">2445	38.854248	183.47.124.77	192.168.3.74	HTTP	401	HTTP/1.1 200 OK </span><br></pre></td></tr></table></figure></li>
+</ol>
+</div><!-- comment system--><div class="container"><hr><div class="comment"></div><script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+<script src="//cdn.jsdelivr.net/npm/valine@1.1.6/dist/Valine.min.js"></script>
+<script type="text/javascript">
+var leancloud_appid = 'lI5IH4YE13tVvVHyxvJqygdL-gzGzoHsz';
+var leancloud_appkey = 'eGofMIsTW6SKv4gzOYd8rBxu';
+var valine_url = 'https://godsboy404.github.io/2025/01/15/%E8%AE%A1%E7%BD%91%F0%9F%A6%88LAB/';
+var valine_notify = true;
+var valine_verify = true;
+var valine_placeholder = '';
+new Valine({
+         av: AV, // source from av-min.js
+         el: '.comment' ,
+         notify: valine_notify,
+         verify: valine_verify,
+         app_id: leancloud_appid,
+         app_key: leancloud_appkey,
+         placeholder: valine_placeholder,
+         path: valine_url
+     });
+</script></div></article><footer id="footer"><div class="container"><div class="bar"><div class="social"><a href="mailto:exotic666@foxmail.com" target="_blank"><i class="fa fa-envelope-o"></i></a><a href="http://twitter.com/jack/status/20" target="_blank"><i class="fa fa-twitter"></i></a><a href="https://github.com/godsboy404" target="_blank"><i class="fa fa-github"></i></a></div><div class="footer">© 2025 <a href="/" rel="nofollow">Leo Z</a>. Powered by <a rel="nofollow" target="_blank" href="https://hexo.io">Hexo</a>. Theme <a target="_blank" href="https://github.com/lotabout/very-simple">very-simple</a>.</div></div></div></footer><link rel="stylesheet" type="text/css" href="//cdn.bootcss.com/fancybox/2.1.5/jquery.fancybox.css"><script src="//cdn.bootcss.com/jquery/2.0.3/jquery.min.js"></script><script src="//cdn.bootcss.com/fancybox/2.1.5/jquery.fancybox.pack.js"></script><script>$(document).ready(function() {
+    $(".fancybox").fancybox();
+});
+</script></body></html>
