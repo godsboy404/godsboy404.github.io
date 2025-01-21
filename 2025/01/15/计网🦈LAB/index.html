@@ -6,7 +6,7 @@
 <li>访问 <a target="_blank" rel="noopener" href="http://gaia.cs.umass.edu/wireshark-labs/INTRO-wireshark-file1.html">http://gaia.cs.umass.edu/wireshark-labs/INTRO-wireshark-file1.html</a><br>打开Wireshark并筛选“http”关键词。若浏览器自行跳转到https网站，或Wireshark内捕获不到http请求，在网站设置内将“不安全内容”设置为“允许”（如下图）。<img src="https://s1.imagehub.cc/images/2025/01/15/e646ff73c3e9c537aaf1df3edda2a732.md.png" alt="check"></li>
 <li>正常情况下你将得到：<img src="https://s1.imagehub.cc/images/2025/01/15/bc8be1e2dec3766949613ac68bf2fb0a.png" alt="Screenshot"></li>
 </ul>
-<h2 id="思考题"><a href="#思考题" class="headerlink" title="思考题"></a>思考题</h2><ol>
+<h3 id="思考题"><a href="#思考题" class="headerlink" title="思考题"></a>思考题</h3><ol>
 <li>List 3 different protocols that appear in the protocol column in the unfiltered<br>packet-listing window in step 7 above.</li>
 </ol>
 <ul>
@@ -25,17 +25,8 @@
 <li>128.119.245.12, 192.168.3.74</li>
 </ul>
 <ol start="4">
-<li>Print the two HTTP messages (GET and OK) referred to in question 2 above.</li>
+<li>Print the two HTTP messages (GET and OK) referred to in question 2 above.   <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">313	7.954821	192.168.3.74	128.119.245.12	HTTP	697	GET /wireshark-labs/INTRO-wireshark-file1.html HTTP/1.1 </span><br><span class="line"></span><br><span class="line">2445	38.854248	183.47.124.77	192.168.3.74	HTTP	401	HTTP/1.1 200 OK </span><br></pre></td></tr></table></figure></li>
 </ol>
-<pre><code class="bash">313	7.954821	192.168.3.74	128.119.245.12	HTTP	697	GET /wireshark-labs/INTRO-wireshark-file1.html HTTP/1.1 
-
-2445	38.854248	183.47.124.77	192.168.3.74	HTTP	401	HTTP/1.1 200 OK 
-```---
-title: hhh
-date: 2025-01-15 21:58:43
-tags:
----
-</code></pre>
 </div><!-- comment system--><div class="container"><hr><div class="comment"></div><script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
 <script src="//cdn.jsdelivr.net/npm/valine@1.1.6/dist/Valine.min.js"></script>
 <script type="text/javascript">
