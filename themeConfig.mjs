@@ -3,27 +3,27 @@ export const themeConfig = {
   // 站点信息
   siteMeta: {
     // 站点标题
-    title: "九天之上",
+    title: "Curve",
     // 站点描述
-    description: "基于 vitepress-theme-curve 搭建的 github pages 站点",
+    description: "Hello World",
     // 站点logo
     logo: "/images/logo/logo.webp",
     // 站点地址
-    site: "https://blog2.811520.xyz",
+    site: "https://blog.imsyy.top",
     // 语言
     lang: "zh-CN",
     // 作者
     author: {
-      name: "雨天狂奔",
+      name: "Admin",
       cover: "/images/logo/logo.webp",
-      email: "admin@24811213.xyz",
-      link: "https://daoyi.hidns.vip/#/",
+      email: "114514@gmail.com",
+      link: "https://www.imsyy.top",
     },
   },
   // 备案信息
-  icp: "鄂ICP备202411-001号",
+  icp: "萌ICP备114514号",
   // 建站日期
-  since: "2024-11-1",
+  since: "2020-07-28",
   // 每页文章数据
   postSize: 8,
   // inject
@@ -40,7 +40,7 @@ export const themeConfig = {
           rel: "alternate",
           type: "application/rss+xml",
           title: "RSS",
-          href: "https://blog2.811520.xyz/rss.xml",
+          href: "https://blog.24811213.xyz/rss.xml",
         },
       ],
       // 预载 CDN
@@ -123,26 +123,22 @@ export const themeConfig = {
       items: [
         { text: "技术分享", link: "/pages/categories/技术分享", icon: "technical" },
         { text: "我的项目", link: "/pages/project", icon: "code" },
-        { text: "收藏大全", link: "https://daoyi.hidns.vip/#/", icon: "tools" },
-        { text: "工作备忘", link: "/pages/categories/工作备忘", icon: "people" },
-        //{ text: "效率工具", link: "/pages/tools", icon: "tools" },
+        { text: "效率工具", link: "/pages/tools", icon: "tools" },
       ],
     },
     {
-      text: "友圈",
+      text: "友链",
       items: [
-        { text: "友圈鱼塘", link: "/pages/friends", icon: "fish" },
+        { text: "友链鱼塘", link: "/pages/friends", icon: "fish" },
         { text: "友情链接", link: "/pages/link", icon: "people" },
-        { text: "畅所欲言", link: "/pages/message", icon: "chat" },
       ],
     },
     {
-      text: "关于",
+      text: "我的",
       items: [
-        { text: "关于本站", link: "/pages/about", icon: "contacts" },
-        { text: "隐私政策", link: "/pages/privacy", icon: "chat" },
-        { text: "版权协议", link: "/pages/cc", icon: "people" },
+        { text: "畅所欲言", link: "/pages/message", icon: "chat" },
         { text: "致谢名单", link: "/pages/thanks", icon: "reward" },
+        { text: "关于本站", link: "/pages/about", icon: "contacts" },
       ],
     },
   ],
@@ -153,58 +149,13 @@ export const themeConfig = {
       list: [
         {
           icon: "/images/logo/logo.webp",
-          name: "博客主站",
-          url: "https://blog.811520.xyz/",
-        },
-        {
-          icon: "/images/logo/logo.webp",
-          name: "博客演示站",
+          name: "主站",
           url: "/",
         },
         {
           icon: "/images/logo/logo.webp",
-          name: "个人主页",
-          url: "https://daoyi.hidns.vip/#/",
-        },
-        {
-          icon: "/images/logo/logo.webp",
-          name: "私有工具",
-          url: "https://blog.811520.xyz/tlink/",
-        },
-      ],
-    },
-    {
-      name: "常用",
-      list: [
-        {
-          icon: "https://cover.ruom.top/favicon.ico",
-          name: "封面制作",
-          url: "https://cover.ruom.top/",
-        },
-        {
-          icon: "https://www.favicon.vip/get.php?url=img.ytian.us.kg",
-          name: "兰空图床",
-          url: "https://img.811520.xyz/",
-        },
-        {
-          icon: "https://pan.811520.xyz/2024-10/插入链接.webp",
-          name: "短链生成",
-          url: "https://slink.yuzong.nyc.mn/duanlian",  
-        },
-        {
-          icon: "https://ctool.dev/favicon.ico",
-          name: "开发工具",
-          url: "https://ctool.dev/",
-        },
-        {
-          icon: "https://suburl.v1.mk/favicon.ico",
-          name: "图片压缩",
-          url: "https://imgtool.v1.mk/",
-        },
-        {
-          icon: "https://github.githubassets.com/assets/apple-touch-icon-144x144-b882e354c005.png",
-          name: "博客仓库",
-          url: "https://github.com/yutian81/yutian81.github.io",
+          name: "博客镜像站",
+          url: "https://blog-backup.imsyy.top/",
         },
       ],
     },
@@ -212,24 +163,54 @@ export const themeConfig = {
       name: "服务",
       list: [
         {
-          icon: "https://pan.811520.xyz/2024-11/1730875618-1730875614898.webp",
+          icon: "https://pic.efefee.cn/uploads/2024/04/08/6613465358077.png",
+          name: "起始页",
+          url: "https://nav.imsyy.top/",
+        },
+        {
+          icon: "https://pic.efefee.cn/uploads/2024/04/08/661346d418ad7.png",
           name: "今日热榜",
           url: "https://hot.imsyy.top/",
         },
         {
-          icon: "https://rss.811520.xyz/favicon.ico",
-          name: "友圈后端",
-          url: "https://rss.811520.xyz/",
+          icon: "https://pic.efefee.cn/uploads/2024/04/08/66134722586fa.png",
+          name: "站点监测",
+          url: "https://status.imsyy.top/",
+        },
+      ],
+    },
+    {
+      name: "项目",
+      list: [
+        {
+          icon: "/images/logo/logo.webp",
+          name: "Curve",
+          url: "https://github.com/imsyy/vitepress-theme-curve",
         },
         {
-          icon: "https://pan.811520.xyz/2024-11/1730634973-Cloudflare_Logo.webp",
-          name: "CF优选",
-          url: "https://blog2.811520.xyz/blogrss/",
+          icon: "https://pic.efefee.cn/uploads/2024/04/07/66124f5fc63c8.png",
+          name: "SPlayer",
+          url: "https://github.com/imsyy/SPlayer",
         },
         {
-          icon: "https://github.githubassets.com/assets/apple-touch-icon-144x144-b882e354c005.png",
-          name: "Serv00",
-          url: "https://github.com/yutian81/serv00-ct8-ssh",
+          icon: "https://pic.efefee.cn/uploads/2024/04/08/6613465358077.png",
+          name: "Snavigation",
+          url: "https://github.com/imsyy/SPlayer",
+        },
+        {
+          icon: "/images/logo/logo.webp",
+          name: "Home",
+          url: "https://github.com/imsyy/home",
+        },
+        {
+          icon: "https://pic.efefee.cn/uploads/2024/04/08/661346d418ad7.png",
+          name: "DailyHotApi",
+          url: "https://github.com/imsyy/DailyHotApi",
+        },
+        {
+          icon: "https://pic.efefee.cn/uploads/2024/04/08/66134722586fa.png",
+          name: "site-status",
+          url: "https://github.com/imsyy/site-status",
         },
       ],
     },
@@ -243,11 +224,12 @@ export const themeConfig = {
       // 是否开启封面显示 文章不设置cover封面会显示异常，可以设置下方默认封面
       enable: true,
       // 封面布局方式: left | right | both
-      coverLayout: 'left',
+      coverLayout: 'both',
       // 默认封面(随机展示)
       defaultCover: [
-        'https://pan.811520.xyz/2024-10/1728279557702.webp',
-        'https://pan.811520.xyz/2024-10/1728387512098.webp'
+        'https://example.com/1.avif',
+        'https://example.com/2.avif',
+        'https://example.com/3.avif'
       ]
     }
   },
@@ -257,86 +239,87 @@ export const themeConfig = {
     social: [
       {
         icon: "email",
-        link: "mailto:admin@24811213.xyz",
+        link: "mailto:one@imsyy.top",
       },
       {
         icon: "github",
-        link: "https://github.com/yutian81/",
+        link: "https://www.github.com/imsyy/",
       },
       {
         icon: "telegram",
-        link: "https://t.me/yutian88881",
+        link: "https://t.me/bottom_user",
       },
       {
         icon: "bilibili",
-        link: "https://space.bilibili.com/677845115",
+        link: "https://space.bilibili.com/98544142",
+      },
+      {
+        icon: "qq",
+        link: "https://res.abeim.cn/api/qq/?qq=1539250352",
+      },
+      {
+        icon: "twitter-x",
+        link: "https://twitter.com/iimmsyy",
       },
     ],
     // sitemap
     sitemap: [
       {
-        text: "我的博客",
+        text: "博客",
         items: [
           { text: "近期文章", link: "/" },
           { text: "全部分类", link: "/pages/categories" },
           { text: "全部标签", link: "/pages/tags" },
-          { text: "文章归档", link: "/pages/archives" },
+          { text: "文章归档", link: "/pages/archives", newTab: true },
         ],
       },
       {
-        text: "云端平台",
+        text: "项目",
         items: [
-          { text: "Vercel", link: "https://vercel.com/", newTab: true },
-          { text: "NorthFlank", link: "https://app.northflank.com/", newTab: true },
-          { text: "Koyeb", link: "https://app.koyeb.com/", newTab: true },
-          { text: "Huawei", link: "https://www.huaweicloud.com/intl/zh-cn/", newTab: true },
+          { text: "Home", link: "https://github.com/imsyy/home/", newTab: true },
+          { text: "SPlayer", link: "https://github.com/imsyy/SPlayer/", newTab: true },
+          { text: "DailyHotApi", link: "https://github.com/imsyy/DailyHotApi/", newTab: true },
+          { text: "Snavigation", link: "https://github.com/imsyy/Snavigation/", newTab: true },
         ],
       },
       {
-        text: "我的专栏",
+        text: "专栏",
         items: [
           { text: "技术分享", link: "/pages/categories/技术分享" },
           { text: "我的项目", link: "/pages/project" },
-          { text: "收藏大全", link: "https://daoyi.hidns.vip/#/", newTab: true },
-          { text: "工作备忘", link: "/pages/categories/工作备忘" },
+          { text: "效率工具", link: "/pages/tools" },
         ],
       },
       {
-        text: "项目推荐",
+        text: "页面",
         items: [
-          { text: "edgetunnel", link: "https://github.com/cmliu/edgetunnel", newTab: true },
-          { text: "twikoo", link: "https://github.com/yutian81/twikoo", newTab: true },
-          { text: "alist", link: "https://alist.nn.ci/zh/", newTab: true },
-          { text: "nezha", link: "https://nezha.wiki/guide/dashboard.html", newTab: true },
-        ],
-      }, 
-      {        
-        text: "页面导航",
-        items: [
-          //{ text: "畅所欲言", link: "/pages/message" },
+          { text: "畅所欲言", link: "/pages/message" },
           { text: "关于本站", link: "/pages/about" },
           { text: "隐私政策", link: "/pages/privacy" },
           { text: "版权协议", link: "/pages/cc" },
-          { text: "致谢名单", link: "/pages/thanks" },
         ],
       },
       {
-        text: "网站服务",
+        text: "服务",
         items: [
-          { text: "音乐时刻", link: "https://blog.811520.xyz/music/", newTab: true },
-          { text: "站点状态", link: "https://uptime.ytian.us.kg/status/service", newTab: true },
-          { text: "站点订阅", link: "https://blog2.811520.xyz/rss.xml", newTab: true },
-          { text: "问题反馈", link: "https://github.com/yutian81/yutian81.github.io/issues", newTab: true, },
+          { text: "站点状态", link: "https://status.imsyy.top/", newTab: true },
+          { text: "一个导航", link: "https://nav.imsyy.top/", newTab: true },
+          { text: "站点订阅", link: "https://blog.24811213.xyz/rss.xml", newTab: true },
+          {
+            text: "反馈投诉",
+            link: "https://eqnxweimkr5.feishu.cn/share/base/form/shrcnCXCPmxCKKJYI3RKUfefJre",
+            newTab: true,
+          },
         ],
       },
     ],
   },
   // 评论
   comment: {
-    enable: true,
+    enable: false,
     // 评论系统选择
     // artalk / twikoo
-    type: "twikoo",
+    type: "artalk",
     // artalk
     // https://artalk.js.org/
     artalk: {
@@ -348,9 +331,9 @@ export const themeConfig = {
     twikoo: {
       // 必填，若不想使用 CDN，可以使用 pnpm add twikoo 安装并引入
       js: "https://mirrors.sustech.edu.cn/cdnjs/ajax/libs/twikoo/1.6.39/twikoo.all.min.js",
-      envId: "https://twikoo.24811213.xyz/",
+      envId: "",
       // 环境地域，默认为 ap-shanghai，腾讯云环境填 ap-shanghai 或 ap-guangzhou；Vercel 环境不填
-      region: "",
+      region: "ap-shanghai",
       lang: "zh-CN",
     },
   },
@@ -359,7 +342,7 @@ export const themeConfig = {
     // 站点简介
     hello: {
       enable: true,
-      text: "这里有我的各种<strong>折腾笔记</strong>，也有一些<strong>工作备忘</strong>和<strong>生活随笔</strong>。又菜又爱玩，<strong>万事都不难</strong>。",
+      text: "这里有关于<strong>开发</strong>相关的问题和看法，也会有一些<strong>奇技淫巧</strong>的分享，其中大部分内容会侧重于<strong>前端开发</strong>。希望你可以在这里找到对你有用的知识和教程。",
     },
     // 目录
     toc: {
@@ -375,7 +358,7 @@ export const themeConfig = {
       // 倒计时日期
       data: {
         name: "春节",
-        date: "2025-05-01",
+        date: "2025-01-29",
       },
     },
     // 站点数据
@@ -386,7 +369,7 @@ export const themeConfig = {
   // 友链
   friends: {
     // 友链朋友圈
-    circleOfFriends: "https://blog2.811520.xyz/blogrss/",
+    circleOfFriends: "",
     // 动态友链
     dynamicLink: {
       server: "",
@@ -399,9 +382,9 @@ export const themeConfig = {
   music: {
     enable: false,
     // url
-    url: "https://meting-api-ten.vercel.app",
+    url: "https://api-meting.example.com",
     // id
-    id: 8152976493,
+    id: 9379831714,
     // netease / tencent / kugou
     server: "netease",
     // playlist / album / song
@@ -410,18 +393,17 @@ export const themeConfig = {
   // 搜索
   // https://www.algolia.com/
   search: {
-    enable: true,
-    appId: "J8AAAZLZZ7",
-    apiKey: "94c1d72ea8e1533fc67c3e7244c7e196",
-    indexName: "daoyi-wiki",
+    enable: false,
+    appId: "",
+    apiKey: "",
   },
   // 打赏
   rewardData: {
     enable: true,
     // 微信二维码
-    wechat: "https://pan.811520.xyz/2024-11/1730603920-wechatpay.webp",
+    wechat: "https://pic.efefee.cn/uploads/2024/04/07/66121049d1e80.webp",
     // 支付宝二维码
-    alipay: "https://pan.811520.xyz/2024-11/1730603921-alipay.webp",
+    alipay: "https://pic.efefee.cn/uploads/2024/04/07/661206631d3b5.webp",
   },
   // 图片灯箱
   fancybox: {
@@ -454,6 +436,6 @@ export const themeConfig = {
   },
   // 站点统计
   tongji: {
-    "51la": "3LlkSubt2HvotYRj",
+    "51la": "",
   },
 };
