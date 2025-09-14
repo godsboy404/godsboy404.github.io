@@ -3,29 +3,29 @@ export const themeConfig = {
   // 站点信息
   siteMeta: {
     // 站点标题
-    title: "Curve",
+    title: "~沁~拾遗轩",
     // 站点描述
-    description: "Hello World",
+    description: "悟已往之不谏，知来者之可追",
     // 站点logo
     logo: "/images/logo/logo.webp",
     // 站点地址
-    site: "https://blog.imsyy.top",
+    site: "https://coderama.top",
     // 语言
     lang: "zh-CN",
     // 作者
     author: {
-      name: "Admin",
+      name: "Leo",
       cover: "/images/logo/logo.webp",
-      email: "114514@gmail.com",
-      link: "https://www.imsyy.top",
+      email: "zrz515@outlook.com",
+      link: "https://coderama.top",
     },
   },
   // 备案信息
-  icp: "萌ICP备114514号",
+  icp: "首ICP备114514号",
   // 建站日期
-  since: "2020-07-28",
+  since: "2024-02-04",
   // 每页文章数据
-  postSize: 8,
+  postSize: 9,
   // inject
   inject: {
     // 头部
@@ -40,7 +40,7 @@ export const themeConfig = {
           rel: "alternate",
           type: "application/rss+xml",
           title: "RSS",
-          href: "https://blog.24811213.xyz/rss.xml",
+          href: "https://coderama.top/rss.xml",
         },
       ],
       // 预载 CDN
@@ -121,9 +121,9 @@ export const themeConfig = {
     {
       text: "专栏",
       items: [
-        { text: "技术分享", link: "/pages/categories/技术分享", icon: "technical" },
-        { text: "我的项目", link: "/pages/project", icon: "code" },
-        { text: "效率工具", link: "/pages/tools", icon: "tools" },
+        { text: "杂谈", link: "/pages/categories/杂谈", icon: "technical" },
+        { text: "学习", link: "/pages/categories/学习", icon: "code" },
+        { text: "备份", link: "/pages/categories/备份", icon: "tools" },
       ],
     },
     {
@@ -137,8 +137,6 @@ export const themeConfig = {
       text: "我的",
       items: [
         { text: "畅所欲言", link: "/pages/message", icon: "chat" },
-        { text: "致谢名单", link: "/pages/thanks", icon: "reward" },
-        { text: "关于本站", link: "/pages/about", icon: "contacts" },
       ],
     },
   ],
@@ -152,11 +150,6 @@ export const themeConfig = {
           name: "主站",
           url: "/",
         },
-        {
-          icon: "/images/logo/logo.webp",
-          name: "博客镜像站",
-          url: "https://blog-backup.imsyy.top/",
-        },
       ],
     },
     {
@@ -165,17 +158,17 @@ export const themeConfig = {
         {
           icon: "https://pic.efefee.cn/uploads/2024/04/08/6613465358077.png",
           name: "起始页",
-          url: "https://nav.imsyy.top/",
+          url: "https://nav.coderama.top/",
         },
         {
           icon: "https://pic.efefee.cn/uploads/2024/04/08/661346d418ad7.png",
           name: "今日热榜",
-          url: "https://hot.imsyy.top/",
+          url: "https://hot.coderama.top/",
         },
         {
           icon: "https://pic.efefee.cn/uploads/2024/04/08/66134722586fa.png",
           name: "站点监测",
-          url: "https://status.imsyy.top/",
+          url: "https://status.coderama.top/",
         },
       ],
     },
@@ -184,33 +177,8 @@ export const themeConfig = {
       list: [
         {
           icon: "/images/logo/logo.webp",
-          name: "Curve",
-          url: "https://github.com/imsyy/vitepress-theme-curve",
-        },
-        {
-          icon: "https://pic.efefee.cn/uploads/2024/04/07/66124f5fc63c8.png",
-          name: "SPlayer",
-          url: "https://github.com/imsyy/SPlayer",
-        },
-        {
-          icon: "https://pic.efefee.cn/uploads/2024/04/08/6613465358077.png",
-          name: "Snavigation",
-          url: "https://github.com/imsyy/SPlayer",
-        },
-        {
-          icon: "/images/logo/logo.webp",
-          name: "Home",
-          url: "https://github.com/imsyy/home",
-        },
-        {
-          icon: "https://pic.efefee.cn/uploads/2024/04/08/661346d418ad7.png",
-          name: "DailyHotApi",
-          url: "https://github.com/imsyy/DailyHotApi",
-        },
-        {
-          icon: "https://pic.efefee.cn/uploads/2024/04/08/66134722586fa.png",
-          name: "site-status",
-          url: "https://github.com/imsyy/site-status",
+          name: "DQN on Atari-Pong",
+          url: "https://github.com/godsboy404/DQN-Pong",
         },
       ],
     },
@@ -238,28 +206,20 @@ export const themeConfig = {
     // 社交链接（请确保为偶数个）
     social: [
       {
-        icon: "email",
-        link: "mailto:one@imsyy.top",
-      },
-      {
         icon: "github",
-        link: "https://www.github.com/imsyy/",
-      },
-      {
-        icon: "telegram",
-        link: "https://t.me/bottom_user",
+        link: "https://www.github.com/godsboy404",
       },
       {
         icon: "bilibili",
-        link: "https://space.bilibili.com/98544142",
+        link: "https://space.bilibili.com/1",
       },
       {
         icon: "qq",
-        link: "https://res.abeim.cn/api/qq/?qq=1539250352",
+        link: "https://user.qzone.qq.com/10001/infocenter",
       },
       {
-        icon: "twitter-x",
-        link: "https://twitter.com/iimmsyy",
+        icon: "x",
+        link: "https://twitter.com/elonmusk",
       },
     ],
     // sitemap
@@ -274,20 +234,11 @@ export const themeConfig = {
         ],
       },
       {
-        text: "项目",
-        items: [
-          { text: "Home", link: "https://github.com/imsyy/home/", newTab: true },
-          { text: "SPlayer", link: "https://github.com/imsyy/SPlayer/", newTab: true },
-          { text: "DailyHotApi", link: "https://github.com/imsyy/DailyHotApi/", newTab: true },
-          { text: "Snavigation", link: "https://github.com/imsyy/Snavigation/", newTab: true },
-        ],
-      },
-      {
         text: "专栏",
         items: [
-          { text: "技术分享", link: "/pages/categories/技术分享" },
-          { text: "我的项目", link: "/pages/project" },
-          { text: "效率工具", link: "/pages/tools" },
+          { text: "杂谈", link: "/pages/categories/杂谈" },
+          { text: "学习", link: "/pages/categories/学习" },
+          { text: "备份", link: "/pages/categories/备份" },
         ],
       },
       {
@@ -295,16 +246,13 @@ export const themeConfig = {
         items: [
           { text: "畅所欲言", link: "/pages/message" },
           { text: "关于本站", link: "/pages/about" },
-          { text: "隐私政策", link: "/pages/privacy" },
-          { text: "版权协议", link: "/pages/cc" },
         ],
       },
       {
         text: "服务",
         items: [
-          { text: "站点状态", link: "https://status.imsyy.top/", newTab: true },
-          { text: "一个导航", link: "https://nav.imsyy.top/", newTab: true },
-          { text: "站点订阅", link: "https://blog.24811213.xyz/rss.xml", newTab: true },
+          { text: "站点状态", link: "https://status.coderama.top/", newTab: true },
+          { text: "一个导航", link: "https://nav.coderama.top/", newTab: true },
           {
             text: "反馈投诉",
             link: "https://eqnxweimkr5.feishu.cn/share/base/form/shrcnCXCPmxCKKJYI3RKUfefJre",
@@ -342,7 +290,7 @@ export const themeConfig = {
     // 站点简介
     hello: {
       enable: true,
-      text: "这里有关于<strong>开发</strong>相关的问题和看法，也会有一些<strong>奇技淫巧</strong>的分享，其中大部分内容会侧重于<strong>前端开发</strong>。希望你可以在这里找到对你有用的知识和教程。",
+      text: "这里有关于<strong>XP</strong>相关的问题和看法，也会有一些<strong>奇技淫巧</strong>的分享，其中大部分内容会侧重于<strong>胡言乱语</strong>。希望你可以在这里找到对你有用的知识和教程（",
     },
     // 目录
     toc: {
@@ -357,8 +305,8 @@ export const themeConfig = {
       enable: true,
       // 倒计时日期
       data: {
-        name: "春节",
-        date: "2025-01-29",
+        name: "出笼",
+        date: "2027-10-01",
       },
     },
     // 站点数据
@@ -382,13 +330,13 @@ export const themeConfig = {
   music: {
     enable: false,
     // url
-    url: "https://api-meting.example.com",
+    url: "https://meting-api-omega.vercel.app/test",
     // id
     id: 9379831714,
     // netease / tencent / kugou
     server: "netease",
     // playlist / album / song
-    type: "playlist",
+    type: "artist",
   },
   // 搜索
   // https://www.algolia.com/
@@ -401,9 +349,9 @@ export const themeConfig = {
   rewardData: {
     enable: true,
     // 微信二维码
-    wechat: "https://pic.efefee.cn/uploads/2024/04/07/66121049d1e80.webp",
+    wechat: "",
     // 支付宝二维码
-    alipay: "https://pic.efefee.cn/uploads/2024/04/07/661206631d3b5.webp",
+    alipay: "",
   },
   // 图片灯箱
   fancybox: {
