@@ -153,30 +153,10 @@ export const themeConfig = {
       ],
     },
     {
-      name: "服务",
-      list: [
-        {
-          icon: "https://pic.efefee.cn/uploads/2024/04/08/6613465358077.png",
-          name: "起始页",
-          url: "https://nav.coderama.top/",
-        },
-        {
-          icon: "https://pic.efefee.cn/uploads/2024/04/08/661346d418ad7.png",
-          name: "今日热榜",
-          url: "https://hot.coderama.top/",
-        },
-        {
-          icon: "https://pic.efefee.cn/uploads/2024/04/08/66134722586fa.png",
-          name: "站点监测",
-          url: "https://status.coderama.top/",
-        },
-      ],
-    },
-    {
       name: "项目",
       list: [
         {
-          icon: "/images/logo/logo.webp",
+          icon: "https://github.com/favicon.ico",
           name: "DQN on Atari-Pong",
           url: "https://github.com/godsboy404/DQN-Pong",
         },
