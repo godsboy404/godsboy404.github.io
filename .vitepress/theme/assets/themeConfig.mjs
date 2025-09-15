@@ -3,7 +3,7 @@ export const themeConfig = {
   // 站点信息
   siteMeta: {
     // 站点标题
-    title: "~沁~拾遗轩",
+    title: "沁·拾遗轩",
     // 站点描述
     description: "悟已往之不谏，知来者之可追",
     // 站点logo
@@ -21,7 +21,7 @@ export const themeConfig = {
     },
   },
   // 备案信息
-  icp: "首ICP备114514号",
+  icp: "下北沢[网]安字第114514号",
   // 建站日期
   since: "2024-02-04",
   // 每页文章数据

@@ -5,22 +5,22 @@
       <!-- 介绍 -->
       <div class="about-item hello">
         <span class="text1">你好，很高兴认识你👋</span>
-        <span class="text2 title2">我是 九天之上</span>  
-        <span class="text3">是一名 又菜又爱玩的小白</span>
+        <span class="text2 title2">我是 Leo Z</span>  
+        <span class="text3">是一名 独孤逐梦之人</span>
       </div>
       <!-- 追求 -->
       <div class="about-item pursuit">
         <span class="tip">追求</span>
         <span class="title2">源于</span>
         <span class="title2">热爱而去开发</span>
-        <span class="title2">优秀的作品</span>
+        <span class="title2">独特的项目</span>
       </div>
     </div>
     <div class="about-content" style="grid-template-columns: 2fr 3fr">
       <!-- 技能 -->
       <div class="about-item skills">
         <span class="tip">技能</span>
-        <span class="title2">开启创造力</span>
+        <span class="title2">追寻Sweet-Spot</span>
         <div class="skills-list">
           <a
             v-for="(item, index) in skillsData"
@@ -44,8 +44,8 @@
           <i>無限進步</i>
         </span>
         <div class="list">
-          <span class="list-item" style="--color: #357ef5">法学学士</span>
-          <span class="list-item" style="--color: #eb372a">房地产营销管理</span>
+          <span class="list-item" style="--color: #357ef5">工学学士</span>
+          <span class="list-item" style="--color: #eb372a">云安全评估</span>
         </div>
         <img
           class="career-img"
@@ -106,7 +106,7 @@
       >
         <div class="image-content">
           <span class="tip">音乐偏好</span>
-          <span class="title2">华语流行、摇滚、中国风、民谣</span>
+          <span class="title2">乡村、欧美流行、爵士、国风</span>
           <div class="image-desc">
             <span class="left">一起欣赏更多音乐</span>
           </div>
@@ -144,16 +144,16 @@
           class="about-item map image"
           style="background-image: url(https://pan.811520.xyz/2024-10/1730361853-1730361845894.webp)"
         >
-          <span class="position">我现在住在 <strong>中国，武汉</strong></span>
+          <span class="position">我现在住在 <strong>中国，昆明</strong></span>
         </div>
         <div class="about-item info">
           <div class="info-item">
             <span class="info-name">生于</span>
-            <span class="info-num" style="--color: #43a6c6">保密</span>
+            <span class="info-num" style="--color: #43a6c6">San Jose, S.V</span>
           </div>
           <div class="info-item">
             <span class="info-name">现在职业</span>
-            <span class="info-num" style="--color: #dfac46">资深房地产营销管理</span>
+            <span class="info-num" style="--color: #dfac46">云架构安全评估工程师</span>
           </div>
         </div>
       </div>
@@ -164,13 +164,13 @@
         <span class="tip">心路历程</span>
         <span class="title2">为什么建站？</span>
         <p class="text">
-          创建这个站的时候，想要就是能够有一个自己能够<strong>积累知识</strong>、<strong>积累兴趣</strong>的地方。和他人分享，会让这些成为<strong>积累和沉淀</strong>。如果能够帮助到更多的人，帮助更多人解决问题，那一定是非常棒的事情。
+          既自以心為形役，奚惆悵而獨悲？實迷途其未遠，覺今是而昨非；問征夫以前路，恨晨光之熹微。
         </p>
         <p class="text">
-          这里内容很杂，<strong>工作、生活、资源分享……</strong>什么都有，可能不太会有很多人看，权当是做个自我记录吧。当然，如果某篇文章能够帮助到你，那我也是很开心的。
+          策扶老以流憩，時矯首而遐觀。云無心以出岫，鳥倦飛而知還。景翳翳以將入，撫孤松而盤桓。
         </p>
         <p class="text">
-          这些就是创造这个小站的本意，<strong>也是我分享生活的方式</strong>。有幸能和你相遇在这里，相信我们能共同留下一段美好记忆。
+          富貴非吾愿，帝鄉不可期。<strong>世與我而相遺，復駕言兮焉求？</strong>。羨萬物之得時，感吾生之行休。
         </p>
       </div>
     </div>
@@ -185,40 +185,22 @@ const { theme } = useData();
 // 技能数据
 const skillsData = [
   {
-    name: "JavaScript",
-    color: "#f1e05abd",
-    icon: "javascript",
-    link: "https://developer.mozilla.org/zh-CN/docs/Web/JavaScript",
-  },
-  {
-    name: "HTML5",
-    color: "#e34f26",
+    name: "C++",
+    color: "#00599c",
     icon: "html5",
-    link: "https://developer.mozilla.org/zh-CN/docs/Web/HTML",
+    link: "https://cplusplus.com/",
   },
   {
-    name: "CSS3",
-    color: "#563d7c",
+    name: "Java",
+    color: "#f89820",
+    icon: "javascript",
+    link: "https://www.java.com/en/download/help/whatis_java.html",
+  },
+  {
+    name: "HTML",
+    color: "#E34C26",
     icon: "css3",
-    link: "https://developer.mozilla.org/zh-CN/docs/Web/CSS",
-  },
-  {
-    name: "Vue",
-    color: "#41b883",
-    icon: "vue",
-    link: "https://cn.vuejs.org/",
-  },
-  {
-    name: "React",
-    color: "#149ECA",
-    icon: "react",
-    link: "https://zh-hans.reactjs.org/",
-  },
-  {
-    name: "Node.js",
-    color: "#026E00",
-    icon: "nodejs",
-    link: "https://nodejs.org/",
+    link: "https://html.spec.whatwg.org/multipage/",
   },
   {
     name: "Python",

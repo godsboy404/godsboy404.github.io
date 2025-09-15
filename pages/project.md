@@ -9,4 +9,4 @@ import Project from "@/views/Project.vue"
 
 <Project />
 
-> 还没想好写点什么
+> 随缘更新ing……
