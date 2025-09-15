@@ -246,6 +246,7 @@ export const themeConfig = {
         text: "服务",
         items: [
           { text: "网景领航", link: "https://www.google.com/", newTab: true },
+          { text: "黄金小屋", link: "https://freecomputerbooks.com/", newTab: true },
           { text: "即刻消遣", link: "https://theuselessweb.com/", newTab: true },
           {
             text: "反馈投诉",
@@ -324,9 +325,9 @@ export const themeConfig = {
   music: {
     enable: false,
     // url
-    url: "https://meting-api-omega.vercel.app/api",
-    // id
-    id: 9379831714,
+    url: "https://meting-api-omega.vercel.app",
+    // id (9379831714)
+    id: 12441107,
     // netease / tencent / kugou
     server: "netease",
     // playlist / album / song
