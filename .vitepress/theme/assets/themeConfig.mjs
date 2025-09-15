@@ -323,7 +323,7 @@ export const themeConfig = {
   // 音乐播放器
   // https://github.com/imsyy/Meting-API
   music: {
-    enable: true,
+    enable: false,
     // url
     url: "https://meting-api-omega.vercel.app",
     // id (9379831714)
