@@ -195,9 +195,22 @@ export const themeConfig = {
       coverLayout: 'both',
       // 默认封面(随机展示)
       defaultCover: [
-        'https://example.com/1.avif',
-        'https://example.com/2.avif',
-        'https://example.com/3.avif'
+        '/images/cover/cover1.png',
+        '/images/cover/cover2.png',
+        '/images/cover/cover3.png',
+        '/images/cover/cover4.png',
+        '/images/cover/cover5.png',
+        '/images/cover/cover6.png',
+        '/images/cover/cover7.png',
+        '/images/cover/cover8.png',
+        '/images/cover/cover9.png',
+        '/images/cover/cover10.png',
+        '/images/cover/cover11.png',
+        '/images/cover/cover12.png',
+        '/images/cover/cover13.png',
+        '/images/cover/cover14.png',
+        '/images/cover/cover15.png',
+        '/images/cover/cover16.png'
       ]
     }
   },
