@@ -58,18 +58,18 @@
       <!-- 性格 -->
       <div class="about-item character" style="--color: #4298b4">
         <span class="tip">性格</span>
-        <span class="title2">执政官</span>
+        <span class="title2">调停者</span>
         <span class="title2" style="color: var(--color)">ESFJ-A</span>
         <span class="more">
           在
           <a href="https://www.16personalities.com/ch/" target="_blank">16personalities</a>
           了解更多关于
-          <a href="https://www.16personalities.com/ch/esfj-%E4%BA%BA%E6%A0%BC" target="_blank">
+          <a href="https://www.16personalities.com/infp-personality" target="_blank">
             执政官
           </a>
         </span>
         <img
-          src="https://pan.811520.xyz/2024-11/1730434481-1730434479289.webp"
+          src="https://upload.wikimedia.org/wikipedia/commons/c/c9/INFP_Personality.jpg"
           alt="male"
           class="male"
         />
@@ -77,8 +77,8 @@
       <!-- 座右铭 -->
       <div class="about-item">
         <span class="tip">座右铭</span>
-        <span class="title1" style="margin-top: 20px">脚踏实地，</span>
-        <span class="title2">一丝不苟。</span>
+        <span class="title1" style="margin-top: 20px">不自由，</span>
+        <span class="title2">毋宁死。</span>
       </div>
     </div>
     <div class="about-content" style="grid-template-columns: 1fr 1fr">
@@ -101,7 +101,7 @@
         class="about-item like image"
         style="
           --color: #7b3c25;
-          background-image: url(https://pan.811520.xyz/2024-11/1730614179-1730614177198.webp);
+          background-image: url(https://s1.imagehub.cc/images/2025/09/15/4282909c8b5290767dda17ea801fc4ad.png);
         "
       >
         <div class="image-content">
@@ -119,7 +119,7 @@
         class="about-item static image"
         style="
           --color: #0f1114;  
-          background-image: url(https://pan.811520.xyz/2024-11/1730613487-20230703084704275.webp);
+          background-image: url(https://s1.imagehub.cc/images/2025/09/15/de38f0a913690642907a7b2c544a53b0.png);
         "
       >
         <div class="image-content">
@@ -142,7 +142,7 @@
       <div class="about-item child">
         <div
           class="about-item map image"
-          style="background-image: url(https://pan.811520.xyz/2024-10/1730361853-1730361845894.webp)"
+          style="background-image: url(https://s1.imagehub.cc/images/2025/09/15/58cee351537aecfcd76a7ce660da6240.png)"
         >
           <span class="position">我现在住在 <strong>中国，昆明</strong></span>
         </div>
@@ -170,7 +170,7 @@
           策扶老以流憩，時矯首而遐觀。云無心以出岫，鳥倦飛而知還。景翳翳以將入，撫孤松而盤桓。
         </p>
         <p class="text">
-          富貴非吾愿，帝鄉不可期。<strong>世與我而相遺，復駕言兮焉求？</strong>。羨萬物之得時，感吾生之行休。
+          富貴非吾愿，帝鄉不可期。<strong>世與我而相遺，復駕言兮焉求？</strong>羨萬物之得時，感吾生之行休。
         </p>
       </div>
     </div>
@@ -187,19 +187,19 @@ const skillsData = [
   {
     name: "C++",
     color: "#00599c",
-    icon: "html5",
+    icon: "cpp",
     link: "https://cplusplus.com/",
   },
   {
     name: "Java",
     color: "#f89820",
-    icon: "javascript",
+    icon: "java",
     link: "https://www.java.com/en/download/help/whatis_java.html",
   },
   {
     name: "HTML",
     color: "#E34C26",
-    icon: "css3",
+    icon: "html5",
     link: "https://html.spec.whatwg.org/multipage/",
   },
   {

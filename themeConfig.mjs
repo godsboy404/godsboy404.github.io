@@ -137,6 +137,7 @@ export const themeConfig = {
       text: "我的",
       items: [
         { text: "畅所欲言", link: "/pages/message", icon: "chat" },
+        { text: "关于本站", link: "/pages/about", icon: "info" },
       ],
     },
   ],
@@ -211,8 +212,8 @@ export const themeConfig = {
         link: "https://user.qzone.qq.com/10001/infocenter",
       },
       {
-        icon: "x",
-        link: "https://twitter.com/elonmusk",
+        icon: "twitter-x",
+        link: "https://x.com/elonmusk",
       },
     ],
     // sitemap
@@ -244,11 +245,11 @@ export const themeConfig = {
       {
         text: "服务",
         items: [
-          { text: "站点状态", link: "https://status.coderama.top/", newTab: true },
-          { text: "一个导航", link: "https://nav.coderama.top/", newTab: true },
+          { text: "网景领航", link: "https://www.google.com/", newTab: true },
+          { text: "即刻消遣", link: "https://theuselessweb.com/", newTab: true },
           {
             text: "反馈投诉",
-            link: "https://eqnxweimkr5.feishu.cn/share/base/form/shrcnCXCPmxCKKJYI3RKUfefJre",
+            link: "https://forms.gle/ViUTaSH7AYFZzt9y5",
             newTab: true,
           },
         ],
@@ -283,7 +284,7 @@ export const themeConfig = {
     // 站点简介
     hello: {
       enable: true,
-      text: "这里有关于<strong>XP</strong>相关的问题和看法，也会有一些<strong>奇技淫巧</strong>的分享，其中大部分内容会侧重于<strong>胡言乱语</strong>。希望你可以在这里找到对你有用的知识和教程（",
+      text: "这里有一些<strong>奇技淫巧</strong>的分享，也会有<strong>不明觉历</strong>的胡言乱语，其中大部分内容会侧重于<strong>咕咕嘎嘎</strong>。希望你可以在这里找到对你有用的知识和教程（",
     },
     // 目录
     toc: {
@@ -299,7 +300,7 @@ export const themeConfig = {
       // 倒计时日期
       data: {
         name: "出笼",
-        date: "2027-10-01",
+        date: "2027-06-30",
       },
     },
     // 站点数据
@@ -323,7 +324,7 @@ export const themeConfig = {
   music: {
     enable: false,
     // url
-    url: "https://meting-api-omega.vercel.app/test",
+    url: "https://meting-api-omega.vercel.app/api",
     // id
     id: 9379831714,
     // netease / tencent / kugou
@@ -342,9 +343,9 @@ export const themeConfig = {
   rewardData: {
     enable: true,
     // 微信二维码
-    wechat: "",
+    wechat: "https://s1.imagehub.cc/images/2025/09/15/1e77bb59bd21472a90fc5a3c9799e92e.md.jpeg",
     // 支付宝二维码
-    alipay: "",
+    alipay: "https://s1.imagehub.cc/images/2025/09/15/9a7df4b42165929591d06c1e311eb0c7.md.jpeg",
   },
   // 图片灯箱
   fancybox: {

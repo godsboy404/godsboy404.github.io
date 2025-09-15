@@ -9,11 +9,11 @@ comment: true
 <div class="payment-container">
   <div class="payment-item">
     <p class="payment-label">微信 / Wechat</p>
-    <img class="payment-image" src="https://pan.811520.xyz/2024-11/1730603920-wechatpay.webp" alt="wechat receipt code" />
+    <img class="payment-image" src="https://s1.imagehub.cc/images/2025/09/15/1e77bb59bd21472a90fc5a3c9799e92e.md.jpeg" alt="wechat receipt code" />
   </div>
   <div class="payment-item">
     <p class="payment-label">支付宝 / Alipay</p>
-    <img class="payment-image" src="https://pan.811520.xyz/2024-11/1730603921-alipay.webp" alt="alipay receipt code" />
+    <img class="payment-image" src="https://s1.imagehub.cc/images/2025/09/15/9a7df4b42165929591d06c1e311eb0c7.md.jpeg" alt="alipay receipt code" />
   </div>
 </div>
 
@@ -68,11 +68,5 @@ comment: true
 <div align="center"><strong>以下排名不分先后</strong></div>
 
 | 昵称          | 捐助金额      | 日期            |  昵称         | 捐助金额      | 日期            |
-| :-----------: | :----------: | :-------------: | :-----------: | :----------: | :-------------: |
-| 海阔蓝        | 8.8           | 2024-03-28     | LK66           | 66.6         | 2024-03-24 |
-| 张时貳        | 6.6           | 2024-01-22     | ZeroAf         | 9.9          | 2024-10-14 |
-| LuckyWangXi   | 6.6          | 2024-10-14      | 刀中日月长      | 10           | 2023-11-16 |
-| 鹿啵包        | 10            | 2023-11-16     | 时时刻刻        | 10           | 2024-08-15 |
-| 疾速k         | 50           | 2024-09-20      | 伴舟先生大霖子   | 5            | 2024-10-27 |
-| Magica_0x0    | 5            | 2024-08-25      | Leviathan520   | 3            | 2024-08-23 |
-| 哇是猫猫欸     | 8            | 2024-08-19      | 一粒微尘        | 8.8          | 2024-11-01 |
+| :----------: | :-----------: | :------------: | :-----------: | :----------: | :-------------: |
+| 小雪花        | 60.00        | 2025-09-13      | 闲云野鹤      | 166.00        | 2025-08-30     |
