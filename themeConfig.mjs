@@ -121,9 +121,9 @@ export const themeConfig = {
     {
       text: "专栏",
       items: [
-        { text: "杂谈", link: "/pages/categories/杂谈", icon: "technical" },
-        { text: "学习", link: "/pages/categories/学习", icon: "code" },
-        { text: "备份", link: "/pages/categories/备份", icon: "tools" },
+        { text: "杂谈", link: "/pages/tags/杂谈", icon: "technical" },
+        { text: "学习", link: "/pages/tag/学习", icon: "code" },
+        { text: "备份", link: "/pages/tag/备份", icon: "tools" },
       ],
     },
     {
@@ -137,7 +137,7 @@ export const themeConfig = {
       text: "我的",
       items: [
         { text: "畅所欲言", link: "/pages/message", icon: "chat" },
-        { text: "关于本站", link: "/pages/about", icon: "info" },
+        { text: "关于本站", link: "/pages/about", icon: "contacts" },
       ],
     },
   ],
@@ -160,6 +160,11 @@ export const themeConfig = {
           icon: "https://github.com/favicon.ico",
           name: "DQN on Atari-Pong",
           url: "https://github.com/godsboy404/DQN-Pong",
+        },
+        {
+          icon: "https://github.com/favicon.ico",
+          name: "Femboy Collection♥️",
+          url: "https://github.com/godsboy404/Dress",
         },
       ],
     },
@@ -212,7 +217,7 @@ export const themeConfig = {
         link: "https://user.qzone.qq.com/10001/infocenter",
       },
       {
-        icon: "twitter-x",
+        icon: "twitter",
         link: "https://x.com/elonmusk",
       },
     ],
@@ -228,11 +233,11 @@ export const themeConfig = {
         ],
       },
       {
-        text: "专栏",
+        text: "分类",
         items: [
-          { text: "杂谈", link: "/pages/categories/杂谈" },
-          { text: "学习", link: "/pages/categories/学习" },
-          { text: "备份", link: "/pages/categories/备份" },
+          { text: "杂谈", link: "/pages/tags/杂谈" },
+          { text: "学习", link: "/pages/tags/学习" },
+          { text: "备份", link: "/pages/tags/备份" },
         ],
       },
       {
