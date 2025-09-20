@@ -122,8 +122,8 @@ export const themeConfig = {
       text: "专栏",
       items: [
         { text: "杂谈", link: "/pages/tags/杂谈", icon: "technical" },
-        { text: "学习", link: "/pages/tag/学习", icon: "code" },
-        { text: "备份", link: "/pages/tag/备份", icon: "tools" },
+        { text: "学习", link: "/pages/tags/学习", icon: "code" },
+        { text: "备份", link: "/pages/tags/备份", icon: "tools" },
       ],
     },
     {
