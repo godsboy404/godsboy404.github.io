@@ -217,7 +217,7 @@ export const themeConfig = {
         link: "https://user.qzone.qq.com/10001/infocenter",
       },
       {
-        icon: "twitter",
+        icon: "twitter-x",
         link: "https://x.com/elonmusk",
       },
     ],
