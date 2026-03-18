@@ -1,12 +1,12 @@
 <template>
   <div class="about">
     <h1 class="title">关于本站</h1>
-    <div class="about-content" style="grid-template-columns: 3fr 2fr">
+    <div class="about-content" style="grid-template-columns: 2fr 3fr">
       <!-- 介绍 -->
       <div class="about-item hello">
-        <span class="text1">你好，很高兴认识你👋</span>
-        <span class="text2 title2">我是 Leo Z</span>  
-        <span class="text3">是一名 独孤逐梦之人</span>
+        <span class="text1">~我轻轻的来，正如我轻轻的走~</span>
+        <span class="text2 title2">彳亍红尘，欲破除一切纱帐</span>  
+        <span class="text3">蓦然回首，却见绿波东流</span>
       </div>
       <!-- 追求 -->
       <div class="about-item pursuit">
@@ -16,7 +16,7 @@
         <span class="title2">独特的项目</span>
       </div>
     </div>
-    <div class="about-content" style="grid-template-columns: 2fr 3fr">
+    <div class="about-content" style="grid-template-columns: 3fr 2fr">
       <!-- 技能 -->
       <div class="about-item skills">
         <span class="tip">技能</span>
@@ -45,7 +45,7 @@
         </span>
         <div class="list">
           <span class="list-item" style="--color: #357ef5">工学学士</span>
-          <span class="list-item" style="--color: #eb372a">云安全评估</span>
+          <span class="list-item" style="--color: #eb372a">网络空间安全</span>
         </div>
         <img
           class="career-img"
@@ -54,7 +54,7 @@
         />
       </div>
     </div>
-    <div class="about-content" style="grid-template-columns: 3fr 2fr">
+    <div class="about-content" style="grid-template-columns: 2fr 3fr">
       <!-- 性格 -->
       <div class="about-item character" style="--color: #4298b4">
         <span class="tip">性格</span>
@@ -86,14 +86,14 @@
         class="about-item like image"
         style="
           --color: #0c0e20;
-          background-image: url(https://pan.811520.xyz/2024-11/1730613978-1730613976160.webp);
+          background-image: url(https://s1.imagehub.cc/images/2026/03/18/e4c1e4babfd99f0b96d9ee9bc4fb85ef.png);
         "
       >
         <div class="image-content">
           <span class="tip">关注偏好</span>
-          <span class="title2">数码科技</span>
+          <span class="title2">数码科技，非场地赛车</span>
           <div class="image-desc">
-            <span class="left">手机、电脑及软硬件</span>
+            <span class="left">计算机，内燃机，碳基</span>
           </div>
         </div>
       </div>
@@ -106,14 +106,14 @@
       >
         <div class="image-content">
           <span class="tip">音乐偏好</span>
-          <span class="title2">乡村、欧美流行、爵士、国风</span>
+          <span class="title2">欧美流行、乡村、爵士、古典、国风</span>
           <div class="image-desc">
             <span class="left">一起欣赏更多音乐</span>
           </div>
         </div>
       </div>
     </div>
-    <div class="about-content" style="grid-template-columns: 2fr 3fr">
+    <div class="about-content" style="grid-template-columns: 1fr 1fr">
       <!-- 数据 -->
       <div
         class="about-item static image"
@@ -152,8 +152,8 @@
             <span class="info-num" style="--color: #43a6c6">San Jose, S.V</span>
           </div>
           <div class="info-item">
-            <span class="info-name">现在职业</span>
-            <span class="info-num" style="--color: #dfac46">云架构安全评估工程师</span>
+            <span class="info-name">职业</span>
+            <span class="info-num" style="--color: #dfac46">信息安全岗</span>
           </div>
         </div>
       </div>
@@ -187,13 +187,13 @@ const skillsData = [
   {
     name: "C++",
     color: "#00599c",
-    icon: "cpp",
+    icon: "c++",
     link: "https://cplusplus.com/",
   },
   {
     name: "Java",
     color: "#f89820",
-    icon: "java",
+    icon: "javascript",
     link: "https://www.java.com/en/download/help/whatis_java.html",
   },
   {
