@@ -1,7 +1,7 @@
 <template>
   <div class="about">
     <h1 class="title">关于本站</h1>
-    <div class="about-content" style="grid-template-columns: 2fr 3fr">
+    <div class="about-content" style="grid-template-columns: 3fr 2fr">
       <!-- 介绍 -->
       <div class="about-item hello">
         <span class="text1">~我轻轻的来，正如我轻轻的走~</span>
@@ -16,7 +16,7 @@
         <span class="title2">独特的项目</span>
       </div>
     </div>
-    <div class="about-content" style="grid-template-columns: 3fr 2fr">
+    <div class="about-content" style="grid-template-columns: 2fr 3fr">
       <!-- 技能 -->
       <div class="about-item skills">
         <span class="tip">技能</span>
@@ -54,7 +54,7 @@
         />
       </div>
     </div>
-    <div class="about-content" style="grid-template-columns: 2fr 3fr">
+    <div class="about-content" style="grid-template-columns: 3fr 2fr">
       <!-- 性格 -->
       <div class="about-item character" style="--color: #4298b4">
         <span class="tip">性格</span>
@@ -113,7 +113,7 @@
         </div>
       </div>
     </div>
-    <div class="about-content" style="grid-template-columns: 1fr 1fr">
+    <div class="about-content" style="grid-template-columns: 2fr 3fr">
       <!-- 数据 -->
       <div
         class="about-item static image"
@@ -187,7 +187,7 @@ const skillsData = [
   {
     name: "C++",
     color: "#00599c",
-    icon: "c++",
+    icon: "c",
     link: "https://cplusplus.com/",
   },
   {
