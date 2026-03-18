@@ -10,7 +10,7 @@
       </div>
       <!-- 追求 -->
       <div class="about-item pursuit">
-        <span class="tip">追求</span>
+        <span class="tip">初心</span>
         <span class="title2">源于</span>
         <span class="title2">热爱而去开发</span>
         <span class="title2">独特的项目</span>
@@ -41,10 +41,10 @@
       <div class="about-item career">
         <span class="tip">生涯</span>
         <span class="title2">
-          <i>無限進步</i>
+          <i>-無限進步-</i>
         </span>
         <div class="list">
-          <span class="list-item" style="--color: #357ef5">工学学士</span>
+          <span class="list-item" style="--color: #357ef5">工学</span>
           <span class="list-item" style="--color: #eb372a">网络空间安全</span>
         </div>
         <img
