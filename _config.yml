@@ -1,0 +1,61 @@
+title: 沁·拾遗轩
+subtitle: 悟已往之不谏，知来者之可追
+description: 悟已往之不谏，知来者之可追
+author: Leo
+language: zh-CN
+timezone: Asia/Shanghai
+url: https://coderama.top
+root: /
+permalink: posts/:year/:title/
+pretty_urls:
+  trailing_index: false
+  trailing_html: false
+theme: stellar
+source_dir: source
+public_dir: public
+tag_dir: tags
+archive_dir: blog/archives
+category_dir: categories
+default_layout: post
+new_post_name: :title.md
+future: false
+render_drafts: false
+post_asset_folder: false
+relative_link: false
+skip_render:
+  - redirect.html
+  - js/**
+  - css/**
+  - sw.js
+  - images/**
+  - fonts/**
+  - '*.webmanifest'
+exclude:
+  - '**/AGENTS.md'
+index_generator:
+  path: ''
+  per_page: 10
+  order_by: -date
+pagination_dir: page
+per_page: 10
+syntax_highlighter: highlight.js
+highlight:
+  enable: true
+  line_number: true
+  auto_detect: false
+  tab_replace: '  '
+  wrap: true
+  hljs: true
+markdown:
+  preset: default
+  render:
+    html: true
+    breaks: false
+    linkify: true
+    typographer: false
+  anchors:
+    level: 1
+    permalink: false
+    case: 0
+  plugins:
+    - markdown-it-mathjax3

@@ -3,11 +3,9 @@ const assert = require('node:assert/strict');
 const { readFileSync } = require('node:fs');
 const path = require('node:path');
 const vm = require('node:vm');
-const { createRequire } = require('node:module');
 const root = path.resolve(__dirname, '..');
-const extraRequire = createRequire(path.join(process.env.BLOG_TEST_MODULES || path.join(root, '.test-deps/node_modules'), '../package.json'));
-const { parseHTML } = extraRequire('linkedom');
-const source = file => readFileSync(path.join(root, 'static/js', file), 'utf8');
+const { parseHTML } = require('linkedom');
+const source = file => readFileSync(path.join(root, 'source/js', file), 'utf8');
 
 function environment(html, fetch = async () => { throw new Error('offline'); }, storage) {
   const { document, window } = parseHTML(html);
@@ -130,7 +128,7 @@ test('retirement worker removes only legacy caches and unregisters itself', asyn
       registration: { async unregister() { unregistered = true; } }, clients: { async claim() { claimed = true; } } },
     caches: { async keys() { return ['workbox-precache-v2', 'file-cache', 'another-app']; }, async delete(name) { deleted.push(name); } },
   });
-  vm.runInContext(readFileSync(path.join(root, 'static/sw.js'), 'utf8'), ctx);
+  vm.runInContext(readFileSync(path.join(root, 'source/sw.js'), 'utf8'), ctx);
   handlers.activate({ waitUntil(promise) { work = promise; } });
   await work;
   assert.deepEqual(deleted.sort(), ['file-cache', 'workbox-precache-v2']);

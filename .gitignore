@@ -1,4 +1,8 @@
 /public/
+/node_modules/
+/db.json
+/debug.log
+/.stellar-cache/
 /resources/
 /.hugo_build.lock
 /hugo_stats.json

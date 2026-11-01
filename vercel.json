@@ -1,9 +1,6 @@
 {
-  "framework": "hugo",
-  "buildCommand": "hugo --gc --minify",
+  "framework": "hexo",
+  "buildCommand": "npm run build",
   "outputDirectory": "public",
-  "env": {
-    "HUGO_VERSION": "0.169.0"
-  },
   "cleanUrls": true
 }

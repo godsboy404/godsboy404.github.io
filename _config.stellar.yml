@@ -1,0 +1,112 @@
+# 基于官方 lightblog 蓝图：顶部导航、无常驻侧栏、首页直接显示文章。
+topbar:
+  enabled: true
+  brand:
+    name: 沁·拾遗轩
+    tagline: 悟已往之不谏，知来者之可追
+    image:
+      src: /images/logo/logo.webp
+      variant: avatar
+  menu:
+    - id: post
+      title: 文章
+      icon: default:documents
+      url: /
+    - id: tags
+      title: 标签
+      icon: default:hashtag
+      url: /tags/
+    - id: friends
+      title: 友链
+      icon: default:link
+      url: /pages/link/
+    - id: about
+      title: 关于
+      icon: default:profile
+      url: /pages/about/
+  widgets: [spacer, menu, settings]
+leftbar:
+  enabled: false
+rightbar:
+  enabled: false
+profiles:
+  post:
+    topbar:
+      widgets: [spacer, menu, settings, toc]
+    rightbar:
+      widgets: []
+  page:
+    topbar:
+      widgets: [spacer, menu, settings, toc]
+    rightbar:
+      widgets: []
+  blog_index:
+    path: /
+    listing_nav:
+      enabled: false
+  wiki_index:
+    path: null
+  notebooks:
+    path: null
+  author:
+    path: null
+article:
+  style: tech
+  paragraph_indent: never
+  banner:
+    background: false
+  listing:
+    pinned_layout: flat
+    card_layout: classic
+    show_tags: true
+    excerpt_length: 100
+  show_reading_time: true
+  footer:
+    license: '本站原创文章采用 [CC BY-NC-ND 4.0](https://creativecommons.org/licenses/by-nc-nd/4.0/deed.zh) 许可，另有注明的内容除外。'
+    share: []
+    show_tags: true
+appearance:
+  preset: flat
+  color_scheme: auto
+  colors:
+    primary: '#3e7a71'
+    accent: '#b27652'
+    link: '#2d776c'
+  typography:
+    font_family:
+      body: 'system-ui, "PingFang SC", "Microsoft YaHei", sans-serif'
+      code: '"Cascadia Code", Consolas, Menlo, monospace'
+    font_size:
+      code_block: 0.875rem
+  code_block:
+    highlight_stylesheet: /css/code-highlight.css
+features:
+  partial_navigation:
+    enabled: false
+  color_scheme_switch:
+    enabled: true
+  image_optimization:
+    enabled: false
+  lazy_loading:
+    auto_aspect_ratio: false
+  link_prefetch:
+    enabled: false
+  reveal:
+    enabled: true
+    duration: 450
+    interval: 60
+    blur: 0
+  card_hover:
+    spotlight: false
+    tilt: false
+comments:
+  provider: null
+search:
+  provider: local
+footer:
+  content: |
+    © Leo · [RSS](/rss.xml) · [项目](/pages/project/) · [友圈鱼塘](/pages/friends/) · [隐私](/pages/privacy/) · [版权](/pages/cc/)
+
+    Powered by [Hexo](https://hexo.io/) · Theme [Stellar](https://github.com/xaoxuu/hexo-theme-stellar)
+inject:
+  head_end: '<link rel="manifest" href="/manifest.webmanifest"><link rel="apple-touch-icon" href="/images/logo/apple-touch-icon.png"><link rel="stylesheet" href="/css/site.css"><link rel="alternate" type="application/rss+xml" title="沁·拾遗轩" href="/rss.xml">'

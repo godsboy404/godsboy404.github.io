@@ -1,0 +1,9 @@
+/* Small adjustments to the official lightblog layout for technical articles. */
+.md-text { overflow-wrap: anywhere; }
+.md-text pre, .md-text code { overflow-wrap: normal; }
+.md-text mjx-container[display="true"] { max-width: 100%; overflow-x: auto; overflow-y: hidden; }
+.md-text mjx-container svg { max-width: none; }
+[hidden] { display: none !important; }
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { scroll-behavior: auto !important; animation-duration: .01ms !important; transition-duration: .01ms !important; }
+}

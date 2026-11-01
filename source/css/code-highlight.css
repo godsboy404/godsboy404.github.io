@@ -1,0 +1,10 @@
+/* Local syntax colors; no font or stylesheet request is needed to read code. */
+.highlight .code { color: #d8dee9; background: #282c34; }
+.highlight .hljs-comment, .highlight .hljs-quote { color: #9ba5b4; font-style: italic; }
+.highlight .hljs-keyword, .highlight .hljs-selector-tag, .highlight .hljs-literal { color: #c792ea; }
+.highlight .hljs-string, .highlight .hljs-regexp, .highlight .hljs-addition { color: #c3e88d; }
+.highlight .hljs-number, .highlight .hljs-attr, .highlight .hljs-variable { color: #f78c6c; }
+.highlight .hljs-title, .highlight .hljs-function, .highlight .hljs-built_in { color: #82aaff; }
+.highlight .hljs-type, .highlight .hljs-class { color: #ffcb6b; }
+.highlight .hljs-meta, .highlight .hljs-symbol { color: #89ddff; }
+.highlight .hljs-deletion { color: #ff869a; }

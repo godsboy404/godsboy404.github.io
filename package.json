@@ -1,0 +1,34 @@
+{
+  "name": "qin-shiyixuan-blog",
+  "private": true,
+  "version": "2.0.0",
+  "description": "沁·拾遗轩 — Stellar 轻博客",
+  "engines": {
+    "node": ">=22"
+  },
+  "hexo": {
+    "version": "8.1.2"
+  },
+  "scripts": {
+    "dev": "hexo server --draft",
+    "build": "hexo clean && hexo generate",
+    "check": "python tools/check_site.py",
+    "test": "node --test tests/browser-scripts.test.cjs",
+    "doctor": "hexo stellar doctor"
+  },
+  "dependencies": {
+    "hexo": "8.1.2",
+    "hexo-front-matter": "5.0.0",
+    "hexo-generator-index": "4.0.0",
+    "hexo-renderer-markdown-it": "7.1.1",
+    "hexo-server": "3.0.0",
+    "hexo-theme-stellar": "2.0.0",
+    "hexo-util": "4.0.0",
+    "markdown-it-mathjax3": "5.2.0",
+    "hexo-generator-tag": "2.0.0",
+    "hexo-generator-archive": "2.0.0"
+  },
+  "devDependencies": {
+    "linkedom": "0.18.12"
+  }
+}
