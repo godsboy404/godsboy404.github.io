@@ -89,6 +89,9 @@ features:
     enabled: false
   lazy_loading:
     auto_aspect_ratio: false
+  lightbox:
+    enabled: true
+    selector: '.md-text img:not(.no-lightbox)'
   link_prefetch:
     enabled: false
   reveal:
