@@ -64,7 +64,7 @@ Hexo 使用草稿目录或 `published: false` 控制发布；不要继续使用 
 - 原有兼容跳转保存在 `source/_data/legacy_redirects.yml`；普通新文章会自动获得对应 `.html` 跳转地址。
 - 图片放到 `source/images/`，例如 `source/images/posts/example.png`，在文章中写 `![说明](/images/posts/example.png)`。
 - 围栏代码块写明语言，例如 `java`、`cpp`、`python` 或 `bash`，即可进行语法高亮。
-- 数学公式继续使用 `$...$` 和 `$$...$$`，构建时生成 SVG，不依赖访客加载 MathJax。
+- 数学公式使用 `$...$`（行内）和独立成行的 `$$...$$`（块级），构建时生成 SVG，不依赖访客加载 MathJax。兼容旧文章 `$ n $` 的空格写法；普通美元符号请写成 `\$`。
 
 ## 修改站点
 

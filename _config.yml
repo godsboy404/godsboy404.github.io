@@ -58,4 +58,4 @@ markdown:
     permalink: false
     case: 0
   plugins:
-    - markdown-it-mathjax3
+    - name: ./tools/markdown-math.cjs

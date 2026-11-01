@@ -13,7 +13,7 @@
     "dev": "hexo server --draft",
     "build": "hexo clean && hexo generate",
     "check": "python tools/check_site.py",
-    "test": "node --test tests/browser-scripts.test.cjs",
+    "test": "node --test tests/browser-scripts.test.cjs tests/markdown-math.test.cjs",
     "doctor": "hexo stellar doctor"
   },
   "dependencies": {
