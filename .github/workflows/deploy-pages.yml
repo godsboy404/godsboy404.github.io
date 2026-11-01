@@ -34,7 +34,7 @@ jobs:
       - name: Build
         run: npm run build
       - name: Check generated site
-        run: python3 tools/check_site.py
+        run: npm run check
       - name: Test browser scripts
         run: npm test
       - name: Save validated build

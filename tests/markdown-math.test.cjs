@@ -7,6 +7,11 @@ const path = require('node:path');
 const rendererRequire = createRequire(require.resolve('hexo-renderer-markdown-it/package.json'));
 const MarkdownIt = rendererRequire('markdown-it');
 const md = new MarkdownIt().use(require('../tools/markdown-math.cjs'));
+test('text extraction removes renderer styles but preserves prose and escaped code', () => {
+  const { withoutStyles } = require('../tools/article-text.cjs');
+  const html = '<p>正文</p><style type="text/css">#mjx-x { display:contents; }</style><code>&lt;style&gt;</code>';
+  assert.equal(withoutStyles(html), '<p>正文</p><code>&lt;style&gt;</code>');
+});
 function formulas(source) {
   return md.parse(source, {}).flatMap(token => token.children || [])
     .filter(token => token.type === 'math_inline').map(token => token.content);

@@ -76,6 +76,7 @@ Hexo 使用草稿目录或 `published: false` 控制发布；不要继续使用 
 | 额外样式 | `source/css/site.css` |
 | 代码配色 | `source/css/code-highlight.css` |
 | RSS、旧链接和 sitemap 生成 | `scripts/site-compat.js` |
+| 公式文章的阅读统计与搜索文本兼容 | `scripts/article-text.js` |
 
 Stellar 按照官方轻博客蓝图配置，使用技术文章排版。关闭常驻侧栏、首屏大图与 3D 倾斜效果，保留轻量滚动显现和默认交互。主题 npm 包不作直接修改，升级时修改版本并重新验证。
 
@@ -84,7 +85,7 @@ Stellar 按照官方轻博客蓝图配置，使用技术文章排版。关闭常
 ```sh
 npm run doctor
 npm run build
-python tools/check_site.py
+npm run check
 npm test
 ```
 
@@ -109,3 +110,5 @@ GitHub **Settings → Pages** 保持 **Deploy from a branch → pages → / (roo
 原友圈组件保留安全修复和失败重试；该页依赖原第三方 API。外部图床、灯箱和懒加载资源的可用性仍取决于提供方。本站没有配置评论或统计服务。
 
 当前迁移验证记录见 `MIGRATION-CHECK.md`，先前 Bear Blog 迁移记录见 `docs/migrations/bearblog-2026-11-01.md`。
+
+逐篇文章检查记录见 [article-format-2026-11-01.md](docs/audits/article-format-2026-11-01.md)。`npm run check` 同时验证全站链接和每篇正文的结构、代码原文、公式、图片及搜索/阅读统计；浏览器视觉检查的完成范围在记录中单独注明。

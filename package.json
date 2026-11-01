@@ -12,7 +12,7 @@
   "scripts": {
     "dev": "hexo server --draft",
     "build": "hexo clean && hexo generate",
-    "check": "python tools/check_site.py",
+    "check": "python tools/check_site.py && node tools/audit_posts.cjs",
     "test": "node --test tests/browser-scripts.test.cjs tests/markdown-math.test.cjs",
     "doctor": "hexo stellar doctor"
   },
