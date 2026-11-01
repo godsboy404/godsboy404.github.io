@@ -4,6 +4,10 @@
 .md-text table img { min-width: 120px; max-width: 240px; }
 .md-text mjx-container[display="true"] { max-width: 100%; overflow-x: auto; overflow-y: hidden; }
 .md-text mjx-container svg { max-width: none; }
+/* The compact navigation must let the article outline extend below the bar. */
+.site-region--topbar .widget-stack { overflow: visible; }
+.site-region--topbar .topbar-toc-popover { z-index: 20; }
+.topbar-toc-popover a { display: block; padding: .25em 0; overflow-wrap: anywhere; }
 [hidden] { display: none !important; }
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after { scroll-behavior: auto !important; animation-duration: .01ms !important; transition-duration: .01ms !important; }

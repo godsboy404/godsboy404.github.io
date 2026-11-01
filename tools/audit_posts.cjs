@@ -41,6 +41,7 @@ for (const year of fs.readdirSync(path.join(root, 'source/_posts')).sort()) {
     const entry = search.find(e => e.path === '/' + source.permalink);
     check(id, 'search entry exists', Boolean(entry), true);
     check(id, 'search excludes formula CSS', /display:contents|mjx-assistive-mml/.test(entry?.content || ''), false);
+    check(id, 'outline excludes formula CSS', /display:contents|mjx-assistive-mml/.test(document.querySelector('.topbar-toc')?.textContent || ''), false);
     const codes = [...actual.querySelectorAll('figure.highlight .code code, pre > code')]
       .map(n => text(n.innerHTML.replace(/<br\s*\/?>/g, '\n')).replace(/\n+$/, ''));
     const sourceCodes = tokens.filter(t => ['fence', 'code_block'].includes(t.type))

@@ -14,6 +14,10 @@ hexo.extend.filter.register('before_generate', () => {
   const content = page => withoutStyles(page && (page.content || page._content || ''));
   hexo.extend.helper.register('word_count', page => countWords(content(page)));
   hexo.extend.helper.register('reading_time', page => readingMinutes(content(page)));
+  const originalToc = hexo.extend.helper.get('toc');
+  hexo.extend.helper.register('toc', function (html, options) {
+    return originalToc.call(this, withoutStyles(html), options);
+  });
   const original = hexo.extend.generator.get('search_json_generator');
   hexo.extend.generator.register('search_json_generator', async function (locals) {
     const result = await original.call(this, locals);
