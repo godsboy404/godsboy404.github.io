@@ -1,25 +1,11 @@
-
-self.addEventListener('install', (e) => {
-  self.skipWaiting();
+// Retirement worker at the URL used by the former VitePress site.
+self.addEventListener('install', () => self.skipWaiting());
+self.addEventListener('activate', event => {
+  event.waitUntil((async () => {
+    const names = await caches.keys();
+    await Promise.all(names.filter(name => name.startsWith('workbox-') ||
+      ['file-cache', 'image-cache', 'iconfont-cache'].includes(name)).map(name => caches.delete(name)));
+    await self.registration.unregister();
+    await self.clients.claim();
+  })());
 });
-self.addEventListener('activate', (e) => {
-  self.registration.unregister()
-    .then(() => self.clients.matchAll())
-    .then((clients) => {
-      clients.forEach((client) => {
-        if (client instanceof WindowClient)
-          client.navigate(client.url);
-      });
-      return Promise.resolve();
-    })
-    .then(() => {
-      self.caches.keys().then((cacheNames) => {
-        Promise.all(
-          cacheNames.map((cacheName) => {
-            return self.caches.delete(cacheName);
-          }),
-        );
-      })
-    });
-});
-    
