@@ -1,0 +1,183 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>咕咕嘎嘎? | 沁·拾遗轩</title>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        user-select: none;
+        box-sizing: border-box;
+      }
+      :root {
+        --main-site-background: #f7f9fe;
+        --main-card-border: #e3e8f7;
+        --main-card-background: #fff;
+        --main-font-color: #363636;
+      }
+      @media (prefers-color-scheme: dark) {
+        :root {
+          --main-site-background: #18171d;
+          --main-card-border: #3d3d3f;
+          --main-card-background: #1b1c20;
+          --main-font-color: #f7f7fa;
+        }
+      }
+      a {
+        text-decoration: none;
+        color: var(--main-font-color);
+      }
+      body {
+        background-color: var(--main-site-background);
+        color: var(--main-font-color);
+        font-family: "PingFang SC", "Open Sans", "Microsoft YaHei", sans-serif;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-direction: column;
+        width: 100vw;
+        width: 100dvw;
+        min-height: 100vh;
+        min-height: 100dvh;
+        padding: 20px 0;
+        transition:
+          color 0.3s,
+          background-color 0.3s;
+      }
+      header {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+      }
+      header .logo img {
+        width: 100px;
+        height: 100px;
+        margin-bottom: 20px;
+      }
+      header .title {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+      }
+      header .title .site-name {
+        font-size: 30px;
+        font-weight: bold;
+      }
+      header .title .site-tip {
+        font-size: 20px;
+        margin-top: 8px;
+        opacity: 0.6;
+      }
+      main {
+        margin: 30px 20px 60px;
+        border-radius: 16px;
+        padding: 30px;
+        max-width: 768px;
+        min-width: 0;
+        width: min(768px, calc(100vw - 40px));
+        background-color: var(--main-card-background);
+        border: 1px solid var(--main-card-border);
+      }
+      main .tip {
+        display: flex;
+        justify-content: center;
+        margin-bottom: 20px;
+        opacity: 0.4;
+      }
+      main #url {
+        display: block;
+        padding: 12px 20px;
+        border-radius: 8px;
+        width: 100%;
+        overflow-wrap: anywhere;
+        text-align: center;
+        border: 1px solid var(--main-card-border);
+        background-color: var(--main-site-background);
+      }
+      main #site-info {
+        display: inline-flex;
+        width: 100%;
+        flex-direction: row;
+        align-items: center;
+        justify-content: center;
+        margin-top: 20px;
+        font-size: 18px;
+      }
+      main #jump-content.warn {
+        color: #ffb02e;
+      }
+      main #jump-content.safe {
+        color: #00d26a;
+      }
+      main #jump-content.danger {
+        color: #f8312f;
+      }
+      main #jump-button {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        height: 44px;
+        width: 160px;
+        margin: 30px auto 0;
+        border-radius: 8px;
+        color: var(--main-font-color);
+        background-color: var(--main-card-border);
+        transition: background-color 0.3s;
+        cursor: pointer;
+        border: 0;
+        font: inherit;
+      }
+      main #jump-button:disabled { opacity: .5; cursor: not-allowed; }
+      main #jump-button:hover {
+        background-color: var(--main-site-background);
+      }
+      footer {
+        width: 100%;
+        text-align: center;
+        position: static;
+        margin: 20px;
+        opacity: 0.6;
+        font-size: 15px;
+      }
+      footer .icp::before {
+        content: "|";
+        margin: 0 8px;
+        margin-left: 4px;
+        opacity: 0.2;
+      }
+    </style>
+  </head>
+
+  <body>
+    <header>
+      <div class="logo">
+        <img src="./images/logo/logo.webp" alt="" />
+      </div>
+      <div class="title">
+        <span class="site-name">沁·拾遗轩</span>
+        <span class="site-tip">咕咕嘎嘎?</span>
+      </div>
+    </header>
+    <main>
+      <span class="tip">您即将离开【沁·拾遗轩】，前往</span>
+      <span id="url"></span>
+      <div id="jump-content" class="warn">
+        <span id="site-info">⚠️ 该网址安全性未知，请注意您的帐号和财产安全</span>
+        <button id="jump-button" type="button" disabled>继续前往</button>
+      </div>
+    </main>
+    <footer>
+      <a class="power" href="https://coderama.top/">
+        ©
+        <span id="copyright-year"></span>
+        沁·拾遗轩
+      </a>
+      <a class="icp" href="https://beian.miit.gov.cn/" target="_blank"> 下北沢[网]安字第114514-1919号 </a>
+    </footer>
+    <script defer src="/js/blog-safety.js"></script>
+    <script defer src="/js/redirect.js"></script>
+  </body>
+</html>

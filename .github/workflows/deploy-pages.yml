@@ -1,58 +1,69 @@
-name: Deploy to GitHub Pages
+name: Build and deploy Hugo blog
 
 on:
   push:
-    branches:
-      - main  # 每次推送到 main 分支时触发部署
-    paths-ignore:
-      - '.github/**'  # 替换为要排除的文件或文件夹路径
-      - 'pages/**'
-      - 'public/**'
-      - '.vitepress/**'
-  workflow_dispatch:  # 允许手动触发
+    branches: [main]
+  pull_request:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: pages-${{ github.ref }}
+  cancel-in-progress: true
 
 jobs:
   build:
     runs-on: ubuntu-latest
-    env:
-      REPO_URL: "godsboy404/godsboy404.github.io"  # 远程仓库的 URL
-      BUILD_PATH: ".vitepress/dist"  # 构建输出路径
-      CUSTOM_DOMAIN: "coderama.top"  # 自定义域名
-
     steps:
-      - name: Set up Node.js
-        uses: actions/setup-node@v3
+      - name: Checkout
+        uses: actions/checkout@v4
         with:
-          node-version: '20'
-
-      - name: Checkout repository
-        uses: actions/checkout@v3
-
-      # 安装 pnpm、安装依赖并构建项目
-      - name: Install pnpm
-        run: npm install -g pnpm
-      - name: Install dependencies and build
+          submodules: recursive
+      - name: Set up Hugo
+        uses: peaceiris/actions-hugo@v3
+        with:
+          hugo-version: '0.169.0'
+      - name: Build
+        run: hugo --gc --minify --panicOnWarning
+      - name: Check generated site
+        run: python3 scripts/check_site.py
+      - name: Set up Node for regression tests
+        uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Test browser scripts
+        # Dependencies are test-only; Hugo remains the site's only build tool.
         run: |
-          pnpm install
-          pnpm build
+          npm install --prefix /tmp/blog-tests --no-save --ignore-scripts --package-lock=false linkedom@0.18.12
+          BLOG_TEST_MODULES=/tmp/blog-tests/node_modules node --test tests/browser-scripts.test.cjs
+      - name: Save validated build
+        uses: actions/upload-artifact@v4
+        with:
+          name: hugo-site
+          path: public/
+          retention-days: 1
 
-      # 将静态文件部署到 pages 分支
-      - name: Deploy to GitHub Pages
-        run: |
-          cd $BUILD_PATH       
-          echo "$CUSTOM_DOMAIN" > CNAME  # 使用自定义域名
-          git config --global user.email "actions@github.com"
-          git config --global user.name "GitHub Actions"
-          # 初始化一个新的 git 仓库
-          git init
-          git add .
-          git commit -m "Deploy to GitHub Pages"
-          # 创建 pages 分支（如果不存在）
-          git checkout -B pages
-
-          # 添加远程仓库并推送到 pages 分支
-          git remote add origin https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/${{ env.REPO_URL }}.git
-          git push --force origin pages
-
-        env:
-          CI: true
+  deploy:
+    needs: build
+    if: github.event_name != 'pull_request' && github.ref == 'refs/heads/main'
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - name: Checkout deployment repository
+        uses: actions/checkout@v4
+      - name: Download validated build
+        uses: actions/download-artifact@v4
+        with:
+          name: hugo-site
+          path: public/
+      - name: Deploy to existing pages branch
+        uses: peaceiris/actions-gh-pages@v4
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./public
+          publish_branch: pages
+          cname: coderama.top

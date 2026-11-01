@@ -1,10 +1,9 @@
 {
-  "cleanUrls": true,
-  "framework": "vitepress",
-  "outputDirectory": "./.vitepress/dist",
-  "rewrites": [
-    { "source": "/sitemap.xml", "destination": "/sitemap.xml" },
-    { "source": "/feed.xml", "destination": "/feed.xml" },
-    { "source": "/:path*", "destination": "/index.html" }
-  ]
+  "framework": "hugo",
+  "buildCommand": "hugo --gc --minify",
+  "outputDirectory": "public",
+  "env": {
+    "HUGO_VERSION": "0.169.0"
+  },
+  "cleanUrls": true
 }
