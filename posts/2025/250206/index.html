@@ -1,71 +1,384 @@
-<!doctype html><html lang=zh-CN><head><meta http-equiv=X-Clacks-Overhead content="GNU Terry Pratchett"><meta charset=utf-8><meta name=viewport content="width=device-width,initial-scale=1"><link rel="shortcut icon" href=https://coderama.top/favicon.ico><title>Tmux 使用教程 | 沁·拾遗轩</title><meta name=title content="Tmux 使用教程"><meta name=description content="Tmux 快捷键记录，转自阮一峰blog。"><meta name=keywords content="备份,"><meta property="og:url" content="https://coderama.top/posts/2025/250206/"><meta property="og:site_name" content="沁·拾遗轩"><meta property="og:title" content="Tmux 使用教程"><meta property="og:description" content="Tmux 快捷键记录，转自阮一峰blog。"><meta property="og:locale" content="zh_CN"><meta property="og:type" content="article"><meta property="article:section" content="blog"><meta property="article:published_time" content="2025-02-06T00:00:00+00:00"><meta property="article:modified_time" content="2025-02-06T00:00:00+00:00"><meta property="article:tag" content="备份"><meta property="og:image" content="https://coderama.top/images/logo/logo.webp"><meta name=twitter:card content="summary_large_image"><meta name=twitter:image content="https://coderama.top/images/logo/logo.webp"><meta name=twitter:title content="Tmux 使用教程"><meta name=twitter:description content="Tmux 快捷键记录，转自阮一峰blog。"><meta itemprop=name content="Tmux 使用教程"><meta itemprop=description content="Tmux 快捷键记录，转自阮一峰blog。"><meta itemprop=datePublished content="2025-02-06T00:00:00+00:00"><meta itemprop=dateModified content="2025-02-06T00:00:00+00:00"><meta itemprop=wordCount content="2364"><meta itemprop=image content="https://coderama.top/images/logo/logo.webp"><meta itemprop=keywords content="备份"><meta name=referrer content="no-referrer-when-downgrade"><style>:root{--width:720px;--font-main:Verdana, sans-serif;--font-secondary:Verdana, sans-serif;--font-scale:1em;--background-color:#fff;--heading-color:#222;--text-color:#444;--link-color:#3273dc;--visited-color:#8b6fcb;--blockquote-color:#222}@media(prefers-color-scheme:dark){:root{--background-color:#01242e;--heading-color:#eee;--text-color:#ddd;--link-color:#8cc2dd;--visited-color:#8b6fcb;--blockquote-color:#ccc}}body{font-family:var(--font-secondary);font-size:var(--font-scale);margin:auto;padding:20px;max-width:var(--width);text-align:left;background-color:var(--background-color);word-wrap:break-word;overflow-wrap:break-word;line-height:1.5;color:var(--text-color)}h1,h2,h3,h4,h5,h6{font-family:var(--font-main);color:var(--heading-color)}a{color:var(--link-color);cursor:pointer;text-decoration:none}a:hover{text-decoration:underline}nav a{margin-right:8px}strong,b{color:var(--heading-color)}button{margin:0;cursor:pointer}time{font-family:monospace;font-style:normal;font-size:15px}main{line-height:1.6}table{width:100%}hr{border:0;border-top:1px dashed}img{max-width:100%}code{font-family:monospace;padding:2px;border-radius:3px}blockquote{border-left:1px solid #999;color:var(--blockquote-color);padding-left:20px;font-style:italic}footer{padding:25px 0;text-align:center}.title:hover{text-decoration:none}.title h1{font-size:1.5em}.inline{width:auto!important}.highlight,.code{border-radius:3px;margin-block-start:1em;margin-block-end:1em;overflow-x:auto}.highlight pre,.code pre{min-width:100%;width:max-content}ul.blog-posts{list-style-type:none;padding:unset}ul.blog-posts li{display:flex}ul.blog-posts li span{flex:0 0 130px}ul.blog-posts li a:visited{color:var(--visited-color)}</style><link rel=canonical href=https://coderama.top/posts/2025/250206/><link rel=manifest href=/manifest.webmanifest><link rel=apple-touch-icon href=/images/logo/apple-touch-icon.png><style>body{overflow-wrap:anywhere}pre{overflow-x:auto;overflow-wrap:normal}nav a{display:inline-block;margin-bottom:.4rem}table{display:block;max-width:100%;overflow-x:auto}img{height:auto}[hidden]{display:none!important}mjx-container[display=true]{max-width:100%;overflow-x:auto;overflow-y:hidden}@media(max-width:420px){ul.blog-posts li{display:block;margin-bottom:.8rem}ul.blog-posts li span{display:block}}</style><script>window.MathJax={tex:{inlineMath:[["$","$"],["\\(","\\)"]],displayMath:[["$$","$$"],["\\[","\\]"]],processEscapes:!0},options:{skipHtmlTags:["script","noscript","style","textarea","pre","code"]}}</script><script defer src=https://cdn.jsdelivr.net/npm/mathjax@3.2.2/es5/tex-mml-chtml.js></script></head><body><header><a href=/ class=title><h2>沁·拾遗轩</h2></a><nav><a href=/>首页</a>
-<a href=/blog/>文章</a>
-<a href=/tags/>标签</a>
-<a href=/pages/link/>友链</a>
-<a href=/pages/about/>关于</a></nav></header><main><h1>Tmux 使用教程</h1><p><i><time datetime=2025-02-06>2025-02-06</time></i></p><content><h1 id=一tmux是什么>一、Tmux是什么？</h1><h2 id=11-会话与进程>1.1 会话与进程</h2><p>命令行的典型使用方式是，打开一个终端窗口（terminal window，以下简称"窗口"），在里面输入命令。<strong>用户与计算机的这种临时的交互，称为一次"会话"（session） 。</strong><br>会话的一个重要特点是，窗口与其中启动的进程是连在一起的。打开窗口，会话开始；关闭窗口，会话结束，会话内部的进程也会随之终止，不管有没有运行完。<br>一个典型的例子就是，SSH 登录远程计算机，打开一个远程窗口执行命令。这时，网络突然断线，再次登录的时候，是找不回上一次执行的命令的。因为上一次 SSH 会话已经终止了，里面的进程也随之消失了。<br>为了解决这个问题，会话与窗口可以"解绑"：窗口关闭时，会话并不终止，而是继续运行，等到以后需要的时候，再让会话"绑定"其他窗口。</p><h2 id=12-tmux的作用>1.2 Tmux的作用</h2><p><strong>Tmux 就是会话与窗口的"解绑"工具，将它们彻底分离。</strong></p><ul><li>它允许在单个窗口中，同时访问多个会话。这对于同时运行多个命令行程序很有用。</li><li>它可以让新窗口"接入"已经存在的会话。</li><li>它允许每个会话有多个连接窗口，因此可以多人实时共享会话。</li><li>它还支持窗口任意的垂直和水平拆分。</li></ul><p>类似的终端复用器还有 GNU Screen。Tmux 与它功能相似，但是更易用，也更强大。</p><h1 id=二基本用法>二、基本用法</h1><h2 id=21-安装略>2.1 安装（略）</h2><div class=highlight><pre tabindex=0 style=background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none><code class=language-bash data-lang=bash><span style=display:flex><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">1</span><span>$ brew/apt-get install tmux
-</span></span></code></pre></div><h2 id=22-启动与退出>2.2 启动与退出</h2><p>安装完成后，键入<code>tmux</code>命令，就进入了 Tmux 窗口。</p><div class=highlight><pre tabindex=0 style=background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none><code class=language-bash data-lang=bash><span style=display:flex><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">1</span><span>$ tmux
-</span></span></code></pre></div><p>上面命令会启动 Tmux 窗口，底部有一个状态栏。状态栏的左侧是窗口信息（编号和名称），右侧是系统信息。</p><p>按下<code>Ctrl+d</code>或者显式输入<code>exit</code>命令，就可以退出 Tmux 窗口。</p><h2 id=23-前缀键>2.3 前缀键</h2><p>Tmux 窗口有大量的快捷键。所有快捷键都要通过前缀键唤起。默认的前缀键是<code>Ctrl+b</code>，即先按下<code>Ctrl+b</code>，快捷键才会生效。<br>举例来说，帮助命令的快捷键是<code>Ctrl+b ?</code>。它的用法是，在 Tmux 窗口中，先按下<code>Ctrl+b</code>，再按下<code>?</code>，就会显示帮助信息。<br>然后，按下 ESC 键或<code>q</code>键，就可以退出帮助。</p><h1 id=三会话管理>三、会话管理</h1><h2 id=31-新建会话>3.1 新建会话</h2><p>第一个启动的 Tmux 窗口，编号是<code>0</code>，第二个窗口的编号是<code>1</code>，以此类推。这些窗口对应的会话，就是 0 号会话、1 号会话。<br>使用编号区分会话，不太直观，更好的方法是为会话起名。</p><div class=highlight><pre tabindex=0 style=background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none><code class=language-bash data-lang=bash><span style=display:flex><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">1</span><span>$ tmux new -s *session-name*
-</span></span></code></pre></div><p>上面命令新建一个指定名称的会话。</p><h2 id=32-分离会话>3.2 分离会话</h2><p>在 Tmux 窗口中，按下<code>Ctrl+b d</code>或者输入<code>tmux detach</code>命令，就会将当前会话与窗口分离。</p><div class=highlight><pre tabindex=0 style=background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none><code class=language-bash data-lang=bash><span style=display:flex><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">1</span><span>$ tmux detach
-</span></span></code></pre></div><p>上面命令执行后，就会退出当前 Tmux 窗口，但是会话和里面的进程仍然在后台运行。</p><p><code>tmux ls</code>命令可以查看当前所有的 Tmux 会话。</p><div class=highlight><pre tabindex=0 style=background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none><code class=language-bash data-lang=bash><span style=display:flex><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">1</span><span>$ tmux ls
-</span></span><span style=display:flex><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">2</span><span><span style=color:#60a0b0;font-style:italic># or</span>
-</span></span><span style=display:flex><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">3</span><span>$ tmux list-session
-</span></span></code></pre></div><h2 id=33-接入会话>3.3 接入会话</h2><p><code>tmux attach</code>命令用于重新接入某个已存在的会话。</p><div class=highlight><pre tabindex=0 style=background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none><code class=language-bash data-lang=bash><span style=display:flex><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">1</span><span><span style=color:#60a0b0;font-style:italic># 使用会话编号</span>
-</span></span><span style=display:flex><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">2</span><span>$ tmux attach -t <span style=color:#40a070>0</span>
-</span></span><span style=display:flex><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">3</span><span>
-</span></span><span style=display:flex><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">4</span><span><span style=color:#60a0b0;font-style:italic># 使用会话名称</span>
-</span></span><span style=display:flex><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">5</span><span>$ tmux attach -t *session-name*
-</span></span></code></pre></div><h2 id=34-杀死会话>3.4 杀死会话</h2><p><code>tmux kill-session</code>命令用于杀死某个会话。</p><div class=highlight><pre tabindex=0 style=background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none><code class=language-bash data-lang=bash><span style=display:flex><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">1</span><span><span style=color:#60a0b0;font-style:italic># 使用会话编号</span>
-</span></span><span style=display:flex><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">2</span><span>$ tmux kill-session -t <span style=color:#40a070>0</span>
-</span></span><span style=display:flex><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">3</span><span>
-</span></span><span style=display:flex><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">4</span><span><span style=color:#60a0b0;font-style:italic># 使用会话名称</span>
-</span></span><span style=display:flex><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">5</span><span>$ tmux kill-session -t *session-name*
-</span></span></code></pre></div><h2 id=35-切换会话>3.5 切换会话</h2><p><code>tmux attach</code>命令用于重新接入某个已存在的会话。</p><div class=highlight><pre tabindex=0 style=background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none><code class=language-bash data-lang=bash><span style=display:flex><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">1</span><span><span style=color:#60a0b0;font-style:italic># 使用会话编号</span>
-</span></span><span style=display:flex><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">2</span><span>$ tmux switch -t <span style=color:#40a070>0</span>
-</span></span><span style=display:flex><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">3</span><span>
-</span></span><span style=display:flex><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">4</span><span><span style=color:#60a0b0;font-style:italic># 使用会话名称</span>
-</span></span><span style=display:flex><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">5</span><span>$ tmux switch -t *session-name*
-</span></span></code></pre></div><h2 id=36-重命名会话>3.6 重命名会话</h2><p><code>tmux rename-session</code>命令用于重命名会话。</p><div class=highlight><pre tabindex=0 style=background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none><code class=language-bash data-lang=bash><span style=display:flex><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">1</span><span>$ tmux rename-session -t <span style=color:#40a070>0</span> *new-name*
-</span></span></code></pre></div><p>上面命令将0号会话重命名。</p><h2 id=37-会话快捷键>3.7 会话快捷键</h2><ul><li><code>Ctrl+b d</code>：分离当前会话。</li><li><code>Ctrl+b s</code>：列出所有会话。</li><li><code>Ctrl+b $</code>：重命名当前会话。</li></ul><h1 id=四最简操作流程>四、最简操作流程</h1><p>综上所述，以下是 Tmux 的最简操作流程。</p><ul><li>新建会话<code>tmux new -s my_session</code>。</li><li>在 Tmux 窗口运行所需的程序。</li><li>按下快捷键<code>Ctrl+b d</code>将会话分离。</li><li>下次使用时，重新连接到会话<code>tmux attach-session -t my_session</code>。</li></ul><h1 id=五窗格操作>五、窗格操作</h1><h2 id=51-划分窗格>5.1 划分窗格</h2><p><code>tmux split-window</code>命令用来划分窗格。</p><div class=highlight><pre tabindex=0 style=background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none><code class=language-bash data-lang=bash><span style=display:flex><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">1</span><span><span style=color:#60a0b0;font-style:italic># 划分上下两个窗格</span>
-</span></span><span style=display:flex><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">2</span><span>$ tmux split-window
-</span></span><span style=display:flex><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">3</span><span>
-</span></span><span style=display:flex><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">4</span><span><span style=color:#60a0b0;font-style:italic># 划分左右两个窗格</span>
-</span></span><span style=display:flex><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">5</span><span>$ tmux split-window -h
-</span></span></code></pre></div><h2 id=52-移动光标>5.2 移动光标</h2><p><code>tmux select-pane</code>命令用来移动光标位置。</p><div class=highlight><pre tabindex=0 style=background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none><code class=language-bash data-lang=bash><span style=display:flex><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 1</span><span><span style=color:#60a0b0;font-style:italic># 光标切换到上方窗格</span>
-</span></span><span style=display:flex><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 2</span><span>$ tmux <span style=color:#007020;font-weight:700>select</span>-pane -U
-</span></span><span style=display:flex><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 3</span><span>
-</span></span><span style=display:flex><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 4</span><span><span style=color:#60a0b0;font-style:italic># 光标切换到下方窗格</span>
-</span></span><span style=display:flex><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 5</span><span>$ tmux <span style=color:#007020;font-weight:700>select</span>-pane -D
-</span></span><span style=display:flex><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 6</span><span>
-</span></span><span style=display:flex><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 7</span><span><span style=color:#60a0b0;font-style:italic># 光标切换到左边窗格</span>
-</span></span><span style=display:flex><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 8</span><span>$ tmux <span style=color:#007020;font-weight:700>select</span>-pane -L
-</span></span><span style=display:flex><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 9</span><span>
-</span></span><span style=display:flex><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">10</span><span><span style=color:#60a0b0;font-style:italic># 光标切换到右边窗格</span>
-</span></span><span style=display:flex><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">11</span><span>$ tmux <span style=color:#007020;font-weight:700>select</span>-pane -R
-</span></span></code></pre></div><h2 id=53-交换窗格位置>5.3 交换窗格位置</h2><p><code>tmux swap-pane</code>命令用来交换窗格位置。</p><div class=highlight><pre tabindex=0 style=background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none><code class=language-bash data-lang=bash><span style=display:flex><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">1</span><span><span style=color:#60a0b0;font-style:italic># 当前窗格上移</span>
-</span></span><span style=display:flex><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">2</span><span>$ tmux swap-pane -U
-</span></span><span style=display:flex><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">3</span><span>
-</span></span><span style=display:flex><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">4</span><span><span style=color:#60a0b0;font-style:italic># 当前窗格下移</span>
-</span></span><span style=display:flex><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">5</span><span>$ tmux swap-pane -D
-</span></span></code></pre></div><h2 id=54-窗格快捷键>5.4 窗格快捷键</h2><p>下面是一些窗格操作的快捷键。</p><ul><li><code>Ctrl+b %</code>：划分左右两个窗格。</li><li><code>Ctrl+b "</code>：划分上下两个窗格。</li><li><code>Ctrl+b *arrow key*</code>：光标切换到其他窗格。<code>*arrow key*</code>是指向要切换到的窗格的方向键，比如切换到下方窗格，就按方向键↓。</li><li><code>Ctrl+b ;</code>：光标切换到上一个窗格。</li><li><code>Ctrl+b o</code>：光标切换到下一个窗格。</li><li><code>Ctrl+b {</code>：当前窗格与上一个窗格交换位置。</li><li><code>Ctrl+b }</code>：当前窗格与下一个窗格交换位置。</li><li><code>Ctrl+b Ctrl+o</code>：所有窗格向前移动一个位置，第一个窗格变成最后一个窗格。</li><li><code>Ctrl+b Alt+o</code>：所有窗格向后移动一个位置，最后一个窗格变成第一个窗格。</li><li><code>Ctrl+b x</code>：关闭当前窗格。</li><li><code>Ctrl+b !</code>：将当前窗格拆分为一个独立窗口。</li><li><code>Ctrl+b z</code>：当前窗格全屏显示，再使用一次会变回原来大小。</li><li><code>Ctrl+b Ctrl+*arrow key*</code>：按箭头方向调整窗格大小。</li><li><code>Ctrl+b q</code>：显示窗格编号。</li></ul><h1 id=六窗口管理>六、窗口管理</h1><p>除了将一个窗口划分成多个窗格，Tmux 也允许新建多个窗口。</p><h2 id=61-新建窗口>6.1 新建窗口</h2><p><code>tmux new-window</code>命令用来创建新窗口。</p><div class=highlight><pre tabindex=0 style=background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none><code class=language-bash data-lang=bash><span style=display:flex><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">1</span><span>$ tmux new-window
-</span></span><span style=display:flex><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">2</span><span>
-</span></span><span style=display:flex><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">3</span><span><span style=color:#60a0b0;font-style:italic># 新建一个指定名称的窗口</span>
-</span></span><span style=display:flex><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">4</span><span>$ tmux new-window -n *window-name*
-</span></span></code></pre></div><h2 id=62-切换窗口>6.2 切换窗口</h2><p><code>tmux select-window</code>命令用来切换窗口。</p><div class=highlight><pre tabindex=0 style=background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none><code class=language-bash data-lang=bash><span style=display:flex><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">1</span><span><span style=color:#60a0b0;font-style:italic># 切换到指定编号的窗口</span>
-</span></span><span style=display:flex><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">2</span><span>$ tmux <span style=color:#007020;font-weight:700>select</span>-window -t *window-number*
-</span></span><span style=display:flex><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">3</span><span>
-</span></span><span style=display:flex><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">4</span><span><span style=color:#60a0b0;font-style:italic># 切换到指定名称的窗口</span>
-</span></span><span style=display:flex><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">5</span><span>$ tmux <span style=color:#007020;font-weight:700>select</span>-window -t *window-name*
-</span></span></code></pre></div><h2 id=63-重命名窗口>6.3 重命名窗口</h2><p><code>tmux rename-window</code>命令用于为当前窗口起名（或重命名）。</p><div class=highlight><pre tabindex=0 style=background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none><code class=language-bash data-lang=bash><span style=display:flex><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">1</span><span>$ tmux rename-window *new-name*
-</span></span></code></pre></div><h2 id=64-窗口快捷键>6.4 窗口快捷键</h2><p>下面是一些窗口操作的快捷键。</p><ul><li><code>Ctrl+b c</code>：创建一个新窗口，状态栏会显示多个窗口的信息。</li><li><code>Ctrl+b p</code>：切换到上一个窗口（按照状态栏上的顺序）。</li><li><code>Ctrl+b n</code>：切换到下一个窗口。</li><li><code>Ctrl+b *number*</code>：切换到指定编号的窗口，其中的<em>number</em>是状态栏上的窗口编号。</li><li><code>Ctrl+b w</code>：从列表中选择窗口。</li><li><code>Ctrl+b ,</code>：窗口重命名。</li></ul><h1 id=七其他命令>七、其他命令</h1><p>下面是一些其他命令。</p><div class=highlight><pre tabindex=0 style=background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none><code class=language-bash data-lang=bash><span style=display:flex><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 1</span><span><span style=color:#60a0b0;font-style:italic># 列出所有快捷键，及其对应的 Tmux 命令</span>
-</span></span><span style=display:flex><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 2</span><span>$ tmux list-keys
-</span></span><span style=display:flex><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 3</span><span>
-</span></span><span style=display:flex><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 4</span><span><span style=color:#60a0b0;font-style:italic># 列出所有 Tmux 命令及其参数</span>
-</span></span><span style=display:flex><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 5</span><span>$ tmux list-commands
-</span></span><span style=display:flex><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 6</span><span>
-</span></span><span style=display:flex><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 7</span><span><span style=color:#60a0b0;font-style:italic># 列出当前所有 Tmux 会话的信息</span>
-</span></span><span style=display:flex><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 8</span><span>$ tmux info
-</span></span><span style=display:flex><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 9</span><span>
-</span></span><span style=display:flex><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">10</span><span><span style=color:#60a0b0;font-style:italic># 重新加载当前的 Tmux 配置</span>
-</span></span><span style=display:flex><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">11</span><span>$ tmux source-file ~/.tmux.conf
-</span></span></code></pre></div><h1 id=八参考链接>八、参考链接</h1><p><a href=https://www.hamvocke.com/blog/a-quick-and-easy-guide-to-tmux/>A Quick and Easy Guide to tmux</a><br><a href=https://danielmiessler.com/study/tmux/>Tactical tmux: The 10 Most Important Commands</a><br><a href=https://linuxize.com/post/getting-started-with-tmux/>Getting started with Tmux</a></p></content><h2>参考资料</h2><ul><li><a href=https://www.ruanyifeng.com/blog/2019/10/tmux.html>Tmux 使用教程</a></li></ul><p style=display:flex;gap:16px;justify-content:space-between><a href=/posts/2025/250115/>← 上一篇：计网🦈LAB</a>
-<a href=/posts/2025/250207/>下一篇：OS-笔记 →</a></p><p><a href=https://coderama.top/tags/%E5%A4%87%E4%BB%BD/>#备份</a></p></main><footer><p>© Leo · <a href=/rss.xml>RSS</a> · <a href=/pages/project/>项目</a> · <a href=/pages/privacy/>隐私</a> · <a href=/pages/cc/>版权</a></p><p>Made with <a href=https://github.com/janraasch/hugo-bearblog/>Hugo ʕ•ᴥ•ʔ Bear</a></p></footer></body></html>
+
+
+<!DOCTYPE html><html lang="zh-CN">
+
+<head>
+  
+  <meta charset="utf-8">
+  <meta name="hexo-theme" content="https://github.com/xaoxuu/hexo-theme-stellar/tree/2.0.0" theme-name="Stellar" theme-version="2.0.0">
+  
+  
+  <meta name="generator" content="Hexo 8.1.2">
+  <meta http-equiv='x-dns-prefetch-control' content='on' />
+  
+  <meta name="renderer" content="webkit">
+  <meta name="force-rendering" content="webkit">
+  <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+  <meta name="HandheldFriendly" content="True" >
+  <meta name="mobile-web-app-capable" content="yes">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="theme-color" media="(prefers-color-scheme: dark)" content="#000">
+  <meta name="theme-color" content="#f9fafb">
+  <title data-stellar-page-meta>Tmux 使用教程 - 沁·拾遗轩</title>
+  <script data-stellar-script="core">
+    (function () {
+      var key = 'stellar:v2:leftbar-state';
+      var fallback = "expanded";
+      try {
+        var value = localStorage.getItem(key);
+        document.documentElement.dataset.leftbarState = value === 'collapsed' || value === 'expanded' ? value : fallback;
+      } catch (error) {
+        document.documentElement.dataset.leftbarState = fallback;
+      }
+    })();
+  </script>
+
+  <meta name="description" content="Tmux 快捷键记录，转自阮一峰blog。" data-stellar-page-meta="">
+<meta property="og:type" content="article" data-stellar-page-meta="">
+<meta property="og:title" content="Tmux 使用教程" data-stellar-page-meta="">
+<meta property="og:url" content="https://coderama.top/posts/2025/250206/" data-stellar-page-meta="">
+<meta property="og:site_name" content="沁·拾遗轩" data-stellar-page-meta="">
+<meta property="og:description" content="Tmux 快捷键记录，转自阮一峰blog。" data-stellar-page-meta="">
+<meta property="og:locale" content="zh_CN" data-stellar-page-meta="">
+<meta property="article:author" content="Leo" data-stellar-page-meta="">
+<meta property="article:published_time" content="2025-02-05T16:00:00.000Z" data-stellar-page-meta="">
+<meta property="article:modified_time" content="2026-11-01T10:32:12.000Z" data-stellar-page-meta="">
+<meta property="article:tag" content="备份" data-stellar-page-meta="">
+<meta name="twitter:card" content="summary" data-stellar-page-meta=""><meta name="twitter:title" content="Tmux 使用教程" data-stellar-page-meta="">
+  
+  
+  <meta name="keywords" content="备份" data-stellar-page-meta="">
+
+  <!-- feed -->
+  
+
+  <link rel="preload" href="/css/main.css?v=2.0.0" as="style">
+  <link rel="stylesheet" href="/css/main.css?v=2.0.0">
+  <style>:root{--text-loading:"正在加载";--text-loading-error:"加载失败，请稍后重试。"}</style>
+
+
+  
+
+  
+    
+      
+<link rel="stylesheet" href="/css/code-highlight.css">
+
+    
+  
+
+  <script type="application/ld+json" data-stellar-page-meta="">{"@context":"https://schema.org","@type":"BlogPosting","author":{"@type":"Person","name":"Leo","sameAs":[]},"dateCreated":"2025-02-05T16:00:00+00:00","dateModified":"2026-11-01T10:32:12+00:00","datePublished":"2025-02-05T16:00:00+00:00","description":"一、Tmux是什么？\n1.1 会话与进程\n命令行的典型使用方式是，打开一个终端窗口（terminal window，以下简称\"窗口\"），在里面输入命令。用户与计算机的这种临时的交互，称为一次\"会话\"（session） 。\n会话的一个重要特点是，窗口与其中启动的进程是连在一起的。打开窗口，会话开始；关闭窗口，会话结束，会话内部的进程也会随之终止，不管有没有运行完。\n一个典型的例子就是，SSH ...","headline":"Tmux 使用教程","mainEntityOfPage":{"@type":"WebPage","@id":"https://coderama.top/posts/2025/250206/"},"publisher":{"@type":"Organization","name":"Leo","sameAs":[]},"url":"https://coderama.top/posts/2025/250206/","image":["https://gcore.jsdelivr.net/gh/cdn-x/placeholder@1.0.12/cover/76b86c0226ffd.svg"],"keywords":"备份","thumbnailUrl":"https://gcore.jsdelivr.net/gh/cdn-x/placeholder@1.0.12/cover/76b86c0226ffd.svg"}</script>
+  <link rel="manifest" href="/manifest.webmanifest"><link rel="apple-touch-icon" href="/images/logo/apple-touch-icon.png"><link rel="stylesheet" href="/css/site.css"><link rel="alternate" type="application/rss+xml" title="沁·拾遗轩" href="/rss.xml">
+
+  <link rel="stylesheet" href="/css/stellar-icons.css?v=7c185ad1a9a79674">
+  <link rel="preload" as="script" href="/js/stellar-icons.js?v=39c6ac17e854ffe2">
+  
+  
+</head>
+<body data-page-type="content" data-page-layout="post" data-article-style="tech"><div data-stellar-runtime-region id="site-cover" class="site-cover"></div><div class="site-shell" id="start" data-regions="topbar">
+<header data-stellar-runtime-region id="topbar-region" class="site-region site-region--topbar ui-surface" data-region="topbar"><div class="site-region__viewport"><div class="widget-instance widget-instance--brand" data-widget-id="topbar:fixed:brand" data-presentation="topbar">
+<header class="brand-header brand-header--topbar brand-header--site"><div class="brand-wrap"><a class="brand-image brand-image--avatar" href="&#x2F;" aria-label="沁·拾遗轩首页"><img no-lazy src="&#x2F;images&#x2F;logo&#x2F;logo.webp" alt="" onerror="this.onerror&#x3D;null;this.src&#x3D;&quot;&#x2F;images&#x2F;stellar-error.491ee870f4940739.svg&quot;"></a><a class="brand-title" href="&#x2F;"><div class="brand-name">沁·拾遗轩</div></a></div></header>
+</div>
+  <div class="widgets widget-stack widget-stack--topbar widget-stack--topbar"><div class="widget-instance widget-instance--spacer" data-widget-id="topbar:0:spacer" data-presentation="topbar"><span class="topbar-spacer" aria-hidden="true"></span></div><div class="widget-instance widget-instance--menu" data-widget-id="topbar:1:menu" data-presentation="topbar" data-leftbar-rail>
+
+
+<nav class="menu dis-select">
+<div class="ui-collection" data-layout="list" data-variant="nav" data-density="auto">
+  
+    
+<a class="ui-collection__item ui-interactive card-hover card-hover--spotlight is-active" href="&#x2F;" title="文章" aria-current="page">
+  
+  <span class="ui-icon"><svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24"><path fill="currentColor" fill-rule="evenodd" d="M5.879 2.879C5 3.757 5 5.172 5 8v8c0 2.828 0 4.243.879 5.121C6.757 22 8.172 22 11 22h2c2.828 0 4.243 0 5.121-.879C19 20.243 19 18.828 19 16V8c0-2.828 0-4.243-.879-5.121C17.243 2 15.828 2 13 2h-2c-2.828 0-4.243 0-5.121.879M8.25 17a.75.75 0 0 1 .75-.75h3a.75.75 0 0 1 0 1.5H9a.75.75 0 0 1-.75-.75M9 12.25a.75.75 0 0 0 0 1.5h6a.75.75 0 0 0 0-1.5zM8.25 9A.75.75 0 0 1 9 8.25h6a.75.75 0 0 1 0 1.5H9A.75.75 0 0 1 8.25 9" clip-rule="evenodd"/><path fill="currentColor" d="M5.235 4.058C5 4.941 5 6.177 5 8v8c0 1.823 0 3.058.235 3.942L5 19.924c-.975-.096-1.631-.313-2.121-.803C2 18.243 2 16.828 2 14v-4c0-2.829 0-4.243.879-5.121c.49-.49 1.146-.707 2.121-.803zm13.53 15.884C19 19.058 19 17.822 19 16V8c0-1.823 0-3.059-.235-3.942l.235.018c.975.096 1.631.313 2.121.803C22 5.757 22 7.17 22 9.999v4c0 2.83 0 4.243-.879 5.122c-.49.49-1.146.707-2.121.803z" opacity=".5"/></svg></span>
+  
+  
+    <span class="ui-collection__content">
+      
+      <span class="ui-collection__title">文章</span>
+      
+      
+    </span>
+  
+  
+  <span class="ui-collection__indicator"></span>
+</a>
+
+  
+    
+<a class="ui-collection__item ui-interactive card-hover card-hover--spotlight" href="&#x2F;tags&#x2F;" title="标签">
+  
+  <span class="ui-icon"><svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24"><!-- Icon from Solar by 480 Design - https://creativecommons.org/licenses/by/4.0/ --><path fill="currentColor" fill-rule="evenodd" d="M10.7226 3.20068C10.8335 2.80158 10.5998 2.38817 10.2007 2.27731C9.80163 2.16645 9.38822 2.40011 9.27736 2.79921L7.76327 8.24995H4C3.58579 8.24995 3.25 8.58573 3.25 8.99995C3.25 9.41416 3.58579 9.74995 4 9.74995H7.3466L5.81882 15.2499H2C1.58579 15.2499 1.25 15.5857 1.25 15.9999C1.25 16.4142 1.58579 16.7499 2 16.7499H5.40216L4.27736 20.7992C4.1665 21.1983 4.40016 21.6117 4.79927 21.7226C5.19837 21.8334 5.61178 21.5998 5.72264 21.2007L6.95895 16.7499H14.4022L13.2774 20.7992C13.1665 21.1983 13.4002 21.6117 13.7993 21.7226C14.1984 21.8334 14.6118 21.5998 14.7226 21.2007L15.959 16.7499H20C20.4142 16.7499 20.75 16.4142 20.75 15.9999C20.75 15.5857 20.4142 15.2499 20 15.2499H16.3756L17.9034 9.74995H22C22.4142 9.74995 22.75 9.41416 22.75 8.99995C22.75 8.58573 22.4142 8.24995 22 8.24995H18.3201L19.7226 3.20068C19.8335 2.80158 19.5998 2.38817 19.2007 2.27731C18.8016 2.16645 18.3882 2.40011 18.2774 2.79921L16.7633 8.24995H9.32006L10.7226 3.20068ZM14.8188 15.2499L16.3466 9.74995H8.9034L7.37562 15.2499H14.8188Z" clip-rule="evenodd"/></svg></span>
+  
+  
+    <span class="ui-collection__content">
+      
+      <span class="ui-collection__title">标签</span>
+      
+      
+    </span>
+  
+  
+  
+</a>
+
+  
+    
+<a class="ui-collection__item ui-interactive card-hover card-hover--spotlight" href="&#x2F;pages&#x2F;link&#x2F;" title="友链">
+  
+  <span class="ui-icon"><svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24"><g fill="currentColor"><g opacity=".5"><path d="M19.7388 4.26118C17.0572 1.57961 12.7095 1.57961 10.0279 4.26118L9.30707 4.98203C9.01418 5.27492 9.01418 5.7498 9.30707 6.04269C9.59997 6.33558 10.0748 6.33558 10.3677 6.04269L11.0886 5.32184C13.1844 3.22605 16.5823 3.22605 18.6781 5.32184C20.7739 7.41763 20.7739 10.8156 18.6781 12.9114L17.9573 13.6322C17.6644 13.9251 17.6644 14.4 17.9573 14.6929C18.2502 14.9858 18.725 14.9858 19.0179 14.6929L19.7388 13.972C22.4203 11.2905 22.4203 6.94276 19.7388 4.26118Z"/><path d="M6.04269 9.30707C6.33558 9.59997 6.33558 10.0748 6.04269 10.3677L5.32184 11.0886C3.22605 13.1844 3.22605 16.5823 5.32184 18.6781C7.41763 20.7739 10.8156 20.7739 12.9114 18.6781L13.6322 17.9573C13.9251 17.6644 14.4 17.6644 14.6929 17.9573C14.9858 18.2501 14.9858 18.725 14.6929 19.0179L13.972 19.7388C11.2905 22.4203 6.94276 22.4203 4.26118 19.7388C1.57961 17.0572 1.57961 12.7095 4.26118 10.0279L4.98203 9.30707C5.27492 9.01418 5.7498 9.01418 6.04269 9.30707Z"/></g><path d="M14.6933 9.30707C14.9862 9.59997 14.9862 10.0748 14.6933 10.3677L10.3682 14.6928C10.0753 14.9857 9.60045 14.9857 9.30756 14.6928C9.01467 14.3999 9.01467 13.9251 9.30756 13.6322L13.6327 9.30707C13.9255 9.01418 14.4004 9.01418 14.6933 9.30707Z"/></g></svg></span>
+  
+  
+    <span class="ui-collection__content">
+      
+      <span class="ui-collection__title">友链</span>
+      
+      
+    </span>
+  
+  
+  
+</a>
+
+  
+    
+<a class="ui-collection__item ui-interactive card-hover card-hover--spotlight" href="&#x2F;pages&#x2F;about&#x2F;" title="关于">
+  
+  <span class="ui-icon"><svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24"><g fill="currentColor"><path d="M12 2a10 10 0 1 0 0 20a10 10 0 0 0 0-20" opacity=".5"/><path d="M12 6a3 3 0 1 0 0 6a3 3 0 0 0 0-6m0 7.5c-3.04 0-5.5 1.57-5.5 3.5c0 .65.28 1.26.77 1.77A7.96 7.96 0 0 0 12 20.5a7.96 7.96 0 0 0 4.73-1.73c.49-.51.77-1.12.77-1.77c0-1.93-2.46-3.5-5.5-3.5"/></g></svg></span>
+  
+  
+    <span class="ui-collection__content">
+      
+      <span class="ui-collection__title">关于</span>
+      
+      
+    </span>
+  
+  
+  
+</a>
+
+  
+</div>
+
+</nav>
+
+</div><div class="widget-instance widget-instance--settings" data-widget-id="topbar:2:settings" data-presentation="topbar" data-leftbar-rail>
+<a class="settings-widget ui-collection__item ui-interactive card-hover card-hover--spotlight" href="&#x2F;settings&#x2F;" data-profile-provider="" data-profile-identity-enabled="false" data-profile-fallback-avatar="https:&#x2F;&#x2F;gcore.jsdelivr.net&#x2F;gh&#x2F;cdn-x&#x2F;placeholder@1.0.12&#x2F;avatar&#x2F;round&#x2F;3442075.svg" data-settings-placement="topbar" data-settings-label="设置" aria-label="设置" title="设置">
+  <span class="settings-widget__avatar" aria-hidden="true">
+    <span class="ui-icon"><svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24"><g fill="currentColor"><path fill-rule="evenodd" d="M12.4277 2C11.3139 2 10.2995 2.6007 8.27081 3.80211L7.58466 4.20846C5.55594 5.40987 4.54158 6.01057 3.98466 7C3.42773 7.98943 3.42773 9.19084 3.42773 11.5937V12.4063C3.42773 14.8092 3.42773 16.0106 3.98466 17C4.54158 17.9894 5.55594 18.5901 7.58466 19.7915L8.27081 20.1979C10.2995 21.3993 11.3139 22 12.4277 22C13.5416 22 14.5559 21.3993 16.5847 20.1979L17.2708 19.7915C19.2995 18.5901 20.3139 17.9894 20.8708 17C21.4277 16.0106 21.4277 14.8092 21.4277 12.4063V11.5937C21.4277 9.19084 21.4277 7.98943 20.8708 7C20.3139 6.01057 19.2995 5.40987 17.2708 4.20846L16.5847 3.80211C14.5559 2.6007 13.5416 2 12.4277 2Z" clip-rule="evenodd" opacity=".5"/><path d="M12.4277 8.25C10.3567 8.25 8.67773 9.92893 8.67773 12C8.67773 14.0711 10.3567 15.75 12.4277 15.75C14.4988 15.75 16.1777 14.0711 16.1777 12C16.1777 9.92893 14.4988 8.25 12.4277 8.25Z"/></g></svg></span>
+  </span>
+  <span class="settings-widget__name ui-collection__title">设置</span>
+</a>
+</div><div class="widget-instance widget-instance--toc" data-widget-id="topbar:3:toc" data-presentation="topbar"><details class="topbar-toc"><summary class="region-compact-action ui-interactive card-hover card-hover--spotlight" aria-label="btn.toc"><span class="ui-icon"><svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6h11m-11 6h11m-11 6h11M4 6h1v4m-1 0h2m0 8H4c0-1 2-2 2-3s-1-1.5-2-1"/></svg></span></summary><div class="topbar-toc-popover"><ol class="toc ui-collection-adapter"><li class="toc-item toc-level-1"><a class="toc-link ui-interactive" href="#%E4%B8%80%E3%80%81Tmux%E6%98%AF%E4%BB%80%E4%B9%88%EF%BC%9F"><span class="toc-text">一、Tmux是什么？</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link ui-interactive" href="#1-1-%E4%BC%9A%E8%AF%9D%E4%B8%8E%E8%BF%9B%E7%A8%8B"><span class="toc-text">1.1 会话与进程</span></a></li><li class="toc-item toc-level-2"><a class="toc-link ui-interactive" href="#1-2-Tmux%E7%9A%84%E4%BD%9C%E7%94%A8"><span class="toc-text">1.2 Tmux的作用</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link ui-interactive" href="#%E4%BA%8C%E3%80%81%E5%9F%BA%E6%9C%AC%E7%94%A8%E6%B3%95"><span class="toc-text">二、基本用法</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link ui-interactive" href="#2-1-%E5%AE%89%E8%A3%85%EF%BC%88%E7%95%A5%EF%BC%89"><span class="toc-text">2.1 安装（略）</span></a></li><li class="toc-item toc-level-2"><a class="toc-link ui-interactive" href="#2-2-%E5%90%AF%E5%8A%A8%E4%B8%8E%E9%80%80%E5%87%BA"><span class="toc-text">2.2 启动与退出</span></a></li><li class="toc-item toc-level-2"><a class="toc-link ui-interactive" href="#2-3-%E5%89%8D%E7%BC%80%E9%94%AE"><span class="toc-text">2.3 前缀键</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link ui-interactive" href="#%E4%B8%89%E3%80%81%E4%BC%9A%E8%AF%9D%E7%AE%A1%E7%90%86"><span class="toc-text">三、会话管理</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link ui-interactive" href="#3-1-%E6%96%B0%E5%BB%BA%E4%BC%9A%E8%AF%9D"><span class="toc-text">3.1 新建会话</span></a></li><li class="toc-item toc-level-2"><a class="toc-link ui-interactive" href="#3-2-%E5%88%86%E7%A6%BB%E4%BC%9A%E8%AF%9D"><span class="toc-text">3.2 分离会话</span></a></li><li class="toc-item toc-level-2"><a class="toc-link ui-interactive" href="#3-3-%E6%8E%A5%E5%85%A5%E4%BC%9A%E8%AF%9D"><span class="toc-text">3.3 接入会话</span></a></li><li class="toc-item toc-level-2"><a class="toc-link ui-interactive" href="#3-4-%E6%9D%80%E6%AD%BB%E4%BC%9A%E8%AF%9D"><span class="toc-text">3.4 杀死会话</span></a></li><li class="toc-item toc-level-2"><a class="toc-link ui-interactive" href="#3-5-%E5%88%87%E6%8D%A2%E4%BC%9A%E8%AF%9D"><span class="toc-text">3.5 切换会话</span></a></li><li class="toc-item toc-level-2"><a class="toc-link ui-interactive" href="#3-6-%E9%87%8D%E5%91%BD%E5%90%8D%E4%BC%9A%E8%AF%9D"><span class="toc-text">3.6 重命名会话</span></a></li><li class="toc-item toc-level-2"><a class="toc-link ui-interactive" href="#3-7-%E4%BC%9A%E8%AF%9D%E5%BF%AB%E6%8D%B7%E9%94%AE"><span class="toc-text">3.7 会话快捷键</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link ui-interactive" href="#%E5%9B%9B%E3%80%81%E6%9C%80%E7%AE%80%E6%93%8D%E4%BD%9C%E6%B5%81%E7%A8%8B"><span class="toc-text">四、最简操作流程</span></a></li><li class="toc-item toc-level-1"><a class="toc-link ui-interactive" href="#%E4%BA%94%E3%80%81%E7%AA%97%E6%A0%BC%E6%93%8D%E4%BD%9C"><span class="toc-text">五、窗格操作</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link ui-interactive" href="#5-1-%E5%88%92%E5%88%86%E7%AA%97%E6%A0%BC"><span class="toc-text">5.1 划分窗格</span></a></li><li class="toc-item toc-level-2"><a class="toc-link ui-interactive" href="#5-2-%E7%A7%BB%E5%8A%A8%E5%85%89%E6%A0%87"><span class="toc-text">5.2 移动光标</span></a></li><li class="toc-item toc-level-2"><a class="toc-link ui-interactive" href="#5-3-%E4%BA%A4%E6%8D%A2%E7%AA%97%E6%A0%BC%E4%BD%8D%E7%BD%AE"><span class="toc-text">5.3 交换窗格位置</span></a></li><li class="toc-item toc-level-2"><a class="toc-link ui-interactive" href="#5-4-%E7%AA%97%E6%A0%BC%E5%BF%AB%E6%8D%B7%E9%94%AE"><span class="toc-text">5.4 窗格快捷键</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link ui-interactive" href="#%E5%85%AD%E3%80%81%E7%AA%97%E5%8F%A3%E7%AE%A1%E7%90%86"><span class="toc-text">六、窗口管理</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link ui-interactive" href="#6-1-%E6%96%B0%E5%BB%BA%E7%AA%97%E5%8F%A3"><span class="toc-text">6.1 新建窗口</span></a></li><li class="toc-item toc-level-2"><a class="toc-link ui-interactive" href="#6-2-%E5%88%87%E6%8D%A2%E7%AA%97%E5%8F%A3"><span class="toc-text">6.2 切换窗口</span></a></li><li class="toc-item toc-level-2"><a class="toc-link ui-interactive" href="#6-3-%E9%87%8D%E5%91%BD%E5%90%8D%E7%AA%97%E5%8F%A3"><span class="toc-text">6.3 重命名窗口</span></a></li><li class="toc-item toc-level-2"><a class="toc-link ui-interactive" href="#6-4-%E7%AA%97%E5%8F%A3%E5%BF%AB%E6%8D%B7%E9%94%AE"><span class="toc-text">6.4 窗口快捷键</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link ui-interactive" href="#%E4%B8%83%E3%80%81%E5%85%B6%E4%BB%96%E5%91%BD%E4%BB%A4"><span class="toc-text">七、其他命令</span></a></li><li class="toc-item toc-level-1"><a class="toc-link ui-interactive" href="#%E5%85%AB%E3%80%81%E5%8F%82%E8%80%83%E9%93%BE%E6%8E%A5"><span class="toc-text">八、参考链接</span></a></li></ol></div></details></div></div></div></header>
+<div class="site-workspace"><main data-stellar-runtime-region class="site-main" id="main">
+
+
+<div class="article-banner-wrap slide-up"><div class="article banner top">
+  <div class="content">
+    
+    <div class="top bread-nav footnote"><div class="top-row"><div class="left" id="breadcrumb"><a class="cap breadcrumb" href="/">主页</a>
+<span class="sep"></span><a class="cap breadcrumb" href="/">文章</a>
+</div><div class="right"><span class="cap reading">1907 字 · 预计阅读 7 分钟</span></div></div><div class="meta-row">
+<div class="flex-row" id="post-meta"><span class="text created">发布于：<time datetime="2025-02-05T16:00:00.000Z">2025-02-06</time></span><span class="sep updated"></span><span class="text updated">更新于：<time datetime="2026-11-01T10:32:12.000Z">2026-11-01</time></span></div>
+</div></div>
+    
+    <div class="bottom only-title">
+      
+      <div class="text-area">
+        <h1 class="text title"><span>Tmux 使用教程</span></h1>
+        
+      </div>
+    </div>
+    
+  </div>
+  </div></div>
+<article class="md-text content slide-up"><h1 id="一、Tmux是什么？">一、Tmux是什么？</h1>
+<h2 id="1-1-会话与进程">1.1 会话与进程</h2>
+<p>命令行的典型使用方式是，打开一个终端窗口（terminal window，以下简称"窗口"），在里面输入命令。<strong>用户与计算机的这种临时的交互，称为一次"会话"（session） 。</strong><br>
+会话的一个重要特点是，窗口与其中启动的进程是连在一起的。打开窗口，会话开始；关闭窗口，会话结束，会话内部的进程也会随之终止，不管有没有运行完。<br>
+一个典型的例子就是，SSH 登录远程计算机，打开一个远程窗口执行命令。这时，网络突然断线，再次登录的时候，是找不回上一次执行的命令的。因为上一次 SSH 会话已经终止了，里面的进程也随之消失了。<br>
+为了解决这个问题，会话与窗口可以"解绑"：窗口关闭时，会话并不终止，而是继续运行，等到以后需要的时候，再让会话"绑定"其他窗口。</p>
+<h2 id="1-2-Tmux的作用">1.2 Tmux的作用</h2>
+<p><strong>Tmux 就是会话与窗口的"解绑"工具，将它们彻底分离。</strong></p>
+<ul>
+<li>它允许在单个窗口中，同时访问多个会话。这对于同时运行多个命令行程序很有用。</li>
+<li>它可以让新窗口"接入"已经存在的会话。</li>
+<li>它允许每个会话有多个连接窗口，因此可以多人实时共享会话。</li>
+<li>它还支持窗口任意的垂直和水平拆分。</li>
+</ul>
+<p>类似的终端复用器还有 GNU Screen。Tmux 与它功能相似，但是更易用，也更强大。</p>
+<h1 id="二、基本用法">二、基本用法</h1>
+<h2 id="2-1-安装（略）">2.1 安装（略）</h2>
+<figure class="highlight bash"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">$ brew/apt-get install tmux<br></code></pre></td></tr></tbody></table></figure>
+<h2 id="2-2-启动与退出">2.2 启动与退出</h2>
+<p>安装完成后，键入<code>tmux</code>命令，就进入了 Tmux 窗口。</p>
+<figure class="highlight bash"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">$ tmux<br></code></pre></td></tr></tbody></table></figure>
+<p>上面命令会启动 Tmux 窗口，底部有一个状态栏。状态栏的左侧是窗口信息（编号和名称），右侧是系统信息。</p>
+<p>按下<code>Ctrl+d</code>或者显式输入<code>exit</code>命令，就可以退出 Tmux 窗口。</p>
+<h2 id="2-3-前缀键">2.3 前缀键</h2>
+<p>Tmux 窗口有大量的快捷键。所有快捷键都要通过前缀键唤起。默认的前缀键是<code>Ctrl+b</code>，即先按下<code>Ctrl+b</code>，快捷键才会生效。<br>
+举例来说，帮助命令的快捷键是<code>Ctrl+b ?</code>。它的用法是，在 Tmux 窗口中，先按下<code>Ctrl+b</code>，再按下<code>?</code>，就会显示帮助信息。<br>
+然后，按下 ESC 键或<code>q</code>键，就可以退出帮助。</p>
+<h1 id="三、会话管理">三、会话管理</h1>
+<h2 id="3-1-新建会话">3.1 新建会话</h2>
+<p>第一个启动的 Tmux 窗口，编号是<code>0</code>，第二个窗口的编号是<code>1</code>，以此类推。这些窗口对应的会话，就是 0 号会话、1 号会话。<br>
+使用编号区分会话，不太直观，更好的方法是为会话起名。</p>
+<figure class="highlight bash"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">$ tmux new -s *session-name*<br></code></pre></td></tr></tbody></table></figure>
+<p>上面命令新建一个指定名称的会话。</p>
+<h2 id="3-2-分离会话">3.2 分离会话</h2>
+<p>在 Tmux 窗口中，按下<code>Ctrl+b d</code>或者输入<code>tmux detach</code>命令，就会将当前会话与窗口分离。</p>
+<figure class="highlight bash"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">$ tmux detach<br></code></pre></td></tr></tbody></table></figure>
+<p>上面命令执行后，就会退出当前 Tmux 窗口，但是会话和里面的进程仍然在后台运行。</p>
+<p><code>tmux ls</code>命令可以查看当前所有的 Tmux 会话。</p>
+<figure class="highlight bash"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs bash">$ tmux <span class="hljs-built_in">ls</span><br><span class="hljs-comment"># or</span><br>$ tmux list-session<br></code></pre></td></tr></tbody></table></figure>
+<h2 id="3-3-接入会话">3.3 接入会话</h2>
+<p><code>tmux attach</code>命令用于重新接入某个已存在的会话。</p>
+<figure class="highlight bash"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-comment"># 使用会话编号</span><br>$ tmux attach -t 0<br><br><span class="hljs-comment"># 使用会话名称</span><br>$ tmux attach -t *session-name*<br></code></pre></td></tr></tbody></table></figure>
+<h2 id="3-4-杀死会话">3.4 杀死会话</h2>
+<p><code>tmux kill-session</code>命令用于杀死某个会话。</p>
+<figure class="highlight bash"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-comment"># 使用会话编号</span><br>$ tmux kill-session -t 0<br><br><span class="hljs-comment"># 使用会话名称</span><br>$ tmux kill-session -t *session-name*<br></code></pre></td></tr></tbody></table></figure>
+<h2 id="3-5-切换会话">3.5 切换会话</h2>
+<p><code>tmux attach</code>命令用于重新接入某个已存在的会话。</p>
+<figure class="highlight bash"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-comment"># 使用会话编号</span><br>$ tmux switch -t 0<br><br><span class="hljs-comment"># 使用会话名称</span><br>$ tmux switch -t *session-name*<br></code></pre></td></tr></tbody></table></figure>
+<h2 id="3-6-重命名会话">3.6 重命名会话</h2>
+<p><code>tmux rename-session</code>命令用于重命名会话。</p>
+<figure class="highlight bash"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">$ tmux rename-session -t 0 *new-name*<br></code></pre></td></tr></tbody></table></figure>
+<p>上面命令将0号会话重命名。</p>
+<h2 id="3-7-会话快捷键">3.7 会话快捷键</h2>
+<ul>
+<li><code>Ctrl+b d</code>：分离当前会话。</li>
+<li><code>Ctrl+b s</code>：列出所有会话。</li>
+<li><code>Ctrl+b $</code>：重命名当前会话。</li>
+</ul>
+<h1 id="四、最简操作流程">四、最简操作流程</h1>
+<p>综上所述，以下是 Tmux 的最简操作流程。</p>
+<ul>
+<li>新建会话<code>tmux new -s my_session</code>。</li>
+<li>在 Tmux 窗口运行所需的程序。</li>
+<li>按下快捷键<code>Ctrl+b d</code>将会话分离。</li>
+<li>下次使用时，重新连接到会话<code>tmux attach-session -t my_session</code>。</li>
+</ul>
+<h1 id="五、窗格操作">五、窗格操作</h1>
+<h2 id="5-1-划分窗格">5.1 划分窗格</h2>
+<p><code>tmux split-window</code>命令用来划分窗格。</p>
+<figure class="highlight bash"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-comment"># 划分上下两个窗格</span><br>$ tmux split-window<br><br><span class="hljs-comment"># 划分左右两个窗格</span><br>$ tmux split-window -h<br></code></pre></td></tr></tbody></table></figure>
+<h2 id="5-2-移动光标">5.2 移动光标</h2>
+<p><code>tmux select-pane</code>命令用来移动光标位置。</p>
+<figure class="highlight bash"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-comment"># 光标切换到上方窗格</span><br>$ tmux select-pane -U<br><br><span class="hljs-comment"># 光标切换到下方窗格</span><br>$ tmux select-pane -D<br><br><span class="hljs-comment"># 光标切换到左边窗格</span><br>$ tmux select-pane -L<br><br><span class="hljs-comment"># 光标切换到右边窗格</span><br>$ tmux select-pane -R<br></code></pre></td></tr></tbody></table></figure>
+<h2 id="5-3-交换窗格位置">5.3 交换窗格位置</h2>
+<p><code>tmux swap-pane</code>命令用来交换窗格位置。</p>
+<figure class="highlight bash"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-comment"># 当前窗格上移</span><br>$ tmux swap-pane -U<br><br><span class="hljs-comment"># 当前窗格下移</span><br>$ tmux swap-pane -D<br></code></pre></td></tr></tbody></table></figure>
+<h2 id="5-4-窗格快捷键">5.4 窗格快捷键</h2>
+<p>下面是一些窗格操作的快捷键。</p>
+<ul>
+<li><code>Ctrl+b %</code>：划分左右两个窗格。</li>
+<li><code>Ctrl+b "</code>：划分上下两个窗格。</li>
+<li><code>Ctrl+b *arrow key*</code>：光标切换到其他窗格。<code>*arrow key*</code>是指向要切换到的窗格的方向键，比如切换到下方窗格，就按方向键↓。</li>
+<li><code>Ctrl+b ;</code>：光标切换到上一个窗格。</li>
+<li><code>Ctrl+b o</code>：光标切换到下一个窗格。</li>
+<li><code>Ctrl+b {</code>：当前窗格与上一个窗格交换位置。</li>
+<li><code>Ctrl+b }</code>：当前窗格与下一个窗格交换位置。</li>
+<li><code>Ctrl+b Ctrl+o</code>：所有窗格向前移动一个位置，第一个窗格变成最后一个窗格。</li>
+<li><code>Ctrl+b Alt+o</code>：所有窗格向后移动一个位置，最后一个窗格变成第一个窗格。</li>
+<li><code>Ctrl+b x</code>：关闭当前窗格。</li>
+<li><code>Ctrl+b !</code>：将当前窗格拆分为一个独立窗口。</li>
+<li><code>Ctrl+b z</code>：当前窗格全屏显示，再使用一次会变回原来大小。</li>
+<li><code>Ctrl+b Ctrl+*arrow key*</code>：按箭头方向调整窗格大小。</li>
+<li><code>Ctrl+b q</code>：显示窗格编号。</li>
+</ul>
+<h1 id="六、窗口管理">六、窗口管理</h1>
+<p>除了将一个窗口划分成多个窗格，Tmux 也允许新建多个窗口。</p>
+<h2 id="6-1-新建窗口">6.1 新建窗口</h2>
+<p><code>tmux new-window</code>命令用来创建新窗口。</p>
+<figure class="highlight bash"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs bash">$ tmux new-window<br><br><span class="hljs-comment"># 新建一个指定名称的窗口</span><br>$ tmux new-window -n *window-name*<br></code></pre></td></tr></tbody></table></figure>
+<h2 id="6-2-切换窗口">6.2 切换窗口</h2>
+<p><code>tmux select-window</code>命令用来切换窗口。</p>
+<figure class="highlight bash"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-comment"># 切换到指定编号的窗口</span><br>$ tmux select-window -t *window-number*<br><br><span class="hljs-comment"># 切换到指定名称的窗口</span><br>$ tmux select-window -t *window-name*<br></code></pre></td></tr></tbody></table></figure>
+<h2 id="6-3-重命名窗口">6.3 重命名窗口</h2>
+<p><code>tmux rename-window</code>命令用于为当前窗口起名（或重命名）。</p>
+<figure class="highlight bash"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">$ tmux rename-window *new-name*<br></code></pre></td></tr></tbody></table></figure>
+<h2 id="6-4-窗口快捷键">6.4 窗口快捷键</h2>
+<p>下面是一些窗口操作的快捷键。</p>
+<ul>
+<li><code>Ctrl+b c</code>：创建一个新窗口，状态栏会显示多个窗口的信息。</li>
+<li><code>Ctrl+b p</code>：切换到上一个窗口（按照状态栏上的顺序）。</li>
+<li><code>Ctrl+b n</code>：切换到下一个窗口。</li>
+<li><code>Ctrl+b *number*</code>：切换到指定编号的窗口，其中的<em>number</em>是状态栏上的窗口编号。</li>
+<li><code>Ctrl+b w</code>：从列表中选择窗口。</li>
+<li><code>Ctrl+b ,</code>：窗口重命名。</li>
+</ul>
+<h1 id="七、其他命令">七、其他命令</h1>
+<p>下面是一些其他命令。</p>
+<figure class="highlight bash"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-comment"># 列出所有快捷键，及其对应的 Tmux 命令</span><br>$ tmux list-keys<br><br><span class="hljs-comment"># 列出所有 Tmux 命令及其参数</span><br>$ tmux list-commands<br><br><span class="hljs-comment"># 列出当前所有 Tmux 会话的信息</span><br>$ tmux info<br><br><span class="hljs-comment"># 重新加载当前的 Tmux 配置</span><br>$ tmux source-file ~/.tmux.conf<br></code></pre></td></tr></tbody></table></figure>
+<h1 id="八、参考链接">八、参考链接</h1>
+<p><a target="_blank" rel="noopener" href="https://www.hamvocke.com/blog/a-quick-and-easy-guide-to-tmux/" data-md-link=""><span class="md-link-icon ui-icon" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24"><g fill="currentColor"><g opacity=".5"><path d="M19.7388 4.26118C17.0572 1.57961 12.7095 1.57961 10.0279 4.26118L9.30707 4.98203C9.01418 5.27492 9.01418 5.7498 9.30707 6.04269C9.59997 6.33558 10.0748 6.33558 10.3677 6.04269L11.0886 5.32184C13.1844 3.22605 16.5823 3.22605 18.6781 5.32184C20.7739 7.41763 20.7739 10.8156 18.6781 12.9114L17.9573 13.6322C17.6644 13.9251 17.6644 14.4 17.9573 14.6929C18.2502 14.9858 18.725 14.9858 19.0179 14.6929L19.7388 13.972C22.4203 11.2905 22.4203 6.94276 19.7388 4.26118Z"></path><path d="M6.04269 9.30707C6.33558 9.59997 6.33558 10.0748 6.04269 10.3677L5.32184 11.0886C3.22605 13.1844 3.22605 16.5823 5.32184 18.6781C7.41763 20.7739 10.8156 20.7739 12.9114 18.6781L13.6322 17.9573C13.9251 17.6644 14.4 17.6644 14.6929 17.9573C14.9858 18.2501 14.9858 18.725 14.6929 19.0179L13.972 19.7388C11.2905 22.4203 6.94276 22.4203 4.26118 19.7388C1.57961 17.0572 1.57961 12.7095 4.26118 10.0279L4.98203 9.30707C5.27492 9.01418 5.7498 9.01418 6.04269 9.30707Z"></path></g><path d="M14.6933 9.30707C14.9862 9.59997 14.9862 10.0748 14.6933 10.3677L10.3682 14.6928C10.0753 14.9857 9.60045 14.9857 9.30756 14.6928C9.01467 14.3999 9.01467 13.9251 9.30756 13.6322L13.6327 9.30707C13.9255 9.01418 14.4004 9.01418 14.6933 9.30707Z"></path></g></svg></span>A Quick and Easy Guide to tmux</a><br>
+<a target="_blank" rel="noopener" href="https://danielmiessler.com/study/tmux/" data-md-link=""><span class="md-link-icon ui-icon" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24"><g fill="currentColor"><g opacity=".5"><path d="M19.7388 4.26118C17.0572 1.57961 12.7095 1.57961 10.0279 4.26118L9.30707 4.98203C9.01418 5.27492 9.01418 5.7498 9.30707 6.04269C9.59997 6.33558 10.0748 6.33558 10.3677 6.04269L11.0886 5.32184C13.1844 3.22605 16.5823 3.22605 18.6781 5.32184C20.7739 7.41763 20.7739 10.8156 18.6781 12.9114L17.9573 13.6322C17.6644 13.9251 17.6644 14.4 17.9573 14.6929C18.2502 14.9858 18.725 14.9858 19.0179 14.6929L19.7388 13.972C22.4203 11.2905 22.4203 6.94276 19.7388 4.26118Z"></path><path d="M6.04269 9.30707C6.33558 9.59997 6.33558 10.0748 6.04269 10.3677L5.32184 11.0886C3.22605 13.1844 3.22605 16.5823 5.32184 18.6781C7.41763 20.7739 10.8156 20.7739 12.9114 18.6781L13.6322 17.9573C13.9251 17.6644 14.4 17.6644 14.6929 17.9573C14.9858 18.2501 14.9858 18.725 14.6929 19.0179L13.972 19.7388C11.2905 22.4203 6.94276 22.4203 4.26118 19.7388C1.57961 17.0572 1.57961 12.7095 4.26118 10.0279L4.98203 9.30707C5.27492 9.01418 5.7498 9.01418 6.04269 9.30707Z"></path></g><path d="M14.6933 9.30707C14.9862 9.59997 14.9862 10.0748 14.6933 10.3677L10.3682 14.6928C10.0753 14.9857 9.60045 14.9857 9.30756 14.6928C9.01467 14.3999 9.01467 13.9251 9.30756 13.6322L13.6327 9.30707C13.9255 9.01418 14.4004 9.01418 14.6933 9.30707Z"></path></g></svg></span>Tactical tmux: The 10 Most Important Commands</a><br>
+<a target="_blank" rel="noopener" href="https://linuxize.com/post/getting-started-with-tmux/" data-md-link=""><span class="md-link-icon ui-icon" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24"><g fill="currentColor"><g opacity=".5"><path d="M19.7388 4.26118C17.0572 1.57961 12.7095 1.57961 10.0279 4.26118L9.30707 4.98203C9.01418 5.27492 9.01418 5.7498 9.30707 6.04269C9.59997 6.33558 10.0748 6.33558 10.3677 6.04269L11.0886 5.32184C13.1844 3.22605 16.5823 3.22605 18.6781 5.32184C20.7739 7.41763 20.7739 10.8156 18.6781 12.9114L17.9573 13.6322C17.6644 13.9251 17.6644 14.4 17.9573 14.6929C18.2502 14.9858 18.725 14.9858 19.0179 14.6929L19.7388 13.972C22.4203 11.2905 22.4203 6.94276 19.7388 4.26118Z"></path><path d="M6.04269 9.30707C6.33558 9.59997 6.33558 10.0748 6.04269 10.3677L5.32184 11.0886C3.22605 13.1844 3.22605 16.5823 5.32184 18.6781C7.41763 20.7739 10.8156 20.7739 12.9114 18.6781L13.6322 17.9573C13.9251 17.6644 14.4 17.6644 14.6929 17.9573C14.9858 18.2501 14.9858 18.725 14.6929 19.0179L13.972 19.7388C11.2905 22.4203 6.94276 22.4203 4.26118 19.7388C1.57961 17.0572 1.57961 12.7095 4.26118 10.0279L4.98203 9.30707C5.27492 9.01418 5.7498 9.01418 6.04269 9.30707Z"></path></g><path d="M14.6933 9.30707C14.9862 9.59997 14.9862 10.0748 14.6933 10.3677L10.3682 14.6928C10.0753 14.9857 9.60045 14.9857 9.30756 14.6928C9.01467 14.3999 9.01467 13.9251 9.30756 13.6322L13.6327 9.30707C13.9255 9.01418 14.4004 9.01418 14.6933 9.30707Z"></path></g></svg></span>Getting started with Tmux</a></p>
+</article>
+<div class="article-tags slide-up"><a class="tag" href="/tags/%E5%A4%87%E4%BB%BD/"><svg class="icon" viewBox="0 0 1 1" data-icon="default:hashtag" aria-hidden="true"></svg>备份</a></div>
+
+
+
+<div class="article-footer slide-up">
+    <section id="references">
+      <div class="header"><span>参考资料</span></div>
+      <div class="body"><ul><li class="post-title"><p><a target="_blank" rel="noopener" href="https://www.ruanyifeng.com/blog/2019/10/tmux.html" data-md-link=""><span class="md-link-icon ui-icon" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24"><g fill="currentColor"><g opacity=".5"><path d="M19.7388 4.26118C17.0572 1.57961 12.7095 1.57961 10.0279 4.26118L9.30707 4.98203C9.01418 5.27492 9.01418 5.7498 9.30707 6.04269C9.59997 6.33558 10.0748 6.33558 10.3677 6.04269L11.0886 5.32184C13.1844 3.22605 16.5823 3.22605 18.6781 5.32184C20.7739 7.41763 20.7739 10.8156 18.6781 12.9114L17.9573 13.6322C17.6644 13.9251 17.6644 14.4 17.9573 14.6929C18.2502 14.9858 18.725 14.9858 19.0179 14.6929L19.7388 13.972C22.4203 11.2905 22.4203 6.94276 19.7388 4.26118Z"></path><path d="M6.04269 9.30707C6.33558 9.59997 6.33558 10.0748 6.04269 10.3677L5.32184 11.0886C3.22605 13.1844 3.22605 16.5823 5.32184 18.6781C7.41763 20.7739 10.8156 20.7739 12.9114 18.6781L13.6322 17.9573C13.9251 17.6644 14.4 17.6644 14.6929 17.9573C14.9858 18.2501 14.9858 18.725 14.6929 19.0179L13.972 19.7388C11.2905 22.4203 6.94276 22.4203 4.26118 19.7388C1.57961 17.0572 1.57961 12.7095 4.26118 10.0279L4.98203 9.30707C5.27492 9.01418 5.7498 9.01418 6.04269 9.30707Z"></path></g><path d="M14.6933 9.30707C14.9862 9.59997 14.9862 10.0748 14.6933 10.3677L10.3682 14.6928C10.0753 14.9857 9.60045 14.9857 9.30756 14.6928C9.01467 14.3999 9.01467 13.9251 9.30756 13.6322L13.6327 9.30707C13.9255 9.01418 14.4004 9.01418 14.6933 9.30707Z"></path></g></svg></span>Tmux 使用教程</a></p>
+</li></ul></div>
+    </section>
+    <section id="license">
+      <div class="header"><span>许可协议</span></div>
+      <div class="body"><p>本站原创文章采用 <a target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-nd/4.0/deed.zh">CC BY-NC-ND 4.0</a> 许可，另有注明的内容除外。</p>
+</div>
+    </section></div>
+
+<div class="related-wrap slide-up" id="read-next"><section class="body"><div class="item" id="prev"><div class="note"><svg class="icon" viewBox="0 0 1 1" data-icon="default:arrow-left" aria-hidden="true"></svg> 较新文章</div><a href="/posts/2025/250207/">OS-笔记</a></div><div class="item" id="next"><div class="note">较早文章 <svg class="icon" viewBox="0 0 1 1" data-icon="default:arrow-right" aria-hidden="true"></svg></div><a href="/posts/2025/250115/">计网🦈LAB</a></div></section></div>
+
+
+
+
+
+
+<footer class="page-footer slide-up footnote"><hr><div class="text"><p>© Leo · <a href="/rss.xml">RSS</a> · <a href="/pages/project/">项目</a> · <a href="/pages/friends/">友圈鱼塘</a> · <a href="/pages/privacy/">隐私</a> · <a href="/pages/cc/">版权</a></p>
+<p>Powered by <a target="_blank" rel="noopener" href="https://hexo.io/">Hexo</a> · Theme <a target="_blank" rel="noopener" href="https://github.com/xaoxuu/hexo-theme-stellar">Stellar</a></p>
+</div></footer>
+</main></div><button type="button" class="site-scrim" data-shell-action="dismiss-drawer" aria-label="Close navigation" tabindex="-1"></button><div data-stellar-runtime-region class="site-dock" role="group" aria-label="Layout panels">
+  <button type="button" class="site-dock__button site-dock__button--rightbar ui-interactive" aria-label="Open rightbar" aria-controls="rightbar-region" aria-expanded="false" data-shell-action="toggle-rightbar-drawer">
+    <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6h11m-11 6h11m-11 6h11M4 6h1v4m-1 0h2m0 8H4c0-1 2-2 2-3s-1-1.5-2-1"/></svg>
+  </button>
+  <button type="button" class="site-dock__button site-dock__button--leftbar ui-interactive" aria-label="Open leftbar" aria-controls="leftbar-region" aria-expanded="false" data-shell-action="toggle-leftbar-drawer">
+    <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.5"><path d="M2 11c0-3.771 0-5.657 1.172-6.828C4.343 3 6.229 3 10 3h4c3.771 0 5.657 0 6.828 1.172C22 5.343 22 7.229 22 11v2c0 3.771 0 5.657-1.172 6.828C19.657 21 17.771 21 14 21h-4c-3.771 0-5.657 0-6.828-1.172C2 18.657 2 16.771 2 13z"/><path id="sep" stroke-linecap="round" d="M5.5 10h6m-5 4h4m4.5 7V3"/></g></svg>
+  </button>
+</div>
+</div><div class="site-scripts">
+<script data-stellar-script="core" src="/js/stellar-icons.js?v=39c6ac17e854ffe2"></script>
+
+<script data-stellar-script="defines">
+  window.canonical = window.stellarClientData.canonical;
+  const ctx = window.stellarClientData.ctx;
+  window.canonical.param = {permalink: "https://coderama.top/posts/2025/250206/", checklink: ctx.services.video.js};
+  ctx.date_suffix = {"just":"刚刚","min":"分钟前","hour":"小时前","day":"天前"};
+  if (ctx.search) Object.assign(ctx.search, {"more":"更多","no_more":"没有更多了"});
+  const def = window.stellarClientData.def;
+  window.ctx = ctx;
+  window.def = def;
+</script>
+
+
+<!-- core: 迁移期 DOM/资源兼容工具；Extension 注册与生命周期由 ESM runtime 所有 -->
+<script data-stellar-script="core" src="/js/utils.js?v=2.0.0"></script>
+<script data-stellar-script="core" src="/js/main.js?v=2.0.0" defer></script>
+<script data-stellar-script="core" defer src="/js/profile.js?v=2.0.0"></script>
+
+
+
+
+
+<script data-stellar-script="core" type="application/json" id="stellar-runtime-config">{"version":1,"root":"/","policy":{"cache":{"enabled":true,"defaultTtl":3600,"ttl":{"giscus":600,"waline":600,"artalk":600,"memos":600,"memos-user":86400,"sites":86400,"friends":86400,"friends_and_posts":86400,"siteinfo":86400},"maxEntries":200},"request":{"retries":2,"timeoutMs":5000,"idleTimeoutMs":3000,"maxCacheEntryBytes":204800},"features":{"codeCopyToastMs":2500},"providers":{"linkPrefetch":"flying_pages","lightbox":"fancybox","diagrams":"mermaid"}},"extensions":[{"id":"pin-slider","module":"/js/runtime/extensions/pin-slider.js","scope":"region","when":{"selector":".pin-slider"},"config":{}},{"id":"page-controls","module":"/js/runtime/extensions/page-controls.js","scope":"region","when":{"always":true},"config":{"highlight":"/js/search/highlight.js","tagtree":"/js/tagtree.js"}},{"id":"color-scheme-switch","module":"/js/runtime/extensions/color-scheme-switch.js","scope":"document","when":{"always":true},"config":{"messages":{"light":"切换到浅色模式","dark":"切换到深色模式","auto":"切换到跟随系统配色"}}},{"id":"search","module":"/js/runtime/extensions/search.js","scope":"document","when":{"selector":".search-input"},"config":{"provider":"local","options":{"scope":"all","includeContent":true,"cacheTtlSeconds":86400},"assets":{"client":null,"provider":"/js/search/local-search.js","shortcut":"/js/search/shortcut.js"}}},{"id":"hero-parallax","module":"/js/runtime/extensions/hero-parallax.js","scope":"region","when":{"selector":".wiki-hero"},"config":{}},{"id":"hero-effect","module":"/js/runtime/extensions/hero-effect.js","scope":"region","when":{"selector":"canvas[data-hero-effect]"},"config":{}},{"id":"lazy-loading","module":"/js/runtime/extensions/lazy-loading.js","scope":"document","when":{"always":true},"config":{"asset":"https://gcore.jsdelivr.net/npm/vanilla-lazyload@19.1/dist/lazyload.min.js"}},{"id":"deferred-icons","module":"/js/runtime/extensions/deferred-icons.js","scope":"region","when":{"selector":"svg.icon[data-icon]"},"config":{}},{"id":"dropdown","module":"/js/runtime/extensions/dropdown.js","scope":"region","when":{"selector":"details.dropdown"},"config":{}},{"id":"services","module":"/js/runtime/extensions/services.js","scope":"region","when":{"selector":"#artalk_container, #twikoo_container, #waline_container, .data-service, [class*='ds-'], a[cardlink], a[data-md-link][data-siteinfo-api], .site-card [data-siteinfo-api], .voice\u003eaudio, .video\u003evideo, .chat-file"},"config":{"marked":"https://gcore.jsdelivr.net/npm/marked@13.0/lib/marked.umd.min.js"}},{"id":"settings","module":"/js/runtime/extensions/settings.js","scope":"region","when":{"selector":".settings-page"},"config":{}},{"id":"lightbox","module":"/js/runtime/extensions/lightbox.js","scope":"region","when":{"selector":"[data-fancybox]:not(.error), .with-fancybox, .ds-memos, .timenode p\u003eimg"},"config":{"enabled":true,"selector":".timenode p\u003eimg","assets":{"localCss":"/css/plugins/fancybox.css","js":"https://gcore.jsdelivr.net/npm/@fancyapps/ui@5.0/dist/fancybox/fancybox.umd.js","css":"https://gcore.jsdelivr.net/npm/@fancyapps/ui@5.0/dist/fancybox/fancybox.css"}}},{"id":"reveal","module":"/js/runtime/extensions/reveal.js","scope":"region","when":{"selector":".slide-up"},"config":{"enabled":true,"duration":450,"interval":60,"distance":8,"blur":0}},{"id":"code-copy","module":"/js/runtime/extensions/code-copy.js","scope":"region","when":{"selector":".code"},"config":{"assets":{"js":"/js/plugins/copycode.js"},"messages":{"label":"复制","copied":"复制成功","denied":"未获得剪贴板权限","unsupported":"当前浏览器不支持剪贴板或页面不是 HTTPS"}}},{"id":"adaptive-text","module":"/js/runtime/extensions/adaptive-text.js","scope":"region","when":{"selector":"[data-text-adaptive]"},"config":{"assets":{"colorJs":"/js/color.js","js":"/js/plugins/adaptive-text.js"}}},{"id":"swiper","module":"/js/runtime/extensions/swiper.js","scope":"region","when":{"selector":"#swiper-api"},"config":{"assets":{"localCss":"/css/plugins/swiper.css","js":"https://unpkg.com/swiper@10.3/swiper-bundle.min.js","css":"https://unpkg.com/swiper@10.3/swiper-bundle.min.css"}}}]}</script>
+<script data-stellar-script="core" type="module" src="/js/runtime/index.js?v=2.0.0&runtime=1"></script>
+
+
+<!-- inject -->
+
+
+<script data-stellar-script="core" defer src="/js/navigation-init.js?v=2.0.0"></script>
+</div></body></html>
+

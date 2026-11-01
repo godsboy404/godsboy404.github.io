@@ -1,198 +1,403 @@
-<!doctype html><html lang=zh-CN><head><meta http-equiv=X-Clacks-Overhead content="GNU Terry Pratchett"><meta charset=utf-8><meta name=viewport content="width=device-width,initial-scale=1"><link rel="shortcut icon" href=https://coderama.top/favicon.ico><title>阔论Cpp | 沁·拾遗轩</title><meta name=title content="阔论Cpp"><meta name=description content="鉴于大一糟糕的C语言体验和学校老师堪忧的教学质量，故本学期下定决心恶补C/Cpp相关知识（"><meta name=keywords content="学习,"><meta property="og:url" content="https://coderama.top/posts/2024/240917/"><meta property="og:site_name" content="沁·拾遗轩"><meta property="og:title" content="阔论Cpp"><meta property="og:description" content="鉴于大一糟糕的C语言体验和学校老师堪忧的教学质量，故本学期下定决心恶补C/Cpp相关知识（"><meta property="og:locale" content="zh_CN"><meta property="og:type" content="article"><meta property="article:section" content="blog"><meta property="article:published_time" content="2024-09-17T00:00:00+00:00"><meta property="article:modified_time" content="2024-09-17T00:00:00+00:00"><meta property="article:tag" content="学习"><meta property="og:image" content="https://coderama.top/images/logo/logo.webp"><meta name=twitter:card content="summary_large_image"><meta name=twitter:image content="https://coderama.top/images/logo/logo.webp"><meta name=twitter:title content="阔论Cpp"><meta name=twitter:description content="鉴于大一糟糕的C语言体验和学校老师堪忧的教学质量，故本学期下定决心恶补C/Cpp相关知识（"><meta itemprop=name content="阔论Cpp"><meta itemprop=description content="鉴于大一糟糕的C语言体验和学校老师堪忧的教学质量，故本学期下定决心恶补C/Cpp相关知识（"><meta itemprop=datePublished content="2024-09-17T00:00:00+00:00"><meta itemprop=dateModified content="2024-09-17T00:00:00+00:00"><meta itemprop=wordCount content="2475"><meta itemprop=image content="https://coderama.top/images/logo/logo.webp"><meta itemprop=keywords content="学习"><meta name=referrer content="no-referrer-when-downgrade"><style>:root{--width:720px;--font-main:Verdana, sans-serif;--font-secondary:Verdana, sans-serif;--font-scale:1em;--background-color:#fff;--heading-color:#222;--text-color:#444;--link-color:#3273dc;--visited-color:#8b6fcb;--blockquote-color:#222}@media(prefers-color-scheme:dark){:root{--background-color:#01242e;--heading-color:#eee;--text-color:#ddd;--link-color:#8cc2dd;--visited-color:#8b6fcb;--blockquote-color:#ccc}}body{font-family:var(--font-secondary);font-size:var(--font-scale);margin:auto;padding:20px;max-width:var(--width);text-align:left;background-color:var(--background-color);word-wrap:break-word;overflow-wrap:break-word;line-height:1.5;color:var(--text-color)}h1,h2,h3,h4,h5,h6{font-family:var(--font-main);color:var(--heading-color)}a{color:var(--link-color);cursor:pointer;text-decoration:none}a:hover{text-decoration:underline}nav a{margin-right:8px}strong,b{color:var(--heading-color)}button{margin:0;cursor:pointer}time{font-family:monospace;font-style:normal;font-size:15px}main{line-height:1.6}table{width:100%}hr{border:0;border-top:1px dashed}img{max-width:100%}code{font-family:monospace;padding:2px;border-radius:3px}blockquote{border-left:1px solid #999;color:var(--blockquote-color);padding-left:20px;font-style:italic}footer{padding:25px 0;text-align:center}.title:hover{text-decoration:none}.title h1{font-size:1.5em}.inline{width:auto!important}.highlight,.code{border-radius:3px;margin-block-start:1em;margin-block-end:1em;overflow-x:auto}.highlight pre,.code pre{min-width:100%;width:max-content}ul.blog-posts{list-style-type:none;padding:unset}ul.blog-posts li{display:flex}ul.blog-posts li span{flex:0 0 130px}ul.blog-posts li a:visited{color:var(--visited-color)}</style><link rel=canonical href=https://coderama.top/posts/2024/240917/><link rel=manifest href=/manifest.webmanifest><link rel=apple-touch-icon href=/images/logo/apple-touch-icon.png><style>body{overflow-wrap:anywhere}pre{overflow-x:auto;overflow-wrap:normal}nav a{display:inline-block;margin-bottom:.4rem}table{display:block;max-width:100%;overflow-x:auto}img{height:auto}[hidden]{display:none!important}mjx-container[display=true]{max-width:100%;overflow-x:auto;overflow-y:hidden}@media(max-width:420px){ul.blog-posts li{display:block;margin-bottom:.8rem}ul.blog-posts li span{display:block}}</style></head><body><header><a href=/ class=title><h2>沁·拾遗轩</h2></a><nav><a href=/>首页</a>
-<a href=/blog/>文章</a>
-<a href=/tags/>标签</a>
-<a href=/pages/link/>友链</a>
-<a href=/pages/about/>关于</a></nav></header><main><h1>阔论Cpp</h1><p><i><time datetime=2024-09-17>2024-09-17</time></i></p><content><p>此博客持续更新，旨在记录一些重点、易错点、遗忘点<del>以及二次元美图</del>。</p><hr><h2 id=基操勿6>基操<del>勿6</del></h2><h3 id=stdio>stdIO</h3><p>整数输入输出：</p><div class=highlight><pre tabindex=0 style=background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none><code class=language-cpp data-lang=cpp><span style=display:flex><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">1</span><span><span style=color:#902000>int</span> a, b;
-</span></span><span style=display:flex><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">2</span><span>cin <span style=color:#666>&gt;&gt;</span> a <span style=color:#666>&gt;&gt;</span> b;
-</span></span><span style=display:flex><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">3</span><span>cout <span style=color:#666>&lt;&lt;</span> a <span style=color:#666>+</span> b <span style=color:#666>&lt;&lt;</span> endl;
-</span></span></code></pre></div><p>字符串：</p><div class=highlight><pre tabindex=0 style=background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none><code class=language-cpp data-lang=cpp><span style=display:flex><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">1</span><span>string str;
-</span></span><span style=display:flex><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">2</span><span>cin <span style=color:#666>&gt;&gt;</span> str;
-</span></span><span style=display:flex><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">3</span><span>cout <span style=color:#666>&lt;&lt;</span> str;
-</span></span></code></pre></div><p><code>cout &lt;&lt; “woof” &lt;&lt; endl;</code> 与 <code>cout &lt;&lt; “woof\n”;</code> 等同。</p><p>格式化输出 - 小数/科学计数法/字符串の限位：</p><div class=highlight><pre tabindex=0 style=background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none><code class=language-cpp data-lang=cpp><span style=display:flex><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">1</span><span>cout <span style=color:#666>&lt;&lt;</span> format( <span>“</span>{<span style=color:#666>:</span><span style=color:#40a070>.2f</span>} {<span style=color:#666>:</span><span style=color:#40a070>.3</span>e} {<span style=color:#666>:</span><span style=color:#40a070>.4</span>s}<span>\</span>n<span style=color:#4070a0>&#34;, 3.14159, 12345.678, &#34;</span>abcdef<span style=color:#4070a0>&#34;) &lt;&lt; endl;</span>
-</span></span><span style=display:flex><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">2</span><span>
-</span></span><span style=display:flex><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">3</span><span><span style=color:#60a0b0;font-style:italic>// 输出：3.14 1.235e+04 abcd
-</span></span></span></code></pre></div><p>输出地址：</p><div class=highlight><pre tabindex=0 style=background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none><code class=language-cpp data-lang=cpp><span style=display:flex><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">1</span><span><span style=color:#902000>char</span> c <span style=color:#666>=</span> <span style=color:#4070a0>&#39;a&#39;</span>;
-</span></span><span style=display:flex><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">2</span><span>cout <span style=color:#666>&lt;&lt;</span> (<span style=color:#902000>void</span><span style=color:#666>*</span>)<span style=color:#666>&amp;</span>c <span style=color:#666>&lt;&lt;</span> endl;
-</span></span><span style=display:flex><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">3</span><span>
-</span></span><span style=display:flex><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">4</span><span><span style=color:#60a0b0;font-style:italic>// output: 0x971c1ff99f
-</span></span></span></code></pre></div><h3 id=string的比较>string的比较：</h3><p><code>>, &lt;, >=, &lt;=, ==, !=</code></p><h3 id=传参>传参：</h3><p>1）<font color=ff007f><strong>按值（x）</strong></font>：<code>main()</code>外部调用<code>main()</code>内部参数时，参数改动不影响其真实值。<br>2）<font color=ff007f><strong>按引用（&amp;x）</strong></font>：外部调用内部参数时，参数值<strong>同步</strong>改变。</p><h3 id=数组>数组：</h3><div class=highlight><pre tabindex=0 style=background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none><code class=language-cpp data-lang=cpp><span style=display:flex><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">1</span><span><span style=color:#666>*</span>a <span style=color:#666>==</span> a[] <span style=color:#666>==</span> a[LENGTH];
-</span></span></code></pre></div><p>多维数组形参<strong>除第一维</strong>外，其余必须指定。</p><div class=highlight><pre tabindex=0 style=background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none><code class=language-cpp data-lang=cpp><span style=display:flex><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">1</span><span><span style=color:#60a0b0;font-style:italic>// 访问数组元素的不同方法
-</span></span></span><span style=display:flex><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">2</span><span>
-</span></span><span style=display:flex><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">3</span><span><span style=color:#902000>int</span> arr[<span style=color:#40a070>5</span>] <span style=color:#666>=</span> {<span style=color:#40a070>1</span>,<span style=color:#40a070>2</span>,<span style=color:#40a070>3</span>,<span style=color:#40a070>4</span>,<span style=color:#40a070>5</span>};
-</span></span><span style=display:flex><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">4</span><span><span style=color:#902000>int</span> <span style=color:#666>*</span>ptr <span style=color:#666>=</span> arr;
-</span></span><span style=display:flex><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">5</span><span><span style=color:#60a0b0;font-style:italic>// 三者等同：
-</span></span></span><span style=display:flex><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">6</span><span>cout <span style=color:#666>&lt;&lt;</span> arr[<span style=color:#40a070>3</span>];
-</span></span><span style=display:flex><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">7</span><span>cout <span style=color:#666>&lt;&lt;</span> <span style=color:#666>*</span>(ptr<span style=color:#666>+</span><span style=color:#40a070>3</span>);
-</span></span><span style=display:flex><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">8</span><span>cout <span style=color:#666>&lt;&lt;</span> ptr[<span style=color:#40a070>3</span>];
-</span></span></code></pre></div><h3 id=条件运算符>条件运算符?:</h3><p><code>condition ? consequent : alternative</code><br>condition 表达式的计算结果必须为 true 或 false。 若 condition 的计算结果为 true，将计算 consequent，其结果成为运算结果；若 condition 的计算结果为 false，将计算 alternative，其结果成为运算结果。</p><hr><h2 id=类与结构体>类与结构体：</h2><h3 id=类>类：</h3><div class=highlight><pre tabindex=0 style=background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none><code class=language-cpp data-lang=cpp><span style=display:flex><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 1</span><span><span style=color:#007020>#include&lt;iostream&gt;
-</span></span></span><span style=display:flex><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 2</span><span><span style=color:#007020;font-weight:700>using</span> <span style=color:#007020;font-weight:700>namespace</span> std;
-</span></span><span style=display:flex><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 3</span><span>
-</span></span><span style=display:flex><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 4</span><span><span style=color:#007020;font-weight:700>class</span> <span style=color:#0e84b5;font-weight:700>Person</span> {
-</span></span><span style=display:flex><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 5</span><span>
-</span></span><span style=display:flex><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 6</span><span><span style=color:#007020;font-weight:700>private</span><span style=color:#666>:</span>
-</span></span><span style=display:flex><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 7</span><span>    <span style=color:#902000>int</span> age, height;
-</span></span><span style=display:flex><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 8</span><span>    <span style=color:#902000>double</span> money;
-</span></span><span style=display:flex><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 9</span><span>    string books[<span style=color:#40a070>100</span>];
-</span></span><span style=display:flex><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">10</span><span><span style=color:#007020;font-weight:700>public</span><span style=color:#666>:</span>
-</span></span><span style=display:flex><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">11</span><span>    string name;
-</span></span><span style=display:flex><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">12</span><span>
-</span></span><span style=display:flex><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">13</span><span>    Person(string _name, <span style=color:#902000>int</span> _age) {
-</span></span><span style=display:flex><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">14</span><span>        name <span style=color:#666>=</span> _name;
-</span></span><span style=display:flex><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">15</span><span>        age <span style=color:#666>=</span> _age;
-</span></span><span style=display:flex><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">16</span><span>        money <span style=color:#666>=</span> <span style=color:#40a070>1000</span>;
-</span></span><span style=display:flex><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">17</span><span>    }
-</span></span><span style=display:flex><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">18</span><span>
-</span></span><span style=display:flex><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">19</span><span>    Person(string _name, <span style=color:#902000>int</span> _age, <span style=color:#902000>double</span> _money) <span style=color:#666>:</span> name(_name), age(_age), money(_money) {}
-</span></span><span style=display:flex><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">20</span><span>
-</span></span><span style=display:flex><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">21</span><span>    <span style=color:#902000>void</span> <span style=color:#06287e>say</span>() {
-</span></span><span style=display:flex><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">22</span><span>        cout <span style=color:#666>&lt;&lt;</span> <span style=color:#4070a0>&#34;I&#39;m &#34;</span> <span style=color:#666>&lt;&lt;</span> name <span style=color:#666>&lt;&lt;</span> endl;
-</span></span><span style=display:flex><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">23</span><span>    }
-</span></span><span style=display:flex><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">24</span><span>
-</span></span><span style=display:flex><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">25</span><span>    <span style=color:#902000>void</span> <span style=color:#06287e>add_money</span>(<span style=color:#902000>double</span> x) {
-</span></span><span style=display:flex><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">26</span><span>        money <span style=color:#666>+=</span> x;
-</span></span><span style=display:flex><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">27</span><span>    }
-</span></span><span style=display:flex><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">28</span><span>
-</span></span><span style=display:flex><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">29</span><span>    <span style=color:#902000>void</span> <span style=color:#06287e>set_age</span>(<span style=color:#902000>int</span> x) {
-</span></span><span style=display:flex><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">30</span><span>        age <span style=color:#666>=</span> x;
-</span></span><span style=display:flex><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">31</span><span>    }
-</span></span><span style=display:flex><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">32</span><span>};
-</span></span><span style=display:flex><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">33</span><span>
-</span></span><span style=display:flex><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">34</span><span><span style=color:#902000>int</span> <span style=color:#06287e>main</span>() {
-</span></span><span style=display:flex><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">35</span><span>    <span style=color:#007020;font-weight:700>class</span> <span style=color:#0e84b5;font-weight:700>Person</span> c(<span style=color:#4070a0>&#34;yxc&#34;</span>, <span style=color:#40a070>18</span>, <span style=color:#40a070>10086</span>);
-</span></span><span style=display:flex><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">36</span><span>    c.name <span style=color:#666>=</span> <span style=color:#4070a0>&#34;qbt&#34;</span>;
-</span></span><span style=display:flex><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">37</span><span>    c.set_age(<span style=color:#40a070>18</span>);
-</span></span><span style=display:flex><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">38</span><span>    c.add_money(<span style=color:#40a070>10000</span>);
-</span></span><span style=display:flex><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">39</span><span>    c.say();
-</span></span><span style=display:flex><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">40</span><span>    <span style=color:#007020;font-weight:700>return</span> <span style=color:#40a070>0</span>;
-</span></span><span style=display:flex><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">41</span><span>}
-</span></span><span style=display:flex><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">42</span><span>
-</span></span><span style=display:flex><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">43</span><span><span style=color:#60a0b0;font-style:italic>// output:
-</span></span></span><span style=display:flex><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">44</span><span><span style=color:#60a0b0;font-style:italic>// I&#39;m qbt
-</span></span></span></code></pre></div><h3 id=结构体>结构体：</h3><div class=highlight><pre tabindex=0 style=background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none><code class=language-cpp data-lang=cpp><span style=display:flex><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 1</span><span><span style=color:#007020>#include&lt;iostream&gt;
-</span></span></span><span style=display:flex><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 2</span><span><span style=color:#007020;font-weight:700>using</span> <span style=color:#007020;font-weight:700>namespace</span> std;
-</span></span><span style=display:flex><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 3</span><span>
-</span></span><span style=display:flex><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 4</span><span><span style=color:#007020;font-weight:700>struct</span> <span style=color:#0e84b5;font-weight:700>Person</span> {
-</span></span><span style=display:flex><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 5</span><span>
-</span></span><span style=display:flex><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 6</span><span>    <span style=color:#902000>int</span> age, height;
-</span></span><span style=display:flex><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 7</span><span>    <span style=color:#902000>double</span> money;
-</span></span><span style=display:flex><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 8</span><span>    string books[<span style=color:#40a070>100</span>];
-</span></span><span style=display:flex><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 9</span><span>    string name;
-</span></span><span style=display:flex><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">10</span><span>
-</span></span><span style=display:flex><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">11</span><span>    Person(string _name, <span style=color:#902000>int</span> _age) {
-</span></span><span style=display:flex><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">12</span><span>        name <span style=color:#666>=</span> _name;
-</span></span><span style=display:flex><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">13</span><span>        age <span style=color:#666>=</span> _age;
-</span></span><span style=display:flex><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">14</span><span>        money <span style=color:#666>=</span> <span style=color:#40a070>1000</span>;
-</span></span><span style=display:flex><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">15</span><span>    }
-</span></span><span style=display:flex><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">16</span><span>
-</span></span><span style=display:flex><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">17</span><span>    Person(string _name, <span style=color:#902000>int</span> _age, <span style=color:#902000>double</span> _money) <span style=color:#666>:</span> name(_name), age(_age), money(_money) {}
-</span></span><span style=display:flex><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">18</span><span>
-</span></span><span style=display:flex><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">19</span><span>    <span style=color:#902000>void</span> <span style=color:#06287e>say</span>() {
-</span></span><span style=display:flex><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">20</span><span>        cout <span style=color:#666>&lt;&lt;</span> <span style=color:#4070a0>&#34;I&#39;m &#34;</span> <span style=color:#666>&lt;&lt;</span> name <span style=color:#666>&lt;&lt;</span> endl;
-</span></span><span style=display:flex><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">21</span><span>    }
-</span></span><span style=display:flex><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">22</span><span>
-</span></span><span style=display:flex><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">23</span><span>    <span style=color:#902000>void</span> <span style=color:#06287e>add_money</span>(<span style=color:#902000>double</span> x) {
-</span></span><span style=display:flex><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">24</span><span>        money <span style=color:#666>+=</span> x;
-</span></span><span style=display:flex><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">25</span><span>    }
-</span></span><span style=display:flex><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">26</span><span>
-</span></span><span style=display:flex><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">27</span><span>    <span style=color:#902000>void</span> <span style=color:#06287e>set_age</span>(<span style=color:#902000>int</span> x) {
-</span></span><span style=display:flex><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">28</span><span>        age <span style=color:#666>=</span> x;
-</span></span><span style=display:flex><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">29</span><span>    }
-</span></span><span style=display:flex><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">30</span><span>};
-</span></span><span style=display:flex><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">31</span><span>
-</span></span><span style=display:flex><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">32</span><span><span style=color:#902000>int</span> <span style=color:#06287e>main</span>() {
-</span></span><span style=display:flex><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">33</span><span>    <span style=color:#007020;font-weight:700>class</span> <span style=color:#0e84b5;font-weight:700>Person</span> c(<span style=color:#4070a0>&#34;yxc&#34;</span>, <span style=color:#40a070>18</span>, <span style=color:#40a070>10086</span>);
-</span></span><span style=display:flex><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">34</span><span>    c.name <span style=color:#666>=</span> <span style=color:#4070a0>&#34;qbt&#34;</span>;
-</span></span><span style=display:flex><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">35</span><span>    c.set_age(<span style=color:#40a070>18</span>);
-</span></span><span style=display:flex><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">36</span><span>    c.add_money(<span style=color:#40a070>10000</span>);
-</span></span><span style=display:flex><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">37</span><span>    c.say();
-</span></span><span style=display:flex><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">38</span><span>    <span style=color:#007020;font-weight:700>return</span> <span style=color:#40a070>0</span>;
-</span></span><span style=display:flex><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">39</span><span>}
-</span></span><span style=display:flex><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">40</span><span>
-</span></span><span style=display:flex><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">41</span><span><span style=color:#60a0b0;font-style:italic>// output:
-</span></span></span><span style=display:flex><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">42</span><span><span style=color:#60a0b0;font-style:italic>// I&#39;m qbt
-</span></span></span></code></pre></div><p><strong>class</strong>默认变量<font color=red><strong>私有</strong></font>，<strong>struct</strong>默认<font color=red><strong>公有</strong></font>；<br>两者构造差不多，上述示例做参考。</p><h2 id=数据结构重点><em>数据结构</em>（<font color=red>重点！</font>）</h2><h3 id=链表>链表</h3><div class=highlight><pre tabindex=0 style=background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none><code class=language-cpp data-lang=cpp><span style=display:flex><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">1</span><span><span style=color:#60a0b0;font-style:italic>// define
-</span></span></span><span style=display:flex><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">2</span><span><span style=color:#007020;font-weight:700>struct</span> <span style=color:#0e84b5;font-weight:700>Node</span> {
-</span></span><span style=display:flex><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">3</span><span>    <span style=color:#902000>int</span> val;    Node<span style=color:#666>*</span> next;
-</span></span><span style=display:flex><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">4</span><span>}
-</span></span><span style=display:flex><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">5</span><span>
-</span></span><span style=display:flex><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">6</span><span><span style=color:#902000>int</span> <span style=color:#06287e>main</span>() {
-</span></span><span style=display:flex><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">7</span><span>    Node <span style=color:#666>*</span>node <span style=color:#666>=</span> <span style=color:#007020;font-weight:700>new</span> Node(<span style=color:#40a070>1</span>); <span style=color:#60a0b0;font-style:italic>//  正确，此处传引用
-</span></span></span><span style=display:flex><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">8</span><span>    Node <span style=color:#666>*</span>node <span style=color:#666>=</span> Node(<span style=color:#40a070>1</span>);     <span style=color:#60a0b0;font-style:italic>//  错误，此处指Node型变量，传值
-</span></span></span><span style=display:flex><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">9</span><span>}
-</span></span></code></pre></div><ul><li><strong>头节点</strong>：<font color=red><strong>第一个</strong></font>节点的<font color=red><strong>地址</strong></font>，即<code>head</code>指向的就是其后节点的地址，不用<code>head->next</code>!</li></ul><h3 id=堆栈>堆/栈</h3><pre tabindex=0><code>                    RAM Space
-               ·-----------------·
-Stacks      |  |  func() call;   |
-(Downwards) |  |  local val……    |
-            |  |                 |
-            ↓  |                 |
-               |                 |
-               |`````````````````|
-Heaps       ↑  |  global val……   |
-(Upwards)   |  |                 |
-            |  |                 |
-            |  |                 |
-               ·-----------------·
-</code></pre><ul><li>栈：后进先出（文件柜）多用于深度优先搜寻</li><li>队列：先进先出（羽毛球筒）多用于广度优先搜寻</li></ul><h2 id=stl>STL</h2><h3 id=include-vector><code>#include &lt;vector></code></h3><p><code>vector</code>是变长数组，支持随机访问，不支持在任意位置 O(1) 插入。为了保证效率，元素的增删一般应该在末尾进行。</p><ul><li>Declare：</li></ul><div class=highlight><pre tabindex=0 style=background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none><code class=language-cpp data-lang=cpp><span style=display:flex><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">1</span><span><span style=color:#007020>#include</span> <span style=color:#007020>&lt;vector&gt;</span><span style=color:#007020>   </span><span style=color:#60a0b0;font-style:italic>// 头文件
-</span></span></span><span style=display:flex><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">2</span><span>vector<span style=color:#666>&lt;</span><span style=color:#902000>int</span><span style=color:#666>&gt;</span> a;      <span style=color:#60a0b0;font-style:italic>// 相当于一个长度动态变化的int数组
-</span></span></span><span style=display:flex><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">3</span><span>vector<span style=color:#666>&lt;</span><span style=color:#902000>int</span><span style=color:#666>&gt;</span> b[<span style=color:#40a070>233</span>]; <span style=color:#60a0b0;font-style:italic>// 相当于第一维长233，第二位长度动态变化的int数组
-</span></span></span><span style=display:flex><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">4</span><span><span style=color:#007020;font-weight:700>struct</span> <span style=color:#0e84b5;font-weight:700>rec</span>{<span>…</span>};
-</span></span><span style=display:flex><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">5</span><span>vector<span style=color:#666>&lt;</span>rec<span style=color:#666>&gt;</span> c;      <span style=color:#60a0b0;font-style:italic>// 自定义的结构体类型也可以保存在vector中
-</span></span></span></code></pre></div><ul><li><code>size/empty</code></li></ul><p><code>size</code>函数返回<code>vector</code>的实际长度（包含的元素个数），empty函数返回一个<code>bool</code>类型，表明<code>vector</code>是否为空。二者的时间复杂度都是<em><strong>O(1)</strong></em>。<br>所有的STL容器都支持这两个方法，含义也相同，之后我们就不再重复给出。</p><ul><li><code>clear</code></li></ul><p><code>clear</code>函数会清空<code>vector</code>容器。</p><ul><li>迭代器</li></ul><p>迭代器就像STL容器的“指针”，可以用星号*操作符解除引用。<br>一个保存<code>int</code>的<code>vector</code>的迭代器声明方法为：</p><div class=highlight><pre tabindex=0 style=background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none><code class=language-cpp data-lang=cpp><span style=display:flex><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">1</span><span>vector<span style=color:#666>&lt;</span><span style=color:#902000>int</span><span style=color:#666>&gt;::</span>iterator it;
-</span></span></code></pre></div><p><strong>若想直接访问迭代器的值，需要在变量前<em>加<code>*</code></em> 例如<code>*i</code>。</strong></p><p><code>vector</code>的迭代器是“随机访问迭代器”，可以把<code>vector</code>的迭代器与一个整数相加减，其行为和指针的移动类似。可以把<code>vector</code>的两个迭代器相减，其结果也和指针相减类似，得到两个迭代器对应下标之间的距离。</p><ul><li><code>begin/end</code></li></ul><p><code>begin</code>函数返回指向<code>vector</code>中第一个元素的迭代器。例如a是一个非空的<code>vector</code>，则<code>*a.begin()</code>与<code>a[0]</code>的作用相同。</p><p>所有的容器都可以视作一个“前闭后开”的结构，<code>end</code>函数返回<code>vector</code>的尾部，即第<code>n</code>个元素再往后的“边界”。<code>*a.end()</code>与<code>a[n]</code>都是越界访问，其中n = <code>a.size()</code>。</p><p>下面两份代码都遍历了<code>vector&lt;int> a</code>，并输出它的所有元素。</p><div class=highlight><pre tabindex=0 style=background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none><code class=language-cpp data-lang=cpp><span style=display:flex><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">1</span><span><span style=color:#007020;font-weight:700>for</span> (<span style=color:#902000>int</span> i <span style=color:#666>=</span> <span style=color:#40a070>0</span>; i <span style=color:#666>&lt;</span> a.size(); i <span style=color:#666>++</span>)
-</span></span><span style=display:flex><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">2</span><span>    cout <span style=color:#666>&lt;&lt;</span> a[i] <span style=color:#666>&lt;&lt;</span> endl;
-</span></span><span style=display:flex><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">3</span><span>
-</span></span><span style=display:flex><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">4</span><span><span style=color:#007020;font-weight:700>for</span> (vector<span style=color:#666>&lt;</span><span style=color:#902000>int</span><span style=color:#666>&gt;::</span>iterator it <span style=color:#666>=</span> a.begin(); it <span style=color:#666>!=</span> a.end(); it <span style=color:#666>++</span>)
-</span></span><span style=display:flex><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">5</span><span>    cout <span style=color:#666>&lt;&lt;</span> <span style=color:#666>*</span>it <span style=color:#666>&lt;&lt;</span> endl;
-</span></span></code></pre></div><ul><li><code>front/back</code></li></ul><p><code>front</code>函数返回<code>vector</code>的第一个元素，等价于<code>*a.begin()</code>和<code>a[0]</code>。
-<code>back</code>函数返回<code>vector</code>的最后一个元素，等价于<code>*--a.end()</code>和<code>a[a.size() – 1]</code>。</p><ul><li><code>push_back()</code>和<code>pop_back()</code></li></ul><p><code>a.push_back(x)</code>把元素<code>x</code>插入到<code>vector a</code>的尾部。
-<code>b.pop_back()</code>删除<code>vector a</code>的最后一个元素。</p><p><strong>来源https://www.acwing.com/file_system/file/content/whole/index/content/3598249/</strong></p><h2 id=技巧>技巧</h2><ul><li>定义空(<code>NULL</code>)时，使用<code>nullptr</code>更好！</li><li>使用下列代码来减少带<code>cin</code>/<code>cout</code>代码的运行时间消耗：</li></ul><div class=highlight><pre tabindex=0 style=background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none><code class=language-cpp data-lang=cpp><span style=display:flex><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">1</span><span>ios<span style=color:#666>::</span>sync_with_stdio(<span style=color:#007020>false</span>);
-</span></span><span style=display:flex><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">2</span><span>cin.tie(<span style=color:#40a070>0</span>);
-</span></span></code></pre></div><h2 id=好题共赏>好题共赏</h2><h3 id=动物>动物</h3><p>给定你三个葡萄牙语单词，这些词将根据下表从左到右定义一个动物。
-<a href=https://www.imagehub.cc/image/19-c2433a725d-UOJ-1049-b.boICCh><img src=https://s1.imagehub.cc/images/2024/09/17/ecc61b6eba406c66cc9130c26efa6fe4.md.png alt=OI></a>
-请你确定并输出这个动物的名称。</p><p>输入格式<br>根据上表，输入包含三个单词，每行一个，用以识别动物，单词由小写字母构成。</p><p>输出格式<br>输出识别出的动物的名称。</p><ul><li>输入样例：</li></ul><pre tabindex=0><code>vertebrado
-mamifero
-onivoro
-</code></pre><ul><li>输出样例：</li></ul><pre tabindex=0><code>homem
-</code></pre><h4 id=题解>题解：</h4><div class=highlight><pre tabindex=0 style=background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none><code class=language-cpp data-lang=cpp><span style=display:flex><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 1</span><span><span style=color:#007020>#include</span> <span style=color:#007020>&lt;iostream&gt;</span><span style=color:#007020>
-</span></span></span><span style=display:flex><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 2</span><span><span style=color:#007020;font-weight:700>using</span> <span style=color:#007020;font-weight:700>namespace</span> std;
-</span></span><span style=display:flex><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 3</span><span>
-</span></span><span style=display:flex><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 4</span><span><span style=color:#902000>int</span> <span style=color:#06287e>main</span>() {
-</span></span><span style=display:flex><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 5</span><span>    string s[<span style=color:#40a070>3</span>]; string sF;
-</span></span><span style=display:flex><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 6</span><span>    <span style=color:#007020;font-weight:700>for</span>(<span style=color:#902000>int</span> i<span style=color:#666>=</span><span style=color:#40a070>0</span>; i<span style=color:#666>&lt;</span><span style=color:#40a070>3</span>; i<span style=color:#666>++</span>) {
-</span></span><span style=display:flex><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 7</span><span>        cin<span style=color:#666>&gt;&gt;</span> s[i]; sF<span style=color:#666>+=</span> s[i][<span style=color:#40a070>0</span>];
-</span></span><span style=display:flex><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 8</span><span>    }
-</span></span><span style=display:flex><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 9</span><span>
-</span></span><span style=display:flex><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">10</span><span>    <span style=color:#007020;font-weight:700>if</span>(sF<span style=color:#666>==</span><span style=color:#4070a0>&#34;vac&#34;</span>) cout<span style=color:#666>&lt;&lt;</span> <span style=color:#4070a0>&#34;aguia&#34;</span>;
-</span></span><span style=display:flex><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">11</span><span>    <span style=color:#007020;font-weight:700>if</span>(sF<span style=color:#666>==</span><span style=color:#4070a0>&#34;vao&#34;</span>) cout<span style=color:#666>&lt;&lt;</span> <span style=color:#4070a0>&#34;pomba&#34;</span>;
-</span></span><span style=display:flex><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">12</span><span>    <span style=color:#007020;font-weight:700>if</span>(sF<span style=color:#666>==</span><span style=color:#4070a0>&#34;vmo&#34;</span>) cout<span style=color:#666>&lt;&lt;</span> <span style=color:#4070a0>&#34;homem&#34;</span>;
-</span></span><span style=display:flex><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">13</span><span>    <span style=color:#007020;font-weight:700>if</span>(sF<span style=color:#666>==</span><span style=color:#4070a0>&#34;vmh&#34;</span>) cout<span style=color:#666>&lt;&lt;</span> <span style=color:#4070a0>&#34;vaca&#34;</span>;
-</span></span><span style=display:flex><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">14</span><span>    <span style=color:#007020;font-weight:700>if</span>(sF<span style=color:#666>==</span><span style=color:#4070a0>&#34;iih&#34;</span>) {
-</span></span><span style=display:flex><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">15</span><span>        <span style=color:#007020;font-weight:700>if</span>(s[<span style=color:#40a070>2</span>] <span style=color:#666>==</span> <span style=color:#4070a0>&#34;hematofago&#34;</span>) cout<span style=color:#666>&lt;&lt;</span> <span style=color:#4070a0>&#34;pulga&#34;</span>;
-</span></span><span style=display:flex><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">16</span><span>        <span style=color:#007020;font-weight:700>else</span> cout<span style=color:#666>&lt;&lt;</span> <span style=color:#4070a0>&#34;lagarta&#34;</span>;
-</span></span><span style=display:flex><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">17</span><span>    }
-</span></span><span style=display:flex><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">18</span><span>    <span style=color:#007020;font-weight:700>if</span>(sF<span style=color:#666>==</span><span style=color:#4070a0>&#34;iah&#34;</span>) cout<span style=color:#666>&lt;&lt;</span> <span style=color:#4070a0>&#34;sanguessuga&#34;</span>;
-</span></span><span style=display:flex><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">19</span><span>    <span style=color:#007020;font-weight:700>if</span>(sF<span style=color:#666>==</span><span style=color:#4070a0>&#34;iao&#34;</span>) cout<span style=color:#666>&lt;&lt;</span> <span style=color:#4070a0>&#34;minhoca&#34;</span>;
-</span></span><span style=display:flex><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">20</span><span>}
-</span></span></code></pre></div><h3 id=点的坐标>点的坐标</h3><p>给定两个保留一位小数的浮点数X,Y，用来表示一个点的横纵坐标。
-请你判断该点在坐标系中的位置。</p><p>输入格式<br>共一行，包含两个浮点数X,Y，表示点的横纵坐标。</p><p>输出格式<br>如果点在第一象限，则输出 Q1，在第二象限，则输出 Q2，以此类推。<br>如果点在原点处，则输出 Origem。<br>否则，如果点在x坐标上，则输出 Eixo X，在y坐标上，则输出 Eixo Y。</p><p>数据范围
--10.0≤X,Y≤10.0</p><ul><li>输入样例1：</li></ul><div class=highlight><pre tabindex=0 style=background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none><code class=language-cpp data-lang=cpp><span style=display:flex><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">1</span><span><span style=color:#40a070>4.5</span> <span style=color:#666>-</span><span style=color:#40a070>2.2</span>
-</span></span></code></pre></div><ul><li>输出样例1：</li></ul><div class=highlight><pre tabindex=0 style=background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none><code class=language-cpp data-lang=cpp><span style=display:flex><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">1</span><span>Q4
-</span></span></code></pre></div><ul><li>输入样例2：</li></ul><div class=highlight><pre tabindex=0 style=background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none><code class=language-cpp data-lang=cpp><span style=display:flex><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">1</span><span><span style=color:#40a070>0.0</span> <span style=color:#40a070>0.0</span>
-</span></span></code></pre></div><ul><li>输出样例2：</li></ul><div class=highlight><pre tabindex=0 style=background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none><code class=language-cpp data-lang=cpp><span style=display:flex><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">1</span><span>Origem
-</span></span></code></pre></div><h4 id=题解-1>题解</h4><div class=highlight><pre tabindex=0 style=background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none><code class=language-cpp data-lang=cpp><span style=display:flex><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 1</span><span><span style=color:#007020>#include&lt;iostream&gt;
-</span></span></span><span style=display:flex><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 2</span><span>
-</span></span><span style=display:flex><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 3</span><span><span style=color:#007020;font-weight:700>using</span> <span style=color:#007020;font-weight:700>namespace</span> std;
-</span></span><span style=display:flex><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 4</span><span>
-</span></span><span style=display:flex><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 5</span><span><span style=color:#902000>int</span> <span style=color:#06287e>main</span>() {
-</span></span><span style=display:flex><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 6</span><span>    <span style=color:#902000>double</span> x, y;
-</span></span><span style=display:flex><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 7</span><span>    cin <span style=color:#666>&gt;&gt;</span> x <span style=color:#666>&gt;&gt;</span> y;
-</span></span><span style=display:flex><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 8</span><span>    <span style=color:#007020;font-weight:700>if</span> (x <span style=color:#666>==</span> <span style=color:#40a070>0</span> <span style=color:#666>&amp;&amp;</span> y <span style=color:#666>==</span> <span style=color:#40a070>0</span>) cout <span style=color:#666>&lt;&lt;</span> <span style=color:#4070a0>&#34;Origem&#34;</span>;
-</span></span><span style=display:flex><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 9</span><span>    <span style=color:#007020;font-weight:700>else</span> <span style=color:#007020;font-weight:700>if</span> (x <span style=color:#666>*</span> y <span style=color:#666>==</span> <span style=color:#40a070>0</span>) cout <span style=color:#666>&lt;&lt;</span> (x <span style=color:#666>==</span> <span style=color:#40a070>0</span> <span style=color:#666>?</span> <span style=color:#4070a0>&#34;Eixo X&#34;</span> <span style=color:#666>:</span> <span style=color:#4070a0>&#34;Eixo Y&#34;</span>);
-</span></span><span style=display:flex><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">10</span><span>    <span style=color:#007020;font-weight:700>else</span> <span style=color:#007020;font-weight:700>if</span> (x <span style=color:#666>&gt;</span> <span style=color:#40a070>0</span>) cout <span style=color:#666>&lt;&lt;</span> (y <span style=color:#666>&gt;</span> <span style=color:#40a070>0</span> <span style=color:#666>?</span> <span style=color:#4070a0>&#34;Q1&#34;</span> <span style=color:#666>:</span> <span style=color:#4070a0>&#34;Q4&#34;</span>);
-</span></span><span style=display:flex><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">11</span><span>    <span style=color:#007020;font-weight:700>else</span> cout <span style=color:#666>&lt;&lt;</span> (y <span style=color:#666>&gt;</span> <span style=color:#40a070>0</span> <span style=color:#666>?</span> <span style=color:#4070a0>&#34;Q2&#34;</span> <span style=color:#666>:</span> <span style=color:#4070a0>&#34;Q3&#34;</span>);
-</span></span><span style=display:flex><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">12</span><span>
-</span></span><span style=display:flex><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">13</span><span>    <span style=color:#007020;font-weight:700>return</span> <span style=color:#40a070>0</span>;
-</span></span><span style=display:flex><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">14</span><span>}
-</span></span></code></pre></div><hr><p>C++，危险又优雅~
-<img src=https://s1.imagehub.cc/images/2024/09/17/908aee0e9161693423b1e77194479a2c.jpg alt=cum!></p></content><p style=display:flex;gap:16px;justify-content:space-between><a href=/posts/2024/240812/>← 上一篇：理绪寻的</a>
-<a href=/posts/2024/241002/>下一篇：Apple音乐-学生订阅 →</a></p><p><a href=https://coderama.top/tags/%E5%AD%A6%E4%B9%A0/>#学习</a></p></main><footer><p>© Leo · <a href=/rss.xml>RSS</a> · <a href=/pages/project/>项目</a> · <a href=/pages/privacy/>隐私</a> · <a href=/pages/cc/>版权</a></p><p>Made with <a href=https://github.com/janraasch/hugo-bearblog/>Hugo ʕ•ᴥ•ʔ Bear</a></p></footer></body></html>
+
+
+<!DOCTYPE html><html lang="zh-CN">
+
+<head>
+  
+  <meta charset="utf-8">
+  <meta name="hexo-theme" content="https://github.com/xaoxuu/hexo-theme-stellar/tree/2.0.0" theme-name="Stellar" theme-version="2.0.0">
+  
+  
+  <meta name="generator" content="Hexo 8.1.2">
+  <meta http-equiv='x-dns-prefetch-control' content='on' />
+  
+  <meta name="renderer" content="webkit">
+  <meta name="force-rendering" content="webkit">
+  <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+  <meta name="HandheldFriendly" content="True" >
+  <meta name="mobile-web-app-capable" content="yes">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="theme-color" media="(prefers-color-scheme: dark)" content="#000">
+  <meta name="theme-color" content="#f9fafb">
+  <title data-stellar-page-meta>阔论Cpp - 沁·拾遗轩</title>
+  <script data-stellar-script="core">
+    (function () {
+      var key = 'stellar:v2:leftbar-state';
+      var fallback = "expanded";
+      try {
+        var value = localStorage.getItem(key);
+        document.documentElement.dataset.leftbarState = value === 'collapsed' || value === 'expanded' ? value : fallback;
+      } catch (error) {
+        document.documentElement.dataset.leftbarState = fallback;
+      }
+    })();
+  </script>
+
+  <meta name="description" content="鉴于大一糟糕的C语言体验和学校老师堪忧的教学质量，故本学期下定决心恶补C/Cpp相关知识（" data-stellar-page-meta="">
+<meta property="og:type" content="article" data-stellar-page-meta="">
+<meta property="og:title" content="阔论Cpp" data-stellar-page-meta="">
+<meta property="og:url" content="https://coderama.top/posts/2024/240917/" data-stellar-page-meta="">
+<meta property="og:site_name" content="沁·拾遗轩" data-stellar-page-meta="">
+<meta property="og:description" content="鉴于大一糟糕的C语言体验和学校老师堪忧的教学质量，故本学期下定决心恶补C/Cpp相关知识（" data-stellar-page-meta="">
+<meta property="og:locale" content="zh_CN" data-stellar-page-meta="">
+<meta property="og:image" content="https://s1.imagehub.cc/images/2024/09/17/ecc61b6eba406c66cc9130c26efa6fe4.md.png" data-stellar-page-meta="">
+<meta property="article:author" content="Leo" data-stellar-page-meta="">
+<meta property="article:published_time" content="2024-09-16T16:00:00.000Z" data-stellar-page-meta="">
+<meta property="article:modified_time" content="2026-11-01T10:32:12.000Z" data-stellar-page-meta="">
+<meta property="article:tag" content="学习" data-stellar-page-meta="">
+<meta name="twitter:card" content="summary" data-stellar-page-meta="">
+<meta name="twitter:image" content="https://s1.imagehub.cc/images/2024/09/17/ecc61b6eba406c66cc9130c26efa6fe4.md.png" data-stellar-page-meta=""><meta name="twitter:title" content="阔论Cpp" data-stellar-page-meta="">
+  
+  
+  <meta name="keywords" content="学习" data-stellar-page-meta="">
+
+  <!-- feed -->
+  
+
+  <link rel="preload" href="/css/main.css?v=2.0.0" as="style">
+  <link rel="stylesheet" href="/css/main.css?v=2.0.0">
+  <style>:root{--text-loading:"正在加载";--text-loading-error:"加载失败，请稍后重试。"}</style>
+
+
+  
+
+  
+    
+      
+<link rel="stylesheet" href="/css/code-highlight.css">
+
+    
+  
+
+  <script type="application/ld+json" data-stellar-page-meta="">{"@context":"https://schema.org","@type":"BlogPosting","author":{"@type":"Person","name":"Leo","sameAs":[]},"dateCreated":"2024-09-16T16:00:00+00:00","dateModified":"2026-11-01T10:32:12+00:00","datePublished":"2024-09-16T16:00:00+00:00","description":"此博客持续更新，旨在记录一些重点、易错点、遗忘点以及二次元美图。\n\n基操勿6\nstdIO\n整数输入输出：\n123int a, b;cin \u0026gt;\u0026gt; a \u0026gt;\u0026gt; b;cout \u0026lt;\u0026lt; a + b \u0026lt;\u0026lt; endl;\n字符串：\n123string str;cin \u0026gt;\u0026gt; str;cout \u0026lt;\u0026lt; str;\ncout \u0026lt;\u0026lt; “w...","headline":"阔论Cpp","mainEntityOfPage":{"@type":"WebPage","@id":"https://coderama.top/posts/2024/240917/"},"publisher":{"@type":"Organization","name":"Leo","sameAs":[]},"url":"https://coderama.top/posts/2024/240917/","image":["https://s1.imagehub.cc/images/2024/09/17/ecc61b6eba406c66cc9130c26efa6fe4.md.png"],"keywords":"学习","thumbnailUrl":"https://s1.imagehub.cc/images/2024/09/17/ecc61b6eba406c66cc9130c26efa6fe4.md.png"}</script>
+  <link rel="manifest" href="/manifest.webmanifest"><link rel="apple-touch-icon" href="/images/logo/apple-touch-icon.png"><link rel="stylesheet" href="/css/site.css"><link rel="alternate" type="application/rss+xml" title="沁·拾遗轩" href="/rss.xml">
+
+  <link rel="stylesheet" href="/css/stellar-icons.css?v=7c185ad1a9a79674">
+  <link rel="preload" as="script" href="/js/stellar-icons.js?v=39c6ac17e854ffe2">
+  
+  
+</head>
+<body data-page-type="content" data-page-layout="post" data-article-style="tech"><div data-stellar-runtime-region id="site-cover" class="site-cover"></div><div class="site-shell" id="start" data-regions="topbar">
+<header data-stellar-runtime-region id="topbar-region" class="site-region site-region--topbar ui-surface" data-region="topbar"><div class="site-region__viewport"><div class="widget-instance widget-instance--brand" data-widget-id="topbar:fixed:brand" data-presentation="topbar">
+<header class="brand-header brand-header--topbar brand-header--site"><div class="brand-wrap"><a class="brand-image brand-image--avatar" href="&#x2F;" aria-label="沁·拾遗轩首页"><img no-lazy src="&#x2F;images&#x2F;logo&#x2F;logo.webp" alt="" onerror="this.onerror&#x3D;null;this.src&#x3D;&quot;&#x2F;images&#x2F;stellar-error.491ee870f4940739.svg&quot;"></a><a class="brand-title" href="&#x2F;"><div class="brand-name">沁·拾遗轩</div></a></div></header>
+</div>
+  <div class="widgets widget-stack widget-stack--topbar widget-stack--topbar"><div class="widget-instance widget-instance--spacer" data-widget-id="topbar:0:spacer" data-presentation="topbar"><span class="topbar-spacer" aria-hidden="true"></span></div><div class="widget-instance widget-instance--menu" data-widget-id="topbar:1:menu" data-presentation="topbar" data-leftbar-rail>
+
+
+<nav class="menu dis-select">
+<div class="ui-collection" data-layout="list" data-variant="nav" data-density="auto">
+  
+    
+<a class="ui-collection__item ui-interactive card-hover card-hover--spotlight is-active" href="&#x2F;" title="文章" aria-current="page">
+  
+  <span class="ui-icon"><svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24"><path fill="currentColor" fill-rule="evenodd" d="M5.879 2.879C5 3.757 5 5.172 5 8v8c0 2.828 0 4.243.879 5.121C6.757 22 8.172 22 11 22h2c2.828 0 4.243 0 5.121-.879C19 20.243 19 18.828 19 16V8c0-2.828 0-4.243-.879-5.121C17.243 2 15.828 2 13 2h-2c-2.828 0-4.243 0-5.121.879M8.25 17a.75.75 0 0 1 .75-.75h3a.75.75 0 0 1 0 1.5H9a.75.75 0 0 1-.75-.75M9 12.25a.75.75 0 0 0 0 1.5h6a.75.75 0 0 0 0-1.5zM8.25 9A.75.75 0 0 1 9 8.25h6a.75.75 0 0 1 0 1.5H9A.75.75 0 0 1 8.25 9" clip-rule="evenodd"/><path fill="currentColor" d="M5.235 4.058C5 4.941 5 6.177 5 8v8c0 1.823 0 3.058.235 3.942L5 19.924c-.975-.096-1.631-.313-2.121-.803C2 18.243 2 16.828 2 14v-4c0-2.829 0-4.243.879-5.121c.49-.49 1.146-.707 2.121-.803zm13.53 15.884C19 19.058 19 17.822 19 16V8c0-1.823 0-3.059-.235-3.942l.235.018c.975.096 1.631.313 2.121.803C22 5.757 22 7.17 22 9.999v4c0 2.83 0 4.243-.879 5.122c-.49.49-1.146.707-2.121.803z" opacity=".5"/></svg></span>
+  
+  
+    <span class="ui-collection__content">
+      
+      <span class="ui-collection__title">文章</span>
+      
+      
+    </span>
+  
+  
+  <span class="ui-collection__indicator"></span>
+</a>
+
+  
+    
+<a class="ui-collection__item ui-interactive card-hover card-hover--spotlight" href="&#x2F;tags&#x2F;" title="标签">
+  
+  <span class="ui-icon"><svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24"><!-- Icon from Solar by 480 Design - https://creativecommons.org/licenses/by/4.0/ --><path fill="currentColor" fill-rule="evenodd" d="M10.7226 3.20068C10.8335 2.80158 10.5998 2.38817 10.2007 2.27731C9.80163 2.16645 9.38822 2.40011 9.27736 2.79921L7.76327 8.24995H4C3.58579 8.24995 3.25 8.58573 3.25 8.99995C3.25 9.41416 3.58579 9.74995 4 9.74995H7.3466L5.81882 15.2499H2C1.58579 15.2499 1.25 15.5857 1.25 15.9999C1.25 16.4142 1.58579 16.7499 2 16.7499H5.40216L4.27736 20.7992C4.1665 21.1983 4.40016 21.6117 4.79927 21.7226C5.19837 21.8334 5.61178 21.5998 5.72264 21.2007L6.95895 16.7499H14.4022L13.2774 20.7992C13.1665 21.1983 13.4002 21.6117 13.7993 21.7226C14.1984 21.8334 14.6118 21.5998 14.7226 21.2007L15.959 16.7499H20C20.4142 16.7499 20.75 16.4142 20.75 15.9999C20.75 15.5857 20.4142 15.2499 20 15.2499H16.3756L17.9034 9.74995H22C22.4142 9.74995 22.75 9.41416 22.75 8.99995C22.75 8.58573 22.4142 8.24995 22 8.24995H18.3201L19.7226 3.20068C19.8335 2.80158 19.5998 2.38817 19.2007 2.27731C18.8016 2.16645 18.3882 2.40011 18.2774 2.79921L16.7633 8.24995H9.32006L10.7226 3.20068ZM14.8188 15.2499L16.3466 9.74995H8.9034L7.37562 15.2499H14.8188Z" clip-rule="evenodd"/></svg></span>
+  
+  
+    <span class="ui-collection__content">
+      
+      <span class="ui-collection__title">标签</span>
+      
+      
+    </span>
+  
+  
+  
+</a>
+
+  
+    
+<a class="ui-collection__item ui-interactive card-hover card-hover--spotlight" href="&#x2F;pages&#x2F;link&#x2F;" title="友链">
+  
+  <span class="ui-icon"><svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24"><g fill="currentColor"><g opacity=".5"><path d="M19.7388 4.26118C17.0572 1.57961 12.7095 1.57961 10.0279 4.26118L9.30707 4.98203C9.01418 5.27492 9.01418 5.7498 9.30707 6.04269C9.59997 6.33558 10.0748 6.33558 10.3677 6.04269L11.0886 5.32184C13.1844 3.22605 16.5823 3.22605 18.6781 5.32184C20.7739 7.41763 20.7739 10.8156 18.6781 12.9114L17.9573 13.6322C17.6644 13.9251 17.6644 14.4 17.9573 14.6929C18.2502 14.9858 18.725 14.9858 19.0179 14.6929L19.7388 13.972C22.4203 11.2905 22.4203 6.94276 19.7388 4.26118Z"/><path d="M6.04269 9.30707C6.33558 9.59997 6.33558 10.0748 6.04269 10.3677L5.32184 11.0886C3.22605 13.1844 3.22605 16.5823 5.32184 18.6781C7.41763 20.7739 10.8156 20.7739 12.9114 18.6781L13.6322 17.9573C13.9251 17.6644 14.4 17.6644 14.6929 17.9573C14.9858 18.2501 14.9858 18.725 14.6929 19.0179L13.972 19.7388C11.2905 22.4203 6.94276 22.4203 4.26118 19.7388C1.57961 17.0572 1.57961 12.7095 4.26118 10.0279L4.98203 9.30707C5.27492 9.01418 5.7498 9.01418 6.04269 9.30707Z"/></g><path d="M14.6933 9.30707C14.9862 9.59997 14.9862 10.0748 14.6933 10.3677L10.3682 14.6928C10.0753 14.9857 9.60045 14.9857 9.30756 14.6928C9.01467 14.3999 9.01467 13.9251 9.30756 13.6322L13.6327 9.30707C13.9255 9.01418 14.4004 9.01418 14.6933 9.30707Z"/></g></svg></span>
+  
+  
+    <span class="ui-collection__content">
+      
+      <span class="ui-collection__title">友链</span>
+      
+      
+    </span>
+  
+  
+  
+</a>
+
+  
+    
+<a class="ui-collection__item ui-interactive card-hover card-hover--spotlight" href="&#x2F;pages&#x2F;about&#x2F;" title="关于">
+  
+  <span class="ui-icon"><svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24"><g fill="currentColor"><path d="M12 2a10 10 0 1 0 0 20a10 10 0 0 0 0-20" opacity=".5"/><path d="M12 6a3 3 0 1 0 0 6a3 3 0 0 0 0-6m0 7.5c-3.04 0-5.5 1.57-5.5 3.5c0 .65.28 1.26.77 1.77A7.96 7.96 0 0 0 12 20.5a7.96 7.96 0 0 0 4.73-1.73c.49-.51.77-1.12.77-1.77c0-1.93-2.46-3.5-5.5-3.5"/></g></svg></span>
+  
+  
+    <span class="ui-collection__content">
+      
+      <span class="ui-collection__title">关于</span>
+      
+      
+    </span>
+  
+  
+  
+</a>
+
+  
+</div>
+
+</nav>
+
+</div><div class="widget-instance widget-instance--settings" data-widget-id="topbar:2:settings" data-presentation="topbar" data-leftbar-rail>
+<a class="settings-widget ui-collection__item ui-interactive card-hover card-hover--spotlight" href="&#x2F;settings&#x2F;" data-profile-provider="" data-profile-identity-enabled="false" data-profile-fallback-avatar="https:&#x2F;&#x2F;gcore.jsdelivr.net&#x2F;gh&#x2F;cdn-x&#x2F;placeholder@1.0.12&#x2F;avatar&#x2F;round&#x2F;3442075.svg" data-settings-placement="topbar" data-settings-label="设置" aria-label="设置" title="设置">
+  <span class="settings-widget__avatar" aria-hidden="true">
+    <span class="ui-icon"><svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24"><g fill="currentColor"><path fill-rule="evenodd" d="M12.4277 2C11.3139 2 10.2995 2.6007 8.27081 3.80211L7.58466 4.20846C5.55594 5.40987 4.54158 6.01057 3.98466 7C3.42773 7.98943 3.42773 9.19084 3.42773 11.5937V12.4063C3.42773 14.8092 3.42773 16.0106 3.98466 17C4.54158 17.9894 5.55594 18.5901 7.58466 19.7915L8.27081 20.1979C10.2995 21.3993 11.3139 22 12.4277 22C13.5416 22 14.5559 21.3993 16.5847 20.1979L17.2708 19.7915C19.2995 18.5901 20.3139 17.9894 20.8708 17C21.4277 16.0106 21.4277 14.8092 21.4277 12.4063V11.5937C21.4277 9.19084 21.4277 7.98943 20.8708 7C20.3139 6.01057 19.2995 5.40987 17.2708 4.20846L16.5847 3.80211C14.5559 2.6007 13.5416 2 12.4277 2Z" clip-rule="evenodd" opacity=".5"/><path d="M12.4277 8.25C10.3567 8.25 8.67773 9.92893 8.67773 12C8.67773 14.0711 10.3567 15.75 12.4277 15.75C14.4988 15.75 16.1777 14.0711 16.1777 12C16.1777 9.92893 14.4988 8.25 12.4277 8.25Z"/></g></svg></span>
+  </span>
+  <span class="settings-widget__name ui-collection__title">设置</span>
+</a>
+</div><div class="widget-instance widget-instance--toc" data-widget-id="topbar:3:toc" data-presentation="topbar"><details class="topbar-toc"><summary class="region-compact-action ui-interactive card-hover card-hover--spotlight" aria-label="btn.toc"><span class="ui-icon"><svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6h11m-11 6h11m-11 6h11M4 6h1v4m-1 0h2m0 8H4c0-1 2-2 2-3s-1-1.5-2-1"/></svg></span></summary><div class="topbar-toc-popover"><ol class="toc ui-collection-adapter"><li class="toc-item toc-level-2"><a class="toc-link ui-interactive" href="#%E5%9F%BA%E6%93%8D%E5%8B%BF6"><span class="toc-text">基操勿6</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link ui-interactive" href="#stdIO"><span class="toc-text">stdIO</span></a></li><li class="toc-item toc-level-3"><a class="toc-link ui-interactive" href="#string%E7%9A%84%E6%AF%94%E8%BE%83%EF%BC%9A"><span class="toc-text">string的比较：</span></a></li><li class="toc-item toc-level-3"><a class="toc-link ui-interactive" href="#%E4%BC%A0%E5%8F%82%EF%BC%9A"><span class="toc-text">传参：</span></a></li><li class="toc-item toc-level-3"><a class="toc-link ui-interactive" href="#%E6%95%B0%E7%BB%84%EF%BC%9A"><span class="toc-text">数组：</span></a></li><li class="toc-item toc-level-3"><a class="toc-link ui-interactive" href="#%E6%9D%A1%E4%BB%B6%E8%BF%90%E7%AE%97%E7%AC%A6"><span class="toc-text">条件运算符?:</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link ui-interactive" href="#%E7%B1%BB%E4%B8%8E%E7%BB%93%E6%9E%84%E4%BD%93%EF%BC%9A"><span class="toc-text">类与结构体：</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link ui-interactive" href="#%E7%B1%BB%EF%BC%9A"><span class="toc-text">类：</span></a></li><li class="toc-item toc-level-3"><a class="toc-link ui-interactive" href="#%E7%BB%93%E6%9E%84%E4%BD%93%EF%BC%9A"><span class="toc-text">结构体：</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link ui-interactive" href="#%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%EF%BC%88-font-color-red-%E9%87%8D%E7%82%B9%EF%BC%81-font-%EF%BC%89"><span class="toc-text">数据结构（重点！）</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link ui-interactive" href="#%E9%93%BE%E8%A1%A8"><span class="toc-text">链表</span></a></li><li class="toc-item toc-level-3"><a class="toc-link ui-interactive" href="#%E5%A0%86-%E6%A0%88"><span class="toc-text">堆&#x2F;栈</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link ui-interactive" href="#STL"><span class="toc-text">STL</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link ui-interactive" href="#include-vector"><span class="toc-text">#include &lt;vector&gt;</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link ui-interactive" href="#%E6%8A%80%E5%B7%A7"><span class="toc-text">技巧</span></a></li><li class="toc-item toc-level-2"><a class="toc-link ui-interactive" href="#%E5%A5%BD%E9%A2%98%E5%85%B1%E8%B5%8F"><span class="toc-text">好题共赏</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link ui-interactive" href="#%E5%8A%A8%E7%89%A9"><span class="toc-text">动物</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link ui-interactive" href="#%E9%A2%98%E8%A7%A3%EF%BC%9A"><span class="toc-text">题解：</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link ui-interactive" href="#%E7%82%B9%E7%9A%84%E5%9D%90%E6%A0%87"><span class="toc-text">点的坐标</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link ui-interactive" href="#%E9%A2%98%E8%A7%A3"><span class="toc-text">题解</span></a></li></ol></li></ol></li></ol></div></details></div></div></div></header>
+<div class="site-workspace"><main data-stellar-runtime-region class="site-main" id="main">
+
+
+<div class="article-banner-wrap slide-up"><div class="article banner top">
+  <div class="content">
+    
+    <div class="top bread-nav footnote"><div class="top-row"><div class="left" id="breadcrumb"><a class="cap breadcrumb" href="/">主页</a>
+<span class="sep"></span><a class="cap breadcrumb" href="/">文章</a>
+</div><div class="right"><span class="cap reading">1982 字 · 预计阅读 7 分钟</span></div></div><div class="meta-row">
+<div class="flex-row" id="post-meta"><span class="text created">发布于：<time datetime="2024-09-16T16:00:00.000Z">2024-09-17</time></span><span class="sep updated"></span><span class="text updated">更新于：<time datetime="2026-11-01T10:32:12.000Z">2026-11-01</time></span></div>
+</div></div>
+    
+    <div class="bottom only-title">
+      
+      <div class="text-area">
+        <h1 class="text title"><span>阔论Cpp</span></h1>
+        
+      </div>
+    </div>
+    
+  </div>
+  </div></div>
+<article class="md-text content slide-up"><p>此博客持续更新，旨在记录一些重点、易错点、遗忘点<s>以及二次元美图</s>。</p>
+<hr>
+<h2 id="基操勿6">基操<s>勿6</s></h2>
+<h3 id="stdIO">stdIO</h3>
+<p>整数输入输出：</p>
+<figure class="highlight cpp"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-type">int</span> a, b;<br>cin &gt;&gt; a &gt;&gt; b;<br>cout &lt;&lt; a + b &lt;&lt; endl;<br></code></pre></td></tr></tbody></table></figure>
+<p>字符串：</p>
+<figure class="highlight cpp"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs cpp">string str;<br>cin &gt;&gt; str;<br>cout &lt;&lt; str;<br></code></pre></td></tr></tbody></table></figure>
+<p><code>cout &lt;&lt; “woof” &lt;&lt; endl;</code> 与 <code>cout &lt;&lt; “woof\n”;</code> 等同。</p>
+<p>格式化输出 - 小数/科学计数法/字符串の限位：</p>
+<figure class="highlight cpp"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs cpp">cout &lt;&lt; format( “{:<span class="hljs-number">.2f</span>} {:<span class="hljs-number">.3</span>e} {:<span class="hljs-number">.4</span>s}\n<span class="hljs-string">", 3.14159, 12345.678, "</span>abcdef<span class="hljs-string">") &lt;&lt; endl;</span><br><span class="hljs-string"></span><br><span class="hljs-string">// 输出：3.14 1.235e+04 abcd</span><br></code></pre></td></tr></tbody></table></figure>
+<p>输出地址：</p>
+<figure class="highlight cpp"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-type">char</span> c = <span class="hljs-string">'a'</span>;<br>cout &lt;&lt; (<span class="hljs-type">void</span>*)&amp;c &lt;&lt; endl;<br><br><span class="hljs-comment">// output: 0x971c1ff99f</span><br></code></pre></td></tr></tbody></table></figure>
+<h3 id="string的比较：">string的比较：</h3>
+<p><code>&gt;, &lt;, &gt;=, &lt;=, ==, !=</code></p>
+<h3 id="传参：">传参：</h3>
+<p>1）<font color="ff007f"><strong>按值（x）</strong></font>：<code>main()</code>外部调用<code>main()</code>内部参数时，参数改动不影响其真实值。<br>
+2）<font color="ff007f"><strong>按引用（&amp;x）</strong></font>：外部调用内部参数时，参数值<strong>同步</strong>改变。</p>
+<h3 id="数组：">数组：</h3>
+<figure class="highlight cpp"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs cpp">*a == a[] == a[LENGTH];<br></code></pre></td></tr></tbody></table></figure>
+<p>多维数组形参<strong>除第一维</strong>外，其余必须指定。</p>
+<figure class="highlight cpp"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-comment">// 访问数组元素的不同方法</span><br><br><span class="hljs-type">int</span> arr[<span class="hljs-number">5</span>] = {<span class="hljs-number">1</span>,<span class="hljs-number">2</span>,<span class="hljs-number">3</span>,<span class="hljs-number">4</span>,<span class="hljs-number">5</span>};<br><span class="hljs-type">int</span> *ptr = arr;<br><span class="hljs-comment">// 三者等同：</span><br>cout &lt;&lt; arr[<span class="hljs-number">3</span>];<br>cout &lt;&lt; *(ptr<span class="hljs-number">+3</span>);<br>cout &lt;&lt; ptr[<span class="hljs-number">3</span>];<br></code></pre></td></tr></tbody></table></figure>
+<h3 id="条件运算符">条件运算符?:</h3>
+<p><code>condition ? consequent : alternative</code><br>
+condition 表达式的计算结果必须为 true 或 false。 若 condition 的计算结果为 true，将计算 consequent，其结果成为运算结果；若 condition 的计算结果为 false，将计算 alternative，其结果成为运算结果。</p>
+<hr>
+<h2 id="类与结构体：">类与结构体：</h2>
+<h3 id="类：">类：</h3>
+<figure class="highlight cpp"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-meta">#<span class="hljs-keyword">include</span><span class="hljs-string">&lt;iostream&gt;</span></span><br><span class="hljs-keyword">using</span> <span class="hljs-keyword">namespace</span> std;<br><br><span class="hljs-keyword">class</span> <span class="hljs-title class_">Person</span> {<br><br><span class="hljs-keyword">private</span>:<br>    <span class="hljs-type">int</span> age, height;<br>    <span class="hljs-type">double</span> money;<br>    string books[<span class="hljs-number">100</span>];<br><span class="hljs-keyword">public</span>:<br>    string name;<br><br>    <span class="hljs-built_in">Person</span>(string _name, <span class="hljs-type">int</span> _age) {<br>        name = _name;<br>        age = _age;<br>        money = <span class="hljs-number">1000</span>;<br>    }<br><br>    <span class="hljs-built_in">Person</span>(string _name, <span class="hljs-type">int</span> _age, <span class="hljs-type">double</span> _money) : <span class="hljs-built_in">name</span>(_name), <span class="hljs-built_in">age</span>(_age), <span class="hljs-built_in">money</span>(_money) {}<br><br>    <span class="hljs-function"><span class="hljs-type">void</span> <span class="hljs-title">say</span><span class="hljs-params">()</span> </span>{<br>        cout &lt;&lt; <span class="hljs-string">"I'm "</span> &lt;&lt; name &lt;&lt; endl;<br>    }<br><br>    <span class="hljs-function"><span class="hljs-type">void</span> <span class="hljs-title">add_money</span><span class="hljs-params">(<span class="hljs-type">double</span> x)</span> </span>{<br>        money += x;<br>    }<br><br>    <span class="hljs-function"><span class="hljs-type">void</span> <span class="hljs-title">set_age</span><span class="hljs-params">(<span class="hljs-type">int</span> x)</span> </span>{<br>        age = x;<br>    }<br>};<br><br><span class="hljs-function"><span class="hljs-type">int</span> <span class="hljs-title">main</span><span class="hljs-params">()</span> </span>{<br>    <span class="hljs-function"><span class="hljs-keyword">class</span> Person <span class="hljs-title">c</span><span class="hljs-params">(<span class="hljs-string">"yxc"</span>, <span class="hljs-number">18</span>, <span class="hljs-number">10086</span>)</span></span>;<br>    c.name = <span class="hljs-string">"qbt"</span>;<br>    c.<span class="hljs-built_in">set_age</span>(<span class="hljs-number">18</span>);<br>    c.<span class="hljs-built_in">add_money</span>(<span class="hljs-number">10000</span>);<br>    c.<span class="hljs-built_in">say</span>();<br>    <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;<br>}<br><br><span class="hljs-comment">// output:</span><br><span class="hljs-comment">// I'm qbt</span><br></code></pre></td></tr></tbody></table></figure>
+<h3 id="结构体：">结构体：</h3>
+<figure class="highlight cpp"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-meta">#<span class="hljs-keyword">include</span><span class="hljs-string">&lt;iostream&gt;</span></span><br><span class="hljs-keyword">using</span> <span class="hljs-keyword">namespace</span> std;<br><br><span class="hljs-keyword">struct</span> <span class="hljs-title class_">Person</span> {<br><br>    <span class="hljs-type">int</span> age, height;<br>    <span class="hljs-type">double</span> money;<br>    string books[<span class="hljs-number">100</span>];<br>    string name;<br><br>    <span class="hljs-built_in">Person</span>(string _name, <span class="hljs-type">int</span> _age) {<br>        name = _name;<br>        age = _age;<br>        money = <span class="hljs-number">1000</span>;<br>    }<br><br>    <span class="hljs-built_in">Person</span>(string _name, <span class="hljs-type">int</span> _age, <span class="hljs-type">double</span> _money) : <span class="hljs-built_in">name</span>(_name), <span class="hljs-built_in">age</span>(_age), <span class="hljs-built_in">money</span>(_money) {}<br><br>    <span class="hljs-function"><span class="hljs-type">void</span> <span class="hljs-title">say</span><span class="hljs-params">()</span> </span>{<br>        cout &lt;&lt; <span class="hljs-string">"I'm "</span> &lt;&lt; name &lt;&lt; endl;<br>    }<br><br>    <span class="hljs-function"><span class="hljs-type">void</span> <span class="hljs-title">add_money</span><span class="hljs-params">(<span class="hljs-type">double</span> x)</span> </span>{<br>        money += x;<br>    }<br><br>    <span class="hljs-function"><span class="hljs-type">void</span> <span class="hljs-title">set_age</span><span class="hljs-params">(<span class="hljs-type">int</span> x)</span> </span>{<br>        age = x;<br>    }<br>};<br><br><span class="hljs-function"><span class="hljs-type">int</span> <span class="hljs-title">main</span><span class="hljs-params">()</span> </span>{<br>    <span class="hljs-function"><span class="hljs-keyword">class</span> Person <span class="hljs-title">c</span><span class="hljs-params">(<span class="hljs-string">"yxc"</span>, <span class="hljs-number">18</span>, <span class="hljs-number">10086</span>)</span></span>;<br>    c.name = <span class="hljs-string">"qbt"</span>;<br>    c.<span class="hljs-built_in">set_age</span>(<span class="hljs-number">18</span>);<br>    c.<span class="hljs-built_in">add_money</span>(<span class="hljs-number">10000</span>);<br>    c.<span class="hljs-built_in">say</span>();<br>    <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;<br>}<br><br><span class="hljs-comment">// output:</span><br><span class="hljs-comment">// I'm qbt</span><br></code></pre></td></tr></tbody></table></figure>
+<p><strong>class</strong>默认变量<font color="red"><strong>私有</strong></font>，<strong>struct</strong>默认<font color="red"><strong>公有</strong></font>；<br>
+两者构造差不多，上述示例做参考。</p>
+<h2 id="数据结构（-font-color-red-重点！-font-）"><em>数据结构</em>（<font color="red">重点！</font>）</h2>
+<h3 id="链表">链表</h3>
+<figure class="highlight cpp"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-comment">// define</span><br><span class="hljs-keyword">struct</span> <span class="hljs-title class_">Node</span> {<br>    <span class="hljs-type">int</span> val;    Node* next;<br>}<br><br><span class="hljs-function"><span class="hljs-type">int</span> <span class="hljs-title">main</span><span class="hljs-params">()</span> </span>{<br>    Node *node = <span class="hljs-keyword">new</span> <span class="hljs-built_in">Node</span>(<span class="hljs-number">1</span>); <span class="hljs-comment">//  正确，此处传引用</span><br>    Node *node = <span class="hljs-built_in">Node</span>(<span class="hljs-number">1</span>);     <span class="hljs-comment">//  错误，此处指Node型变量，传值</span><br>}<br></code></pre></td></tr></tbody></table></figure>
+<ul>
+<li><strong>头节点</strong>：<font color="red"><strong>第一个</strong></font>节点的<font color="red"><strong>地址</strong></font>，即<code>head</code>指向的就是其后节点的地址，不用<code>head-&gt;next</code>!</li>
+</ul>
+<h3 id="堆-栈">堆/栈</h3>
+<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><code class="hljs plaintext">                    RAM Space<br>               ·-----------------·<br>Stacks      |  |  func() call;   |<br>(Downwards) |  |  local val……    |<br>            |  |                 |<br>            ↓  |                 |<br>               |                 |<br>               |`````````````````|<br>Heaps       ↑  |  global val……   |<br>(Upwards)   |  |                 |<br>            |  |                 |<br>            |  |                 |<br>               ·-----------------·<br></code></pre></td></tr></tbody></table></figure>
+<ul>
+<li>栈：后进先出（文件柜）多用于深度优先搜寻</li>
+<li>队列：先进先出（羽毛球筒）多用于广度优先搜寻</li>
+</ul>
+<h2 id="STL">STL</h2>
+<h3 id="include-vector"><code>#include &lt;vector&gt;</code></h3>
+<p><code>vector</code>是变长数组，支持随机访问，不支持在任意位置 O(1) 插入。为了保证效率，元素的增删一般应该在末尾进行。</p>
+<ul>
+<li>Declare：</li>
+</ul>
+<figure class="highlight cpp"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-meta">#<span class="hljs-keyword">include</span> <span class="hljs-string">&lt;vector&gt;</span>   <span class="hljs-comment">// 头文件</span></span><br>vector&lt;<span class="hljs-type">int</span>&gt; a;      <span class="hljs-comment">// 相当于一个长度动态变化的int数组</span><br>vector&lt;<span class="hljs-type">int</span>&gt; b[<span class="hljs-number">233</span>]; <span class="hljs-comment">// 相当于第一维长233，第二位长度动态变化的int数组</span><br><span class="hljs-keyword">struct</span> <span class="hljs-title class_">rec</span>{…};<br>vector&lt;rec&gt; c;      <span class="hljs-comment">// 自定义的结构体类型也可以保存在vector中</span><br></code></pre></td></tr></tbody></table></figure>
+<ul>
+<li><code>size/empty</code></li>
+</ul>
+<p><code>size</code>函数返回<code>vector</code>的实际长度（包含的元素个数），empty函数返回一个<code>bool</code>类型，表明<code>vector</code>是否为空。二者的时间复杂度都是<em><strong>O(1)</strong></em>。<br>
+所有的STL容器都支持这两个方法，含义也相同，之后我们就不再重复给出。</p>
+<ul>
+<li><code>clear</code></li>
+</ul>
+<p><code>clear</code>函数会清空<code>vector</code>容器。</p>
+<ul>
+<li>迭代器</li>
+</ul>
+<p>迭代器就像STL容器的“指针”，可以用星号*操作符解除引用。<br>
+一个保存<code>int</code>的<code>vector</code>的迭代器声明方法为：</p>
+<figure class="highlight cpp"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs cpp">vector&lt;<span class="hljs-type">int</span>&gt;::iterator it;<br></code></pre></td></tr></tbody></table></figure>
+<p><strong>若想直接访问迭代器的值，需要在变量前<em>加<code>*</code></em> 例如<code>*i</code>。</strong></p>
+<p><code>vector</code>的迭代器是“随机访问迭代器”，可以把<code>vector</code>的迭代器与一个整数相加减，其行为和指针的移动类似。可以把<code>vector</code>的两个迭代器相减，其结果也和指针相减类似，得到两个迭代器对应下标之间的距离。</p>
+<ul>
+<li><code>begin/end</code></li>
+</ul>
+<p><code>begin</code>函数返回指向<code>vector</code>中第一个元素的迭代器。例如a是一个非空的<code>vector</code>，则<code>*a.begin()</code>与<code>a[0]</code>的作用相同。</p>
+<p>所有的容器都可以视作一个“前闭后开”的结构，<code>end</code>函数返回<code>vector</code>的尾部，即第<code>n</code>个元素再往后的“边界”。<code>*a.end()</code>与<code>a[n]</code>都是越界访问，其中n = <code>a.size()</code>。</p>
+<p>下面两份代码都遍历了<code>vector&lt;int&gt; a</code>，并输出它的所有元素。</p>
+<figure class="highlight cpp"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> i = <span class="hljs-number">0</span>; i &lt; a.<span class="hljs-built_in">size</span>(); i ++)<br>    cout &lt;&lt; a[i] &lt;&lt; endl;<br><br><span class="hljs-keyword">for</span> (vector&lt;<span class="hljs-type">int</span>&gt;::iterator it = a.<span class="hljs-built_in">begin</span>(); it != a.<span class="hljs-built_in">end</span>(); it ++)<br>    cout &lt;&lt; *it &lt;&lt; endl;<br></code></pre></td></tr></tbody></table></figure>
+<ul>
+<li><code>front/back</code></li>
+</ul>
+<p><code>front</code>函数返回<code>vector</code>的第一个元素，等价于<code>*a.begin()</code>和<code>a[0]</code>。
+<code>back</code>函数返回<code>vector</code>的最后一个元素，等价于<code>*--a.end()</code>和<code>a[a.size() – 1]</code>。</p>
+<ul>
+<li><code>push_back()</code>和<code>pop_back()</code></li>
+</ul>
+<p><code>a.push_back(x)</code>把元素<code>x</code>插入到<code>vector a</code>的尾部。
+<code>b.pop_back()</code>删除<code>vector a</code>的最后一个元素。</p>
+<p><strong>来源<a target="_blank" rel="noopener" href="https://www.acwing.com/file_system/file/content/whole/index/content/3598249/" data-md-link=""><span class="md-link-icon ui-icon" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24"><g fill="currentColor"><g opacity=".5"><path d="M19.7388 4.26118C17.0572 1.57961 12.7095 1.57961 10.0279 4.26118L9.30707 4.98203C9.01418 5.27492 9.01418 5.7498 9.30707 6.04269C9.59997 6.33558 10.0748 6.33558 10.3677 6.04269L11.0886 5.32184C13.1844 3.22605 16.5823 3.22605 18.6781 5.32184C20.7739 7.41763 20.7739 10.8156 18.6781 12.9114L17.9573 13.6322C17.6644 13.9251 17.6644 14.4 17.9573 14.6929C18.2502 14.9858 18.725 14.9858 19.0179 14.6929L19.7388 13.972C22.4203 11.2905 22.4203 6.94276 19.7388 4.26118Z"></path><path d="M6.04269 9.30707C6.33558 9.59997 6.33558 10.0748 6.04269 10.3677L5.32184 11.0886C3.22605 13.1844 3.22605 16.5823 5.32184 18.6781C7.41763 20.7739 10.8156 20.7739 12.9114 18.6781L13.6322 17.9573C13.9251 17.6644 14.4 17.6644 14.6929 17.9573C14.9858 18.2501 14.9858 18.725 14.6929 19.0179L13.972 19.7388C11.2905 22.4203 6.94276 22.4203 4.26118 19.7388C1.57961 17.0572 1.57961 12.7095 4.26118 10.0279L4.98203 9.30707C5.27492 9.01418 5.7498 9.01418 6.04269 9.30707Z"></path></g><path d="M14.6933 9.30707C14.9862 9.59997 14.9862 10.0748 14.6933 10.3677L10.3682 14.6928C10.0753 14.9857 9.60045 14.9857 9.30756 14.6928C9.01467 14.3999 9.01467 13.9251 9.30756 13.6322L13.6327 9.30707C13.9255 9.01418 14.4004 9.01418 14.6933 9.30707Z"></path></g></svg></span>https://www.acwing.com/file_system/file/content/whole/index/content/3598249/</a></strong></p>
+<h2 id="技巧">技巧</h2>
+<ul>
+<li>定义空(<code>NULL</code>)时，使用<code>nullptr</code>更好！</li>
+<li>使用下列代码来减少带<code>cin</code>/<code>cout</code>代码的运行时间消耗：</li>
+</ul>
+<figure class="highlight cpp"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs cpp">ios::<span class="hljs-built_in">sync_with_stdio</span>(<span class="hljs-literal">false</span>);<br>cin.<span class="hljs-built_in">tie</span>(<span class="hljs-number">0</span>);<br></code></pre></td></tr></tbody></table></figure>
+<h2 id="好题共赏">好题共赏</h2>
+<h3 id="动物">动物</h3>
+<p>给定你三个葡萄牙语单词，这些词将根据下表从左到右定义一个动物。
+<a target="_blank" rel="noopener" href="https://www.imagehub.cc/image/19-c2433a725d-UOJ-1049-b.boICCh"><img class="lazy" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" data-src="https://s1.imagehub.cc/images/2024/09/17/ecc61b6eba406c66cc9130c26efa6fe4.md.png" alt="OI" onerror="this.onerror&#x3D;null;this.src&#x3D;&quot;&#x2F;images&#x2F;stellar-error.491ee870f4940739.svg&quot;"></a>
+请你确定并输出这个动物的名称。</p>
+<p>输入格式<br>
+根据上表，输入包含三个单词，每行一个，用以识别动物，单词由小写字母构成。</p>
+<p>输出格式<br>
+输出识别出的动物的名称。</p>
+<ul>
+<li>输入样例：</li>
+</ul>
+<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs plaintext">vertebrado<br>mamifero<br>onivoro<br></code></pre></td></tr></tbody></table></figure>
+<ul>
+<li>输出样例：</li>
+</ul>
+<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs plaintext">homem<br></code></pre></td></tr></tbody></table></figure>
+<h4 id="题解：">题解：</h4>
+<figure class="highlight cpp"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-meta">#<span class="hljs-keyword">include</span> <span class="hljs-string">&lt;iostream&gt;</span></span><br><span class="hljs-keyword">using</span> <span class="hljs-keyword">namespace</span> std;<br><br><span class="hljs-function"><span class="hljs-type">int</span> <span class="hljs-title">main</span><span class="hljs-params">()</span> </span>{<br>    string s[<span class="hljs-number">3</span>]; string sF;<br>    <span class="hljs-keyword">for</span>(<span class="hljs-type">int</span> i=<span class="hljs-number">0</span>; i&lt;<span class="hljs-number">3</span>; i++) {<br>        cin&gt;&gt; s[i]; sF+= s[i][<span class="hljs-number">0</span>];<br>    }<br><br>    <span class="hljs-keyword">if</span>(sF==<span class="hljs-string">"vac"</span>) cout&lt;&lt; <span class="hljs-string">"aguia"</span>;<br>    <span class="hljs-keyword">if</span>(sF==<span class="hljs-string">"vao"</span>) cout&lt;&lt; <span class="hljs-string">"pomba"</span>;<br>    <span class="hljs-keyword">if</span>(sF==<span class="hljs-string">"vmo"</span>) cout&lt;&lt; <span class="hljs-string">"homem"</span>;<br>    <span class="hljs-keyword">if</span>(sF==<span class="hljs-string">"vmh"</span>) cout&lt;&lt; <span class="hljs-string">"vaca"</span>;<br>    <span class="hljs-keyword">if</span>(sF==<span class="hljs-string">"iih"</span>) {<br>        <span class="hljs-keyword">if</span>(s[<span class="hljs-number">2</span>] == <span class="hljs-string">"hematofago"</span>) cout&lt;&lt; <span class="hljs-string">"pulga"</span>;<br>        <span class="hljs-keyword">else</span> cout&lt;&lt; <span class="hljs-string">"lagarta"</span>;<br>    }<br>    <span class="hljs-keyword">if</span>(sF==<span class="hljs-string">"iah"</span>) cout&lt;&lt; <span class="hljs-string">"sanguessuga"</span>;<br>    <span class="hljs-keyword">if</span>(sF==<span class="hljs-string">"iao"</span>) cout&lt;&lt; <span class="hljs-string">"minhoca"</span>;<br>}<br></code></pre></td></tr></tbody></table></figure>
+<h3 id="点的坐标">点的坐标</h3>
+<p>给定两个保留一位小数的浮点数X,Y，用来表示一个点的横纵坐标。
+请你判断该点在坐标系中的位置。</p>
+<p>输入格式<br>
+共一行，包含两个浮点数X,Y，表示点的横纵坐标。</p>
+<p>输出格式<br>
+如果点在第一象限，则输出 Q1，在第二象限，则输出 Q2，以此类推。<br>
+如果点在原点处，则输出 Origem。<br>
+否则，如果点在x坐标上，则输出 Eixo X，在y坐标上，则输出 Eixo Y。</p>
+<p>数据范围
+-10.0≤X,Y≤10.0</p>
+<ul>
+<li>输入样例1：</li>
+</ul>
+<figure class="highlight cpp"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-number">4.5</span> <span class="hljs-number">-2.2</span><br></code></pre></td></tr></tbody></table></figure>
+<ul>
+<li>输出样例1：</li>
+</ul>
+<figure class="highlight cpp"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs cpp">Q4<br></code></pre></td></tr></tbody></table></figure>
+<ul>
+<li>输入样例2：</li>
+</ul>
+<figure class="highlight cpp"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-number">0.0</span> <span class="hljs-number">0.0</span><br></code></pre></td></tr></tbody></table></figure>
+<ul>
+<li>输出样例2：</li>
+</ul>
+<figure class="highlight cpp"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs cpp">Origem<br></code></pre></td></tr></tbody></table></figure>
+<h4 id="题解">题解</h4>
+<figure class="highlight cpp"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-meta">#<span class="hljs-keyword">include</span><span class="hljs-string">&lt;iostream&gt;</span></span><br><br><span class="hljs-keyword">using</span> <span class="hljs-keyword">namespace</span> std;<br><br><span class="hljs-function"><span class="hljs-type">int</span> <span class="hljs-title">main</span><span class="hljs-params">()</span> </span>{<br>    <span class="hljs-type">double</span> x, y;<br>    cin &gt;&gt; x &gt;&gt; y;<br>    <span class="hljs-keyword">if</span> (x == <span class="hljs-number">0</span> &amp;&amp; y == <span class="hljs-number">0</span>) cout &lt;&lt; <span class="hljs-string">"Origem"</span>;<br>    <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> (x * y == <span class="hljs-number">0</span>) cout &lt;&lt; (x == <span class="hljs-number">0</span> ? <span class="hljs-string">"Eixo X"</span> : <span class="hljs-string">"Eixo Y"</span>);<br>    <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> (x &gt; <span class="hljs-number">0</span>) cout &lt;&lt; (y &gt; <span class="hljs-number">0</span> ? <span class="hljs-string">"Q1"</span> : <span class="hljs-string">"Q4"</span>);<br>    <span class="hljs-keyword">else</span> cout &lt;&lt; (y &gt; <span class="hljs-number">0</span> ? <span class="hljs-string">"Q2"</span> : <span class="hljs-string">"Q3"</span>);<br><br>    <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;<br>}<br></code></pre></td></tr></tbody></table></figure>
+<hr>
+<p>C++，危险又优雅~
+<img class="lazy" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" data-src="https://s1.imagehub.cc/images/2024/09/17/908aee0e9161693423b1e77194479a2c.jpg" alt="cum!" onerror="this.onerror&#x3D;null;this.src&#x3D;&quot;&#x2F;images&#x2F;stellar-error.491ee870f4940739.svg&quot;"></p>
+</article>
+<div class="article-tags slide-up"><a class="tag" href="/tags/%E5%AD%A6%E4%B9%A0/"><svg class="icon" viewBox="0 0 1 1" data-icon="default:hashtag" aria-hidden="true"></svg>学习</a></div>
+
+
+
+<div class="article-footer slide-up">
+    <section id="license">
+      <div class="header"><span>许可协议</span></div>
+      <div class="body"><p>本站原创文章采用 <a target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-nd/4.0/deed.zh">CC BY-NC-ND 4.0</a> 许可，另有注明的内容除外。</p>
+</div>
+    </section></div>
+
+<div class="related-wrap slide-up" id="read-next"><section class="body"><div class="item" id="prev"><div class="note"><svg class="icon" viewBox="0 0 1 1" data-icon="default:arrow-left" aria-hidden="true"></svg> 较新文章</div><a href="/posts/2024/241002/">Apple音乐-学生订阅</a></div><div class="item" id="next"><div class="note">较早文章 <svg class="icon" viewBox="0 0 1 1" data-icon="default:arrow-right" aria-hidden="true"></svg></div><a href="/posts/2024/240812/">理绪寻的</a></div></section></div>
+
+
+
+
+
+
+<footer class="page-footer slide-up footnote"><hr><div class="text"><p>© Leo · <a href="/rss.xml">RSS</a> · <a href="/pages/project/">项目</a> · <a href="/pages/friends/">友圈鱼塘</a> · <a href="/pages/privacy/">隐私</a> · <a href="/pages/cc/">版权</a></p>
+<p>Powered by <a target="_blank" rel="noopener" href="https://hexo.io/">Hexo</a> · Theme <a target="_blank" rel="noopener" href="https://github.com/xaoxuu/hexo-theme-stellar">Stellar</a></p>
+</div></footer>
+</main></div><button type="button" class="site-scrim" data-shell-action="dismiss-drawer" aria-label="Close navigation" tabindex="-1"></button><div data-stellar-runtime-region class="site-dock" role="group" aria-label="Layout panels">
+  <button type="button" class="site-dock__button site-dock__button--rightbar ui-interactive" aria-label="Open rightbar" aria-controls="rightbar-region" aria-expanded="false" data-shell-action="toggle-rightbar-drawer">
+    <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6h11m-11 6h11m-11 6h11M4 6h1v4m-1 0h2m0 8H4c0-1 2-2 2-3s-1-1.5-2-1"/></svg>
+  </button>
+  <button type="button" class="site-dock__button site-dock__button--leftbar ui-interactive" aria-label="Open leftbar" aria-controls="leftbar-region" aria-expanded="false" data-shell-action="toggle-leftbar-drawer">
+    <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.5"><path d="M2 11c0-3.771 0-5.657 1.172-6.828C4.343 3 6.229 3 10 3h4c3.771 0 5.657 0 6.828 1.172C22 5.343 22 7.229 22 11v2c0 3.771 0 5.657-1.172 6.828C19.657 21 17.771 21 14 21h-4c-3.771 0-5.657 0-6.828-1.172C2 18.657 2 16.771 2 13z"/><path id="sep" stroke-linecap="round" d="M5.5 10h6m-5 4h4m4.5 7V3"/></g></svg>
+  </button>
+</div>
+</div><div class="site-scripts">
+<script data-stellar-script="core" src="/js/stellar-icons.js?v=39c6ac17e854ffe2"></script>
+
+<script data-stellar-script="defines">
+  window.canonical = window.stellarClientData.canonical;
+  const ctx = window.stellarClientData.ctx;
+  window.canonical.param = {permalink: "https://coderama.top/posts/2024/240917/", checklink: ctx.services.video.js};
+  ctx.date_suffix = {"just":"刚刚","min":"分钟前","hour":"小时前","day":"天前"};
+  if (ctx.search) Object.assign(ctx.search, {"more":"更多","no_more":"没有更多了"});
+  const def = window.stellarClientData.def;
+  window.ctx = ctx;
+  window.def = def;
+</script>
+
+
+<!-- core: 迁移期 DOM/资源兼容工具；Extension 注册与生命周期由 ESM runtime 所有 -->
+<script data-stellar-script="core" src="/js/utils.js?v=2.0.0"></script>
+<script data-stellar-script="core" src="/js/main.js?v=2.0.0" defer></script>
+<script data-stellar-script="core" defer src="/js/profile.js?v=2.0.0"></script>
+
+
+
+
+
+<script data-stellar-script="core" type="application/json" id="stellar-runtime-config">{"version":1,"root":"/","policy":{"cache":{"enabled":true,"defaultTtl":3600,"ttl":{"giscus":600,"waline":600,"artalk":600,"memos":600,"memos-user":86400,"sites":86400,"friends":86400,"friends_and_posts":86400,"siteinfo":86400},"maxEntries":200},"request":{"retries":2,"timeoutMs":5000,"idleTimeoutMs":3000,"maxCacheEntryBytes":204800},"features":{"codeCopyToastMs":2500},"providers":{"linkPrefetch":"flying_pages","lightbox":"fancybox","diagrams":"mermaid"}},"extensions":[{"id":"pin-slider","module":"/js/runtime/extensions/pin-slider.js","scope":"region","when":{"selector":".pin-slider"},"config":{}},{"id":"page-controls","module":"/js/runtime/extensions/page-controls.js","scope":"region","when":{"always":true},"config":{"highlight":"/js/search/highlight.js","tagtree":"/js/tagtree.js"}},{"id":"color-scheme-switch","module":"/js/runtime/extensions/color-scheme-switch.js","scope":"document","when":{"always":true},"config":{"messages":{"light":"切换到浅色模式","dark":"切换到深色模式","auto":"切换到跟随系统配色"}}},{"id":"search","module":"/js/runtime/extensions/search.js","scope":"document","when":{"selector":".search-input"},"config":{"provider":"local","options":{"scope":"all","includeContent":true,"cacheTtlSeconds":86400},"assets":{"client":null,"provider":"/js/search/local-search.js","shortcut":"/js/search/shortcut.js"}}},{"id":"hero-parallax","module":"/js/runtime/extensions/hero-parallax.js","scope":"region","when":{"selector":".wiki-hero"},"config":{}},{"id":"hero-effect","module":"/js/runtime/extensions/hero-effect.js","scope":"region","when":{"selector":"canvas[data-hero-effect]"},"config":{}},{"id":"lazy-loading","module":"/js/runtime/extensions/lazy-loading.js","scope":"document","when":{"always":true},"config":{"asset":"https://gcore.jsdelivr.net/npm/vanilla-lazyload@19.1/dist/lazyload.min.js"}},{"id":"deferred-icons","module":"/js/runtime/extensions/deferred-icons.js","scope":"region","when":{"selector":"svg.icon[data-icon]"},"config":{}},{"id":"dropdown","module":"/js/runtime/extensions/dropdown.js","scope":"region","when":{"selector":"details.dropdown"},"config":{}},{"id":"services","module":"/js/runtime/extensions/services.js","scope":"region","when":{"selector":"#artalk_container, #twikoo_container, #waline_container, .data-service, [class*='ds-'], a[cardlink], a[data-md-link][data-siteinfo-api], .site-card [data-siteinfo-api], .voice\u003eaudio, .video\u003evideo, .chat-file"},"config":{"marked":"https://gcore.jsdelivr.net/npm/marked@13.0/lib/marked.umd.min.js"}},{"id":"settings","module":"/js/runtime/extensions/settings.js","scope":"region","when":{"selector":".settings-page"},"config":{}},{"id":"lightbox","module":"/js/runtime/extensions/lightbox.js","scope":"region","when":{"selector":"[data-fancybox]:not(.error), .with-fancybox, .ds-memos, .timenode p\u003eimg"},"config":{"enabled":true,"selector":".timenode p\u003eimg","assets":{"localCss":"/css/plugins/fancybox.css","js":"https://gcore.jsdelivr.net/npm/@fancyapps/ui@5.0/dist/fancybox/fancybox.umd.js","css":"https://gcore.jsdelivr.net/npm/@fancyapps/ui@5.0/dist/fancybox/fancybox.css"}}},{"id":"reveal","module":"/js/runtime/extensions/reveal.js","scope":"region","when":{"selector":".slide-up"},"config":{"enabled":true,"duration":450,"interval":60,"distance":8,"blur":0}},{"id":"code-copy","module":"/js/runtime/extensions/code-copy.js","scope":"region","when":{"selector":".code"},"config":{"assets":{"js":"/js/plugins/copycode.js"},"messages":{"label":"复制","copied":"复制成功","denied":"未获得剪贴板权限","unsupported":"当前浏览器不支持剪贴板或页面不是 HTTPS"}}},{"id":"adaptive-text","module":"/js/runtime/extensions/adaptive-text.js","scope":"region","when":{"selector":"[data-text-adaptive]"},"config":{"assets":{"colorJs":"/js/color.js","js":"/js/plugins/adaptive-text.js"}}},{"id":"swiper","module":"/js/runtime/extensions/swiper.js","scope":"region","when":{"selector":"#swiper-api"},"config":{"assets":{"localCss":"/css/plugins/swiper.css","js":"https://unpkg.com/swiper@10.3/swiper-bundle.min.js","css":"https://unpkg.com/swiper@10.3/swiper-bundle.min.css"}}}]}</script>
+<script data-stellar-script="core" type="module" src="/js/runtime/index.js?v=2.0.0&runtime=1"></script>
+
+
+<!-- inject -->
+
+
+<script data-stellar-script="core" defer src="/js/navigation-init.js?v=2.0.0"></script>
+</div></body></html>
+
