@@ -31,8 +31,24 @@ hexo.extend.filter.register('after_render:html', function (html) {
     if (/rel="prev"/.test(attrs)) return `<a${attrs} aria-label="上一页">`;
     return tag;
   }).replace(/(<link\b[^>]*\bhref=")\/css\/(site|code-highlight)\.css(")/g,
-    (_tag, prefix, name, suffix) => `${prefix}/css/${name}.css?v=${cssVersions[name]}${suffix}`);
+    (_tag, prefix, name, suffix) => `${prefix}/css/${name}.css?v=${cssVersions[name]}${suffix}`)
+    .replace('src="/js/main.js"', 'src="/js/main.js?v=topbar-offset-96"');
 }, 100);
+
+// Stellar 2.0 scrolls TOC links with its own animation, which ignores CSS
+// scroll-margin. Keep both its click offset and active-heading offset aligned
+// with the fixed lightblog topbar, without editing the installed dependency.
+hexo.extend.filter.register('after_generate', async function () {
+  const chunks = [];
+  for await (const chunk of hexo.route.get('js/main.js')) chunks.push(Buffer.from(chunk));
+  const original = Buffer.concat(chunks).toString();
+  const patched = original.replace('const offset = 32;', 'const offset = 96;')
+    .replace('const scrollOffset = 32;', 'const scrollOffset = 96;');
+  if (patched === original || patched.includes('const offset = 32;') || patched.includes('const scrollOffset = 32;')) {
+    throw new Error('Stellar TOC offset compatibility patch needs review');
+  }
+  hexo.route.set('js/main.js', patched);
+});
 
 hexo.extend.generator.register('blog-compatibility', function (locals) {
   const posts = locals.posts.sort('date', -1).toArray();
