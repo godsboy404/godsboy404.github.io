@@ -8,6 +8,12 @@
 .site-region--topbar .widget-stack { overflow: visible; }
 .site-region--topbar .topbar-toc-popover { z-index: 20; }
 .topbar-toc-popover a { display: block; padding: .25em 0; overflow-wrap: anywhere; }
+/* Copy feedback must sit above the sticky navigation (theme z-index: 12). */
+div.toast { z-index: 30; }
+@media (hover: none), (pointer: coarse) {
+  .md-text .highlight .code .copy-btn { visibility: visible; background: #282c34; }
+  .md-text .highlight .code::before { visibility: hidden; }
+}
 [hidden] { display: none !important; }
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after { scroll-behavior: auto !important; animation-duration: .01ms !important; transition-duration: .01ms !important; }

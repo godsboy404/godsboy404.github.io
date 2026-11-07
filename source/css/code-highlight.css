@@ -1,4 +1,7 @@
 /* Local syntax colors; no font or stylesheet request is needed to read code. */
+.md-text .highlight { background: #282c34; }
+.md-text .highlight .gutter pre .line { color: #9ba5b4; }
+.md-text .highlight .copy-btn, .md-text .highlight .code::before { color: #d8dee9; }
 .highlight .code { color: #d8dee9; background: #282c34; }
 .highlight .hljs-comment, .highlight .hljs-quote { color: #9ba5b4; font-style: italic; }
 .highlight .hljs-keyword, .highlight .hljs-selector-tag, .highlight .hljs-literal { color: #c792ea; }
