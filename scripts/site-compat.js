@@ -1,6 +1,11 @@
 /* global hexo */
 'use strict';
 const { escapeHTML } = require('hexo-util');
+const { createHash } = require('node:crypto');
+const { readFileSync } = require('node:fs');
+const path = require('node:path');
+const cssVersions = Object.fromEntries(['site', 'code-highlight'].map(name => [name,
+  createHash('sha256').update(readFileSync(path.join(hexo.base_dir, 'source/css', name + '.css'))).digest('hex').slice(0, 12)]));
 const xml = value => escapeHTML(String(value ?? '')).replace(/'/g, '&apos;');
 const absolute = value => {
   const url = new URL('/' + String(value).replace(/^\/+/, ''), hexo.config.url + '/');
@@ -25,7 +30,8 @@ hexo.extend.filter.register('after_render:html', function (html) {
     if (/rel="next"/.test(attrs)) return `<a${attrs} aria-label="下一页">`;
     if (/rel="prev"/.test(attrs)) return `<a${attrs} aria-label="上一页">`;
     return tag;
-  });
+  }).replace(/(<link\b[^>]*\bhref=")\/css\/(site|code-highlight)\.css(")/g,
+    (_tag, prefix, name, suffix) => `${prefix}/css/${name}.css?v=${cssVersions[name]}${suffix}`);
 }, 100);
 
 hexo.extend.generator.register('blog-compatibility', function (locals) {
