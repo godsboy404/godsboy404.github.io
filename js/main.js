@@ -557,7 +557,7 @@ function bindTocClick(widget) {
     const target = id && document.getElementById(id);
     if (target) {
       e.preventDefault();
-      const offset = 32;
+      const offset = 96;
       const targetY = target.getBoundingClientRect().top + window.scrollY - offset;
       smoothScrollTo(targetY);
       dismissDrawer();
@@ -619,7 +619,7 @@ document.addEventListener('stellar:mdrender', function (e) {
 
 const init = {
   toc: () => {
-    const scrollOffset = 32;
+    const scrollOffset = 96;
     // 滚动位置取整后标题顶可能落在偏移线下方 1~2px，加容差避免高亮回跳到上一条
     const scrollTolerance = 4;
     function activeTOC() {
