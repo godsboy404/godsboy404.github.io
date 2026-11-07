@@ -601,7 +601,7 @@ function bindAnchorClick() {
     }
     e.preventDefault();
     // #start 锚点贴顶滚动，不预留 offset；其余锚点与 TOC 点击滚动保持一致（32px）
-    const offset = id === 'start' ? 0 : 32;
+    const offset = id === 'start' ? 0 : 96;
     const targetY = target.getBoundingClientRect().top + window.scrollY - offset;
     smoothScrollTo(targetY);
     if (window.history && window.history.pushState) {
