@@ -32,7 +32,7 @@ hexo.extend.filter.register('after_render:html', function (html) {
     return tag;
   }).replace(/(<link\b[^>]*\bhref=")\/css\/(site|code-highlight)\.css(")/g,
     (_tag, prefix, name, suffix) => `${prefix}/css/${name}.css?v=${cssVersions[name]}${suffix}`)
-    .replace(/src="\/js\/main\.js(?:\?[^"]*)?"/, 'src="/js/main.js?v=topbar-offset-96"');
+    .replace(/src="\/js\/main\.js(?:\?[^"]*)?"/, 'src="/js/main.js?v=topbar-offset-96-v2"');
 }, 100);
 
 // Stellar 2.0 scrolls TOC links with its own animation, which ignores CSS
@@ -43,8 +43,9 @@ hexo.extend.filter.register('after_generate', async function () {
   for await (const chunk of hexo.route.get('js/main.js')) chunks.push(Buffer.from(chunk));
   const original = Buffer.concat(chunks).toString();
   const patched = original.replace('const offset = 32;', 'const offset = 96;')
-    .replace('const scrollOffset = 32;', 'const scrollOffset = 96;');
-  if (patched === original || patched.includes('const offset = 32;') || patched.includes('const scrollOffset = 32;')) {
+    .replace('const scrollOffset = 32;', 'const scrollOffset = 96;')
+    .replace("const offset = id === 'start' ? 0 : 32;", "const offset = id === 'start' ? 0 : 96;");
+  if (!['const offset = 96;', 'const scrollOffset = 96;', "const offset = id === 'start' ? 0 : 96;"].every(line => patched.includes(line))) {
     throw new Error('Stellar TOC offset compatibility patch needs review');
   }
   hexo.route.set('js/main.js', patched);
