@@ -14,6 +14,10 @@
 .md-text font[color="#66ccff"] { color: var(--legacy-blue); }
 .md-text font[color="orange"] { color: var(--legacy-orange); }
 .md-text font[color="darkred"] { color: var(--legacy-darkred); }
+/* Stellar treats a heading's first link as a filled badge. Actual linked
+   heading text needs the same contrasting foreground as the badge marker. */
+body[data-article-style="tech"] article.content :is(h1,h2,h3,h4,h5,h6) > a:first-child { color: #fff; }
+body[data-article-style="tech"] article.content :is(h1,h2,h3,h4,h5,h6) > a:first-child > .md-link-icon { color: inherit; }
 /* The compact navigation must let the article outline extend below the bar. */
 .site-region--topbar .widget-stack { overflow: visible; }
 .site-region--topbar .topbar-toc-popover { z-index: 20; }
