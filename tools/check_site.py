@@ -3,6 +3,7 @@ from pathlib import Path
 from html.parser import HTMLParser
 from urllib.parse import urlsplit, urljoin, unquote
 import json
+import hashlib
 import xml.etree.ElementTree as ET
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -118,9 +119,17 @@ def check():
         assert 'innerHTML' not in (ROOT / file).read_text(encoding='utf-8'), file
     for loc in ET.parse(PUBLIC / 'sitemap.xml').iter('{http://www.sitemaps.org/schemas/sitemap/0.9}loc'):
         assert resolve(loc.text), f'Sitemap entry does not exist: {loc.text}'
+    mirrors = json.loads((ROOT / 'docs/audits/article-image-mirrors-2026-11-07.json').read_text(encoding='utf-8'))
+    for image in mirrors:
+        relative = image['local'].removeprefix('/')
+        assert relative.startswith('images/articles/') and '..' not in Path(relative).parts, relative
+        for directory in (ROOT / 'source', PUBLIC):
+            asset = directory / relative
+            assert asset.suffix, f'Image has no extension: {asset}'
+            assert hashlib.sha256(asset.read_bytes()).hexdigest() == image['sha256'], f'Changed image bytes: {asset}'
     if errors:
         raise AssertionError('\n'.join(errors))
-    print(f'PASS: {len(pages)} HTML pages, links and fragments, RSS GUIDs, manifest icons, sitemap, CNAME and worker retirement endpoint.')
+    print(f'PASS: {len(pages)} HTML pages, links and fragments, RSS GUIDs, manifest icons, sitemap, CNAME, worker retirement endpoint and {len(mirrors)} original image hashes.')
 
 
 if __name__ == '__main__':

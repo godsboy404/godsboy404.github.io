@@ -2,7 +2,7 @@
 
 悟已往之不谏，知来者之可追。
 
-本站使用 **Hexo 8.1.2 + Stellar 2.0.0 轻博客**。顶部导航，首页直接显示文章列表，保留代码高亮、代码复制、目录、公式、本地搜索和深浅色设置。
+本站使用 **Hexo 8.1.2 + Stellar 2.0.0 轻博客**。顶部导航，首页直接显示文章列表，保留代码高亮、代码复制、目录、公式、本地搜索和跟随系统的深浅色配色。
 
 ## 本地预览
 
@@ -99,6 +99,8 @@ git push origin main
 
 GitHub Actions 自动安装锁定依赖、检查配置、构建并运行回归，再把通过检查的同一份产物发布到 `pages` 分支。PR 只运行检查。查看仓库 Actions 确认成功后，再访问 `https://coderama.top/`。
 
+2026-11-07 检查时，源站自动构建曾被 GitHub 账户账单锁定阻止，需账户所有者处理账单状态。本轮修复通过本地构建及检查后发布到原有 `pages` 分支，Pages 部署任务成功；仅推送源码不能保证新文章已上线。
+
 GitHub **Settings → Pages** 保持 **Deploy from a branch → pages → / (root)**，域名保持 `coderama.top`，无需修改既有 DNS。`public/` 是生成目录，不要在这里写文章，也不用手动提交它。
 
 `vercel.json` 同步改为 Hexo 构建，主发布方式仍是 GitHub Pages；Vercel 未作为本次实际发布目标验证。
@@ -107,8 +109,8 @@ GitHub **Settings → Pages** 保持 **Deploy from a branch → pages → / (roo
 
 25 篇文章、图片、友链和独立页面保留；RSS 地址仍为 `/rss.xml`，只提供最近 10 篇博文。旧文章网址、旧 `.html` 地址、标签及归档入口保持可访问。`source/sw.js` 用于退役原站缓存，请保留。
 
-原友圈组件保留安全修复和失败重试；该页依赖原第三方 API。外部图床、灯箱和懒加载资源的可用性仍取决于提供方。本站没有配置评论或统计服务。
+原友圈组件保留安全修复和失败重试；该页依赖原第三方 API。既有文章的 56 张图片已保存至 `source/images/articles/`，避免外部图床间歇故障；来源与原始文件散列见 [图片副本清单](docs/audits/article-image-mirrors-2026-11-07.json)。灯箱等外部脚本资源的可用性仍取决于提供方。本站没有配置评论或统计服务。
 
 当前迁移验证记录见 `MIGRATION-CHECK.md`，先前 Bear Blog 迁移记录见 `docs/migrations/bearblog-2026-11-01.md`。
 
-逐篇文章检查记录见 [article-format-2026-11-01.md](docs/audits/article-format-2026-11-01.md)。`npm run check` 同时验证全站链接和每篇正文的结构、代码原文、公式、图片及搜索/阅读统计；浏览器视觉检查的完成范围在记录中单独注明。
+最新逐篇浏览器检查记录见 [article-visual-2026-11-07.md](docs/audits/article-visual-2026-11-07.md)，历史检查见 [article-format-2026-11-01.md](docs/audits/article-format-2026-11-01.md)。`npm run check` 同时验证全站链接、每篇正文的结构、代码原文、公式、图片、搜索/阅读统计及 56 张原图的散列；浏览器视觉检查的完成范围在记录中单独注明。
