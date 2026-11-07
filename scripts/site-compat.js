@@ -32,7 +32,7 @@ hexo.extend.filter.register('after_render:html', function (html) {
     return tag;
   }).replace(/(<link\b[^>]*\bhref=")\/css\/(site|code-highlight)\.css(")/g,
     (_tag, prefix, name, suffix) => `${prefix}/css/${name}.css?v=${cssVersions[name]}${suffix}`)
-    .replace('src="/js/main.js"', 'src="/js/main.js?v=topbar-offset-96"');
+    .replace(/src="\/js\/main\.js(?:\?[^"]*)?"/, 'src="/js/main.js?v=topbar-offset-96"');
 }, 100);
 
 // Stellar 2.0 scrolls TOC links with its own animation, which ignores CSS
